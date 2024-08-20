@@ -1,8 +1,12 @@
+import ServiceCard from "../../components/ServiceCard/ServiceCard"
+import ServicesList from "../../components/ServicesList/ServicesList"
+import ServicesSlider from "../../components/ServicesSlider/ServicesSlider"
+
 const ServicesListPage = () => {
 
     return (
         <div className="ServicesListPage">
-            <h1>Services List Page</h1>
+            <ServicesSlider />
         </div>
     )
 }
