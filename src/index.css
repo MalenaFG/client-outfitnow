@@ -2,6 +2,10 @@ img {
   width: 100%;
 }
 
+video {
+  width: 100%;
+}
+
 body {
   font-family: sans-serif;
   padding: 0;

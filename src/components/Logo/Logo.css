@@ -1,0 +1,7 @@
+.outfitnow_logo {
+    object-fit: contain;
+    position: fixed;
+    height: 100px;
+    top: 2%;
+    left: 40%;
+}

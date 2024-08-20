@@ -1,0 +1,9 @@
+.home_video {
+    width: auto !important;
+    height: auto !important;
+}
+
+.videoContainer {
+    height: 100vh;
+    overflow: hidden;
+}

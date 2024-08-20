@@ -1,0 +1,10 @@
+.sidebar_container {
+    display: flex;
+}
+
+.launch_offset_btn {
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 2%
+}
