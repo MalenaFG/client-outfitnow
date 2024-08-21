@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import servicesServices from "../../services/services.services"
 import { useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
+import PacksCard from "../../components/PacksCard/PacksCard"
 
 const ServiceDetailsPage = () => {
 
@@ -31,8 +32,9 @@ const ServiceDetailsPage = () => {
             {isLoading
                 ? <h1>cargando</h1>
                 : <div className="ServiceDetailsPage">
-                    <ServiceImgCarousel service={service} />
+                    <ServiceImgCarousel {...service} />
                     <h1>holiiiii</h1>
+                    <PacksCard {...service} />
                 </div>
 
             }

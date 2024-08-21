@@ -19,10 +19,10 @@ const ServiceImgCarousel = ({ images, title }) => {
                         return (
 
                             <Carousel.Item>
-                                {/* <Carousel.Caption>
+                                <Carousel.Caption>
                                     <h1>{title}</h1>
-                                </Carousel.Caption> */}
-                                <img src={elm.images} alt="" />
+                                </Carousel.Caption>
+                                <img src={elm} alt="" />
                             </Carousel.Item>
 
                         )
