@@ -3,18 +3,24 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './SideBar.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Modal, Nav, Container, Col } from 'react-bootstrap';
+import { Modal, Nav } from 'react-bootstrap';
+import CreateUserForm from '../CreateUserForm/UserForm';
+import CreateStylistForm from '../CreateStylistForm/CreateStylistForm';
 
 const SideBar = () => {
 
     const [showOffset, setShowOffset] = useState(false)
-    const [showModal, setShowModal] = useState(false)
+    const [showModalRoles, setShowModalRoles] = useState(false)
+    const [showModalUserForm, setShowModalUserForm] = useState(false)
+    const [showModalStylistForm, setShowModalStylistForm] = useState(false)
 
     const handleCloseOffset = () => { setShowOffset(false) }
 
     const handleShowOffset = () => { setShowOffset(true) }
 
-    const handleCloseModal = () => { handleCloseModal(false) }
+    const handleCloseModal = () => { setShowModalRoles(false) }
+
+
 
     return (
         <div className="SideBar">
@@ -22,7 +28,7 @@ const SideBar = () => {
 
                 <Button variant='light' onClick={handleShowOffset} className="launch_offset_btn me-2">WHOPER</Button>
 
-                <Offcanvas show={showOffset} onHide={handleCloseOffset} scroll={true} backdrop={true}>
+                <Offcanvas show={showOffset} onHide={handleCloseOffset} scroll={true} backdrop={true} >
 
 
                     <Offcanvas.Header closeButton>
@@ -37,25 +43,48 @@ const SideBar = () => {
                         <Nav.Link href={'/profile/:userId'}>My profile</Nav.Link>
                     </Offcanvas.Body>
 
-                    <Button className={'launch_modal_btn'} variant="light" onClick={() => setShowModal(true)}>
+                    <Button className={'launch_modal_btn'} variant="light" onClick={() => { setShowModalRoles(true) }}>
                         SignUp
                     </Button>
+                    <div className='modalContainer d-flex flex-column'>
 
-                    <Modal show={showModal} onHide={handleCloseModal}>
+                        <Modal show={showModalRoles} onHide={handleCloseModal} >
 
-                        <Modal.Header closeButton>
-                            <Modal.Title>Sign Up</Modal.Title>
+                            <Modal.Header closeButton className='flex-column'>
+                                <Modal.Title>Sign Up</Modal.Title>
+                                <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                                    Are you a User or an STYLIST?
+                                    <div className='buttonsContainer d-flex'>
 
-                            <Modal.Body>
-                                Are you a User or an STYLIST?
-                                <Button>USER</Button>
-                                <Button>STYLIST</Button>
-                            </Modal.Body>
+                                        <Button onClick={() => { setShowModalUserForm(true) }}>USER</Button>
 
-                        </Modal.Header>
+                                        <Button onClick={() => { setShowModalStylistForm(true) }}>STYLIST</Button>
 
+                                    </div>
+                                </Modal.Body>
+                            </Modal.Header>
 
-                    </Modal>
+                            <Modal className='modalUserForm' show={showModalUserForm} onHide={handleCloseModal}>
+                                <Modal.Header closeButton className='flex-column'>
+                                    <Modal.Title>USER</Modal.Title>
+                                    <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                                        <CreateUserForm />
+                                    </Modal.Body>
+                                </Modal.Header>
+
+                            </Modal>
+
+                            <Modal className='modalstylistForm' show={showModalStylistForm} onHide={handleCloseModal}>
+                                <Modal.Header closeButton className='flex-column'>
+                                    <Modal.Title>STYLIST</Modal.Title>
+                                    <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                                        <CreateStylistForm />
+                                    </Modal.Body>
+                                </Modal.Header>
+                            </Modal>
+
+                        </Modal>
+                    </div>
 
                 </Offcanvas>
             </div>
