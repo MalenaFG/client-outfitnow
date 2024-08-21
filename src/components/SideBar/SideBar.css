@@ -8,3 +8,8 @@
     top: 5%;
     left: 2%
 }
+
+.buttonsContainer {
+    justify-content: space-between;
+    padding-top: 15px;
+}
