@@ -14,7 +14,14 @@ class authServices {
     loginUser(userData) {
         return this.axiosApp.post('/auth/login', userData)
     }
+    verifyToken(authToken) {
+        return this.axiosApp.get('/auth/verify', {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
+        })
+    }
 
 }
 
-export default new authServices
+export default new authServices()
