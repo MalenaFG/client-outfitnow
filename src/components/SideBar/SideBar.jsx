@@ -4,7 +4,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import './SideBar.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Modal, Nav } from 'react-bootstrap';
-import CreateUserForm from '../CreateUserForm/UserForm';
+import CreateUserForm from '../CreateUserForm/CreateUserForm';
 import CreateStylistForm from '../CreateStylistForm/CreateStylistForm';
 
 const SideBar = () => {

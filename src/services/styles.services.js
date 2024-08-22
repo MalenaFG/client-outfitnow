@@ -12,3 +12,5 @@ class StylesServices {
         return this.axiosApp.get('/styles')
     }
 }
+
+export default new StylesServices()
