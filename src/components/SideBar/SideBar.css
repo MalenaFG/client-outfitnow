@@ -4,12 +4,29 @@
 
 .launch_offset_btn {
     position: absolute;
-    z-index: 1;
+    z-index: 100;
     top: 5%;
-    left: 2%
+    left: 2%;
+    width: 50px;
 }
 
 .buttonsContainer {
     justify-content: space-between;
     padding-top: 15px;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.login img {
+    width: 60px;
+}
+
+.userAdnLogout {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
