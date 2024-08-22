@@ -1,6 +1,6 @@
 import { Tab, Tabs } from "react-bootstrap"
 import CreateStylistForm from "../CreateStylistForm/CreateStylistForm"
-import CreateUserForm from "../CreateUserForm/UserForm"
+import CreateUserForm from "../CreateUserForm/CreateUserForm"
 
 const TabsSignupForms = () => {
 

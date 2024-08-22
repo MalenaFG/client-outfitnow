@@ -7,6 +7,7 @@ import ServicesListPage from '../pages/ServicesListPage/ServicesListPage'
 import StylistsListPage from '../pages/StylistsListPage/StylistsListPage'
 import StylistDetailsPage from '../pages/StylistDetailsPage/StylistDetailsPage'
 import ServiceDetailsPage from '../pages/ServiceDetailsPage/ServiceDetailsPage'
+import PrivateRoutes from './PrivateRoutes'
 
 const AppRoutes = () => {
     return (
@@ -17,10 +18,13 @@ const AppRoutes = () => {
                 <Route path={'/services/:serviceId'} element={<ServiceDetailsPage />} />
                 <Route path={'/stylists'} element={<StylistsListPage />} />
                 <Route path={'/stylists/:stylistId'} element={<StylistDetailsPage />} />
-                <Route path={'/profile/:userId'} element={<MyProfilePage />} />
                 <Route path={'/aboutus'} element={<AboutUsPage />} />
                 <Route path={'/users'} element={<UsersListPage />} />
                 <Route path={'*'} element={<h1>404</h1>} />
+
+                <Route element={<PrivateRoutes />}>
+                    <Route path={'/profile/:userId'} element={<MyProfilePage />} />
+                </Route>
             </Routes>
         </div>
     )

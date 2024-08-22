@@ -18,15 +18,17 @@
 .login {
     display: flex;
     align-items: center;
-    width: 100%;
 }
 
 .login img {
-    width: 60px;
+    width: 40px;
 }
 
 .userAdnLogout {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+}
+
+.userAdnLogout h6 {
+    margin-left: 150px;
 }
