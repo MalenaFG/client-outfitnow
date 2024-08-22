@@ -10,7 +10,7 @@ const LoginForm = ({ showAccessModal, closeModal }) => {
         password: ''
     })
 
-    const { setLoggedUser } = useContext(AuthContext)
+    const { loginUser, authenticateUser } = useContext(AuthContext)
 
     const handleInputChange = event => {
         const { value, name } = event.target
@@ -20,20 +20,8 @@ const LoginForm = ({ showAccessModal, closeModal }) => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        authServices
-            .loginUser(loginData)
-            .then(({ data }) => {
-                localStorage.setItem('userToken', data.authToken)
-
-                authServices
-                    .verifyToken(data.authToken)
-                    .then(({ data }) => {
-                        setLoggedUser(data)
-                        closeModal()
-                    })
-                    .catch(err => console.log(err))
-            })
-            .catch(err => console.log(err))
+        loginUser(loginData)
+        closeModal()
     }
 
     return (

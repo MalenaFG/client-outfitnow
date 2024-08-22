@@ -6,15 +6,15 @@ import { Modal, Nav, Tab, Tabs } from 'react-bootstrap';
 import LoginForm from '../LoginForm/LoginForm';
 import TabsSignupForms from '../TabsSignupForms/TabsSignupForms';
 import { AuthContext } from '../../contexts/auth.context';
+import { useParams } from 'react-router-dom';
 
 const SideBar = () => {
 
-    const { loggedUser } = useContext(AuthContext)
 
+    const { loggedUser, logoutUser } = useContext(AuthContext)
     const [showOffset, setShowOffset] = useState(false)
 
     const handleCloseOffset = () => { setShowOffset(false) }
-
     const handleShowOffset = () => { setShowOffset(true) }
 
     const [accessModal, setAccessModal] = useState({
@@ -42,7 +42,10 @@ const SideBar = () => {
 
                     <Offcanvas.Body>
                         <Nav.Link href={'/services'}>Services</Nav.Link>
-                        <Nav.Link href={'/profile/:userId'}>My profile</Nav.Link>
+                        {
+                            loggedUser && <Nav.Link href={`/profile/66c604f0ef32e73539faba6b`}>My profile</Nav.Link>
+                        }
+
                     </Offcanvas.Body>
 
 
@@ -56,7 +59,7 @@ const SideBar = () => {
                                     <div className='userAdnLogout'>
 
                                         <h5>{`${loggedUser.userName}`}</h5>
-                                        <h5>Logout</h5>
+                                        <h6 onClick={logoutUser}>Logout</h6>
 
                                     </div>
 
