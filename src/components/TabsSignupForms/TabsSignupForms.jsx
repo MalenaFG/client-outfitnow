@@ -1,8 +1,8 @@
 import { Tab, Tabs } from "react-bootstrap"
 import CreateStylistForm from "../CreateStylistForm/CreateStylistForm"
-import CreateUserForm from "../CreateUserForm/UserForm"
+import CreateUserForm from "../CreateUserForm/CreateUserForm"
 
-const TabsSignupForms = () => {
+const TabsSignupForms = ({ setAccessModal, handleCloseOffset, accessModal }) => {
 
     return (
         <div className="TabsSignupForms">
@@ -13,10 +13,10 @@ const TabsSignupForms = () => {
                 fill
             >
                 <Tab eventKey="user" title="User">
-                    <CreateUserForm />
+                    <CreateUserForm setAccessModal={setAccessModal} />
                 </Tab>
                 <Tab eventKey="stylist" title="Stylist">
-                    <CreateStylistForm />
+                    <CreateStylistForm setAccessModal={setAccessModal} />
                 </Tab>
 
             </Tabs>

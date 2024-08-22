@@ -1,13 +1,13 @@
 import { Button, Col, Form, Row } from "react-bootstrap"
 import stylesServices from './../../services/styles.services'
 import authServices from "../../services/auth.services"
+import servicesServices from "../../services/services.services"
 import { useEffect, useState } from "react"
 import NewItemForm from "../GooglePlacesAutocomplete/GooglePlacesAutocomplete"
 import { Navigate } from "react-router-dom"
 
-const CreateStylistForm = () => {
+const CreateStylistForm = ({ setAccessModal }) => {
 
-    const [styles, setStyles] = useState()
     const [userData, setUserData] = useState({
         userName: '',
         avatar: '',
@@ -17,10 +17,13 @@ const CreateStylistForm = () => {
         latitude: '',
         longitude: '',
         styles: [],
+        services: [],
         aboutMe: '',
         role: 'STYLIST'
-
     })
+
+    const [styles, setStyles] = useState()
+    const [services, setServices] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
     const loadStyles = () => {
@@ -33,12 +36,26 @@ const CreateStylistForm = () => {
             .catch(err => console.log(err))
     }
 
+    const loadServices = () => {
+        servicesServices
+            .getAllServices()
+            .then(({ data }) => {
+                setServices(data)
+                setIsLoading(false)
+            })
+    }
+
+    useEffect(() => {
+        loadStyles()
+        loadServices()
+    }, [])
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setUserData({ ...userData, [name]: value })
     }
 
-    const handlecheckboxChange = (e) => {
+    const handleStyleCheckboxChange = (e) => {
         const { value, checked } = e.target
         let stylesCopy = [...userData.styles]
 
@@ -55,18 +72,35 @@ const CreateStylistForm = () => {
         setUserData({ ...userData, styles: stylesCopy })
     }
 
+    const handleServiceCheckboxChange = (e) => {
+        const { value, checked } = e.target
+        let servicesCopy = [...userData.services]
+
+        if (checked) {
+
+            servicesCopy.push(value)
+
+        } else {
+
+            servicesCopy = servicesCopy.filter(service => service != value)
+        }
+
+
+        setUserData({ ...userData, services: servicesCopy })
+    }
+
     const handleFormSubmit = e => {
         e.preventDefault()
 
         authServices
             .signupUser(userData)
-            .then(() => Navigate('./services'))
+            .then(() => {
+                setAccessModal(oldModalState => { return { ...oldModalState, content: 'login' } })
+            })
             .catch(err => console.log(err))
+
     }
 
-    useEffect(() => {
-        loadStyles()
-    }, [])
 
 
     return (
@@ -103,7 +137,7 @@ const CreateStylistForm = () => {
                     <NewItemForm setUserData={setUserData} />
                 </Form.Group>
 
-                <Row className="mb-3">
+                <Row>
                     <Form.Group className="mb-3">
                         <Form.Label>Select the styles you work with</Form.Label>
                         <Col>
@@ -122,7 +156,7 @@ const CreateStylistForm = () => {
                                             type="checkbox"
                                             id={e._id}
                                             key={e._id}
-                                            onChange={handlecheckboxChange}
+                                            onChange={handleStyleCheckboxChange}
                                         />)
 
                                 })
@@ -132,15 +166,49 @@ const CreateStylistForm = () => {
                         </Col>
                     </Form.Group>
 
-                    <Form.Group className="mb-5">
-                        <Form.Label>About me</Form.Label>
-                        <Form.Control type="string" value={userData.aboutMe} name="aboutMe" onChange={handleInputChange} />
+                </Row>
+
+                <Row>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Choose your services</Form.Label>
+                        <Col>
+                            {isLoading ?
+                                <option>Loading options</option>
+
+                                :
+
+                                services.map(e => {
+                                    return (
+                                        <Form.Check inline
+                                            label={e.title}
+                                            checked={userData.services.includes(e._id)}
+                                            value={e._id}
+                                            name="services"
+                                            type="checkbox"
+                                            id={e._id}
+                                            key={e._id}
+                                            onChange={handleServiceCheckboxChange}
+                                        />)
+
+                                })
+                            }
+
+
+                        </Col>
                     </Form.Group>
 
-                    <Button variant="dark" type="submit">
-                        Sign Up
-                    </Button>
                 </Row>
+
+
+                <Form.Group className="mb-5">
+                    <Form.Label>About me</Form.Label>
+                    <Form.Control type="string" value={userData.aboutMe} name="aboutMe" onChange={handleInputChange} />
+                </Form.Group>
+
+                <Button variant="dark" type="submit">
+                    Sign Up
+                </Button>
+
 
             </Form>
         </div>

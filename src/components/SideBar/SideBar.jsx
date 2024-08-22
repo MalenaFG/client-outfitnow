@@ -30,7 +30,7 @@ const SideBar = () => {
         <div className="SideBar">
             <div className='sidebar_container'>
 
-                <img onClick={handleShowOffset} className="launch_offset_btn me-2" src='https://res.cloudinary.com/dshhkzxwr/image/upload/v1724250405/icon_jxlzxw.svg' ></img>
+                <img onClick={handleShowOffset} className="launch_offset_btn me-2" src='https://res.cloudinary.com/dshhkzxwr/image/upload/v1724250405/icon_jxlzxw.svg' />
                 <Offcanvas show={showOffset} onHide={handleCloseOffset} scroll={true} backdrop={true} >
 
 
@@ -74,7 +74,7 @@ const SideBar = () => {
                             </Modal.Title>
                             <Modal.Body className='modalBodyContainer flex-column mb-3'>
                                 {accessModal.content === 'login' && <LoginForm showAccessModal={showAccessModal} closeModal={() => setAccessModal({ show: false })} />}
-                                {accessModal.content === 'signup' && <TabsSignupForms />}
+                                {accessModal.content === 'signup' && <TabsSignupForms setAccessModal={setAccessModal} />}
 
                             </Modal.Body>
                         </Modal.Header>
