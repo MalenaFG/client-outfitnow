@@ -4,7 +4,6 @@ import authServices from "../../services/auth.services"
 import servicesServices from "../../services/services.services"
 import { useEffect, useState } from "react"
 import NewItemForm from "../GooglePlacesAutocomplete/GooglePlacesAutocomplete"
-import { Navigate } from "react-router-dom"
 
 const CreateStylistForm = ({ setAccessModal }) => {
 
@@ -21,6 +20,8 @@ const CreateStylistForm = ({ setAccessModal }) => {
         aboutMe: '',
         role: 'STYLIST'
     })
+
+
 
     const [styles, setStyles] = useState()
     const [services, setServices] = useState()
