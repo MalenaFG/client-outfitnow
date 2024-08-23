@@ -31,7 +31,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllStyles()
             .then(({ data }) => {
                 setStyles(data)
-                setIsLoading(false)
+                styles && setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -41,7 +41,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllServices()
             .then(({ data }) => {
                 setServices(data)
-                setIsLoading(false)
+                services && setIsLoading(false)
             })
     }
 

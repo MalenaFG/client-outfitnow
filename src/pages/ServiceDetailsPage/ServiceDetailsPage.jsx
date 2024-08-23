@@ -3,6 +3,9 @@ import servicesServices from "../../services/services.services"
 import { useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
+import StylistCard from "../../components/StylistCard/StylistCard"
+import StylistsList from "../../components/StylistList/StylistsList"
+import { Col, Container, Row } from "react-bootstrap"
 
 const ServiceDetailsPage = () => {
 
@@ -32,9 +35,23 @@ const ServiceDetailsPage = () => {
             {isLoading
                 ? <h1>cargando</h1>
                 : <div className="ServiceDetailsPage">
-                    <ServiceImgCarousel {...service} />
-                    <h1>holiiiii</h1>
-                    <PacksCard {...service} />
+
+                    <section className="mb-5">
+                        <ServiceImgCarousel {...service} />
+                    </section>
+                    <Container>
+                        <section className="mb-5">
+                            <h1> Choose your stylist</h1>
+                            <Row className="d-flex">
+                                <StylistsList />
+                            </Row>
+                        </section>
+
+                        <section className="mb-5">
+                            <PacksCard {...service} />
+                        </section>
+                    </Container>
+
                 </div>
 
             }
