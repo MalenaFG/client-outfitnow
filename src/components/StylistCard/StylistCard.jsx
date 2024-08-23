@@ -19,24 +19,25 @@ const StylistCard = ({ userName, avatar, styles, services, _id }) => {
 
                         <ListGroup.Item className="servicesList" >
                             <b> My services:</b>
-                            {services.map(e => {
-                                const { title } = e
-                                return <ul className='mb-0'>
-                                    <li>{title}</li>
-                                </ul>
-                            })
-                            }
+                            <ul className='mb-0'>
+                                {
+                                    services.map(({ title }) => {
+                                        return (
+                                            <li key={title}>{title}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
                         </ListGroup.Item>
                         <ListGroup.Item className='favoriteStyles'>
                             <b> Favorite styles:</b>
-                            {styles.map(e => {
-                                const { style } = e
-                                return ` ${style}`
-                            }).toString()
+                            {
+                                styles.map(e => {
+                                    const { style } = e
+                                    return ` ${style}`
+                                }).toString()
                             }
                         </ListGroup.Item>
-
-
                     </ListGroup>
                 </Card.Body>
             </Card>

@@ -44,8 +44,8 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
             .createBookings(requestBody)
             .then(() => {
                 setBookingData(requestBody)
+                closeModal(false)
             })
-        closeModal(false)
             .catch(err => console.log(err))
     }
 
@@ -60,6 +60,7 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
                             <Form.Label>Bottom Size</Form.Label>
                             <Form.Select type="string" value={measurementsData.bottomSize} name='bottomSize' required onChange={handleMeasurementsChange} >
                                 <option>Select your size</option>
+                                {/* TODO: PASAR OPTIONS A CONSTS (archivo booking.costs.js) */}
                                 <option>XS</option>
                                 <option>S</option>
                                 <option>M</option>

@@ -3,11 +3,9 @@ import CreateBookingForm from "../CreateBookingForm/CreateBookingForm"
 import { useState } from "react"
 import './PacksCard.css'
 
-
-
 const PacksCard = ({ packs }) => {
 
-    const titles = Object.keys(packs)
+    const [basicPackTitle, premiumPackTitle, glamPackTitle] = Object.keys(packs)
 
     const { basic, premium, glam } = packs
 
@@ -25,8 +23,8 @@ const PacksCard = ({ packs }) => {
             <CardGroup >
                 <Card>
                     <Card.Body>
-                        <Card.Title className="mb-4" >{titles[0].toUpperCase()}</Card.Title>
-                        <Button variant="dark" onClick={() => { handleShowModal(titles[0]) }}>Make your reservation</Button>
+                        <Card.Title className="mb-4" >{basicPackTitle.toUpperCase()}</Card.Title>
+                        <Button variant="dark" onClick={() => { handleShowModal(basicPackTitle) }}>Make your reservation</Button>
                         {/* TODO: la ventana modal para hacer la booking solo puede salir si estas logeado si no te tiene que mandar hacer el login */}
                         <hr />
                         <ul className="packDetailsList" >
@@ -46,8 +44,8 @@ const PacksCard = ({ packs }) => {
 
                 <Card>
                     <Card.Body>
-                        <Card.Title className="mb-4">{titles[1].toUpperCase()}</Card.Title>
-                        <Button variant="dark" onClick={() => { handleShowModal(titles[1]) }} >Make your reservation</Button>
+                        <Card.Title className="mb-4">{premiumPackTitle.toUpperCase()}</Card.Title>
+                        <Button variant="dark" onClick={() => { handleShowModal(premiumPackTitle) }} >Make your reservation</Button>
                         <hr />
                         <ul className="packDetailsList">
                             <li>{premium.price}€</li>
@@ -66,8 +64,8 @@ const PacksCard = ({ packs }) => {
 
                 <Card>
                     <Card.Body>
-                        <Card.Title className="mb-4">{titles[2].toUpperCase()}</Card.Title>
-                        <Button variant="dark" onClick={() => { handleShowModal(titles[2]) }}>Make your reservation</Button>
+                        <Card.Title className="mb-4">{glamPackTitle.toUpperCase()}</Card.Title>
+                        <Button variant="dark" onClick={() => { handleShowModal(glamPackTitle) }}>Make your reservation</Button>
 
                         <hr />
                         <ul className="packDetailsList" >
@@ -89,7 +87,7 @@ const PacksCard = ({ packs }) => {
                     <Modal.Header closeButton className='flex-column'>
                         <Modal.Title> Booking Form </Modal.Title>
                         <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                            <CreateBookingForm closeModal={setShowModal} packsData={packsData} />
+                            <CreateBookingForm closeModal={setShowModal} packsData={Object.keys(packs)} />
                         </Modal.Body>
                     </Modal.Header>
                 </Modal>

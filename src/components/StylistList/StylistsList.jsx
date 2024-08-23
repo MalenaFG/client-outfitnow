@@ -9,8 +9,6 @@ const StylistsList = () => {
     const [stylistsList, setStylistsList] = useState([])
     const { serviceId } = useParams()
 
-
-
     const loadStylistsByService = () => {
         userServices
             .getStylistsByService(serviceId)
