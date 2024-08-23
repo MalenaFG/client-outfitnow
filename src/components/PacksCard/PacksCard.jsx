@@ -10,10 +10,11 @@ const PacksCard = ({ packs }) => {
 
     const { basic, premium, glam } = packs
 
-
     const [showModal, setShowModal] = useState(false)
+    const [packsData, setPacksData] = useState(null)
 
-    const handleShowModal = () => {
+    const handleShowModal = (pack) => {
+        setPacksData(pack)
         setShowModal(true)
     }
 
@@ -25,7 +26,8 @@ const PacksCard = ({ packs }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title className="mb-4" >{titles[0].toUpperCase()}</Card.Title>
-                            <Button variant="dark" onClick={handleShowModal}>Make your reservation</Button>
+                            <Button variant="dark" onClick={() => { handleShowModal(titles[0]) }}>Make your reservation</Button>
+                            {/* TODO: la ventana modal para hacer la booking solo puede salir si estas logeado si no te tiene que mandar hacer el login */}
                             <hr />
                             <Card.Text>
                                 {basic.description}
@@ -37,7 +39,7 @@ const PacksCard = ({ packs }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title className="mb-4">{titles[1].toUpperCase()}</Card.Title>
-                            <Button variant="dark">Make your reservation</Button>
+                            <Button variant="dark" onClick={() => { handleShowModal(titles[1]) }} >Make your reservation</Button>
                             <hr />
                             <Card.Text>
                                 {premium.description}
@@ -49,7 +51,7 @@ const PacksCard = ({ packs }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title className="mb-4">{titles[2].toUpperCase()}</Card.Title>
-                            <Button variant="dark">Make your reservation</Button>
+                            <Button variant="dark" onClick={() => { handleShowModal(titles[2]) }}>Make your reservation</Button>
                             <hr />
                             <Card.Text>
                                 {glam.description}
@@ -58,11 +60,11 @@ const PacksCard = ({ packs }) => {
                         </Card.Body>
                     </Card>
 
-                    <Modal show={showModal} onHide={() => setShowModal(false)} className='bookingModal'>
+                    <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingModal'>
                         <Modal.Header closeButton className='flex-column'>
                             <Modal.Title> Booking Form </Modal.Title>
                             <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                                <CreateBookingForm />
+                                <CreateBookingForm closeModal={setShowModal} packsData={packsData} />
                             </Modal.Body>
                         </Modal.Header>
                     </Modal>

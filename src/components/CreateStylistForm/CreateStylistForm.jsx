@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap"
+import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
 import stylesServices from './../../services/styles.services'
 import authServices from "../../services/auth.services"
 import servicesServices from "../../services/services.services"
@@ -200,10 +200,22 @@ const CreateStylistForm = ({ setAccessModal }) => {
                 </Row>
 
 
-                <Form.Group className="mb-5">
+                <FloatingLabel className="mb-5" controlId="floatingTextarea2" label="Comments">
                     <Form.Label>About me</Form.Label>
-                    <Form.Control type="string" value={userData.aboutMe} name="aboutMe" onChange={handleInputChange} />
-                </Form.Group>
+                    <Form.Control
+                        type="string"
+                        value={userData.aboutMe}
+                        name="aboutMe"
+                        onChange={handleInputChange}
+                        as="textarea"
+                        placeholder="Leave a comment here"
+                        style={{ height: '100px' }}
+                    />
+                </FloatingLabel>
+
+
+
+
 
                 <Button variant="dark" type="submit">
                     Sign Up
@@ -211,7 +223,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
 
             </Form>
-        </div>
+        </div >
     )
 }
 

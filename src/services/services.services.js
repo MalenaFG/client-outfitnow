@@ -6,6 +6,16 @@ class ServicesServices {
         this.axiosApp = axios.create({
             baseURL: `${import.meta.env.VITE_APP_API_URL}/api`
         })
+
+        this.axiosApp.interceptors.request.use(config => {
+            const storedToken = localStorage.getItem('userToken')
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     getAllServices() {
@@ -21,4 +31,4 @@ class ServicesServices {
     }
 }
 
-export default new ServicesServices
+export default new ServicesServices()
