@@ -1,7 +1,11 @@
 import './StylistCard.css'
-import { Card, Col, Image, ListGroup } from "react-bootstrap"
+import { Button, Card, Col, Image, ListGroup } from "react-bootstrap"
+import { AuthContext } from '../../contexts/auth.context'
+import { useContext } from 'react'
 
 const StylistCard = ({ userName, avatar, styles, services, _id }) => {
+
+    const { loggedUser, logoutUser } = useContext(AuthContext)
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
@@ -38,6 +42,11 @@ const StylistCard = ({ userName, avatar, styles, services, _id }) => {
                                 }).toString()
                             }
                         </ListGroup.Item>
+                        {
+                            loggedUser && <ListGroup.Item >
+                                <Button>Select {userName}</Button>
+                            </ListGroup.Item>
+                        }
                     </ListGroup>
                 </Card.Body>
             </Card>

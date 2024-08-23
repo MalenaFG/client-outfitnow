@@ -4,7 +4,6 @@ import authServices from "../../services/auth.services"
 import servicesServices from "../../services/services.services"
 import { useEffect, useState } from "react"
 import NewItemForm from "../GooglePlacesAutocomplete/GooglePlacesAutocomplete"
-import { Navigate } from "react-router-dom"
 
 const CreateStylistForm = ({ setAccessModal }) => {
 
@@ -22,6 +21,8 @@ const CreateStylistForm = ({ setAccessModal }) => {
         role: 'STYLIST'
     })
 
+
+
     const [styles, setStyles] = useState()
     const [services, setServices] = useState()
     const [isLoading, setIsLoading] = useState(true)
@@ -31,7 +32,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllStyles()
             .then(({ data }) => {
                 setStyles(data)
-                styles && setIsLoading(false)
+                services && setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -41,7 +42,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllServices()
             .then(({ data }) => {
                 setServices(data)
-                services && setIsLoading(false)
+                styles && setIsLoading(false)
             })
     }
 
