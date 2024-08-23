@@ -38,7 +38,7 @@ class BookingsServices {
         return this.axiosApp.delete(`/bookings/${bookingId}`)
     }
 
-    getBookingsByUser(bookingId) {
+    getBookingsByUser(userId) {
         return this.axiosApp.get(`/bookings/users/${userId}`)
     }
 }

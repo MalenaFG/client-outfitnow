@@ -1,0 +1,1 @@
+export const OPTIONS_SELECT_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] 

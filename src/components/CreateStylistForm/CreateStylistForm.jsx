@@ -31,7 +31,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllStyles()
             .then(({ data }) => {
                 setStyles(data)
-                styles && setIsLoading(false)
+                services && setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -41,7 +41,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllServices()
             .then(({ data }) => {
                 setServices(data)
-                services && setIsLoading(false)
+                styles && setIsLoading(false)
             })
     }
 
@@ -193,34 +193,28 @@ const CreateStylistForm = ({ setAccessModal }) => {
                                 })
                             }
 
-
                         </Col>
                     </Form.Group>
 
                 </Row>
 
-
-                <FloatingLabel className="mb-5" controlId="floatingTextarea2" label="Comments">
+                <Form.Group className="mb-5" controlId="comments">
                     <Form.Label>About me</Form.Label>
                     <Form.Control
-                        type="string"
+                        style={{ height: '100px' }}
+                        as="textarea"
+                        rows={3}
+                        required
+                        onChange={handleInputChange}
                         value={userData.aboutMe}
                         name="aboutMe"
-                        onChange={handleInputChange}
-                        as="textarea"
-                        placeholder="Leave a comment here"
-                        style={{ height: '100px' }}
+                        type="text"
                     />
-                </FloatingLabel>
-
-
-
-
+                </Form.Group>
 
                 <Button variant="dark" type="submit">
                     Sign Up
                 </Button>
-
 
             </Form>
         </div >

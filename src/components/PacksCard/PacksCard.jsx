@@ -7,6 +7,7 @@ const PacksCard = ({ packs }) => {
 
     const [basicPackTitle, premiumPackTitle, glamPackTitle] = Object.keys(packs)
 
+
     const { basic, premium, glam } = packs
 
     const [showModal, setShowModal] = useState(false)
@@ -87,7 +88,7 @@ const PacksCard = ({ packs }) => {
                     <Modal.Header closeButton className='flex-column'>
                         <Modal.Title> Booking Form </Modal.Title>
                         <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                            <CreateBookingForm closeModal={setShowModal} packsData={Object.keys(packs)} />
+                            <CreateBookingForm closeModal={setShowModal} packsData={packsData} />
                         </Modal.Body>
                     </Modal.Header>
                 </Modal>

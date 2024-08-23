@@ -1,4 +1,5 @@
 import ServicesSlider from "../../components/ServicesSlider/ServicesSlider"
+import './ServicesListPage.css'
 
 const ServicesListPage = () => {
 
@@ -6,6 +7,7 @@ const ServicesListPage = () => {
         <div className="ServicesListPage">
             <h1>Listadod e servicios</h1>
             <ServicesSlider />
+            {/* TODO: filtro para filtrar por servicio */}
         </div>
     )
 }

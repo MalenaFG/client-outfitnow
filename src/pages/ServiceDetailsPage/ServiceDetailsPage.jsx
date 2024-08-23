@@ -3,7 +3,6 @@ import servicesServices from "../../services/services.services"
 import { useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
-import StylistCard from "../../components/StylistCard/StylistCard"
 import StylistsList from "../../components/StylistList/StylistsList"
 import { Col, Container, Row } from "react-bootstrap"
 

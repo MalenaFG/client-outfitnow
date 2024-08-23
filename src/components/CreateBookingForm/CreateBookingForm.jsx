@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import bookingsServices from "../../services/bookings.services"
+import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"
 
 const CreateBookingForm = ({ packsData, closeModal }) => {
 
@@ -58,27 +59,32 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
                     <Col md={{ span: 6, offset: 0 }}>
                         <Form.Group controlId="bottomSize" className="mb-3">
                             <Form.Label>Bottom Size</Form.Label>
-                            <Form.Select type="string" value={measurementsData.bottomSize} name='bottomSize' required onChange={handleMeasurementsChange} >
+                            <Form.Select
+                                type="string"
+                                value={measurementsData.bottomSize}
+                                name='bottomSize'
+                                required
+                                onChange={handleMeasurementsChange} >
+
                                 <option>Select your size</option>
-                                {/* TODO: PASAR OPTIONS A CONSTS (archivo booking.costs.js) */}
-                                <option>XS</option>
-                                <option>S</option>
-                                <option>M</option>
-                                <option>L</option>
-                                <option>XL</option>
-                                <option>XXL</option>
+                                {
+                                    OPTIONS_SELECT_SIZES.map(size => (
+                                        <option key={size} value={size}>{size}</option>
+
+                                    ))
+                                }
                             </Form.Select>
                         </Form.Group>
                         <Form.Group controlId="topSize" className="mb-3">
                             <Form.Label>Top Size</Form.Label>
                             <Form.Select type="string" value={measurementsData.topSize} name='topSize' required onChange={handleMeasurementsChange} >
                                 <option>Select your size</option>
-                                <option>XS</option>
-                                <option>S</option>
-                                <option>M</option>
-                                <option>L</option>
-                                <option>XL</option>
-                                <option>XXL</option>
+                                {
+                                    OPTIONS_SELECT_SIZES.map(size => (
+                                        <option key={size} value={size}>{size}</option>
+
+                                    ))
+                                }
                             </Form.Select>
                         </Form.Group>
                     </Col>
@@ -97,18 +103,20 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
                     </Col>
                 </Row>
                 <Row>
-                    <FloatingLabel className="mb-3" controlId="floatingTextareaForComment" label=" Leave a comment here">
+
+                    <Form.Group className="mb-3" controlId="comments">
+                        <Form.Label>Example textarea</Form.Label>
                         <Form.Control
-                            type="text"
+                            as="textarea"
+                            rows={3}
+                            required
+                            placeholder="Add your suggestions"
+                            onChange={handleBookingChange}
                             value={bookingData.comment}
                             name='comment'
-                            required
-                            onChange={handleBookingChange}
-                            as="textarea"
-                            placeholder="Leave a comment here"
-                            style={{ height: '100px' }}
+                            type="text"
                         />
-                    </FloatingLabel>
+                    </Form.Group>
 
                     <Form.Group controlId="deadline" className="mb-3">
                         <Form.Label>Deadline</Form.Label>
