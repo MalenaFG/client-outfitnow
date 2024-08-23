@@ -6,7 +6,6 @@ import { Modal, Nav, Tab, Tabs } from 'react-bootstrap';
 import LoginForm from '../LoginForm/LoginForm';
 import TabsSignupForms from '../TabsSignupForms/TabsSignupForms';
 import { AuthContext } from '../../contexts/auth.context';
-import { useParams } from 'react-router-dom';
 
 const SideBar = () => {
 
