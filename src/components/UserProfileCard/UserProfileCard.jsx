@@ -31,16 +31,12 @@ const UserProfileCard = () => {
                     <div className="d-flex">
                         <Card.Img variant="top" src={userData.avatar} />
                         <Card.Body>
-                            <Card.Text>
-                                <ul>
-                                    <li>{userData.userName} </li>
-                                    <li>{userData.email} </li>
-                                    <li>{userData.phone} </li>
+                            <ul>
+                                <li>{userData.userName} </li>
+                                <li>{userData.email} </li>
+                                <li>{userData.phone} </li>
 
-                                </ul>
-
-                            </Card.Text>
-
+                            </ul>
                         </Card.Body>
 
                     </div>

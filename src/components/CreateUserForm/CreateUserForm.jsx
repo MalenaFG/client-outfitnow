@@ -14,7 +14,6 @@ const CreateUserForm = ({ setAccessModal }) => {
         latitude: '',
         longitude: '',
     })
-    const [isLoading, setIsLoading] = useState(true)
 
     const handleInputChange = e => {
         const { value, name } = e.target

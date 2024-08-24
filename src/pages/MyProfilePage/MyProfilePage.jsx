@@ -2,6 +2,7 @@ import './MyProfilePage.css'
 import { Row, Col, Container } from "react-bootstrap"
 import UserProfileCard from '../../components/UserProfileCard/UserProfileCard'
 import BookingsAccordion from '../../components/BookingsAccordion/BookingsAccordion'
+import CreateServiceForm from '../../components/CreateServiceForm/CreateServiceForm'
 
 const MyProfilePage = () => {
 
@@ -15,6 +16,7 @@ const MyProfilePage = () => {
                     </Col>
                     <Col style={{ marginTop: '80px' }}>
                         <BookingsAccordion />
+                        <CreateServiceForm />
                     </Col>
                 </Row>
             </Container>

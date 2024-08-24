@@ -32,7 +32,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllStyles()
             .then(({ data }) => {
                 setStyles(data)
-                services && setIsLoading(false)
+                styles && setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -42,7 +42,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .getAllServices()
             .then(({ data }) => {
                 setServices(data)
-                styles && setIsLoading(false)
+                services && setIsLoading(false)
             })
     }
 

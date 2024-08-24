@@ -33,7 +33,7 @@ const PacksCard = ({ packs }) => {
                                 Make your reservation
                             </Button>
                         }
-                        {/* TODO: la ventana modal para hacer la booking solo puede salir si estas logeado si no te tiene que mandar hacer el login */}
+                        {/* TODO: si no has elegido un estilista no debería poder hacer la reserva */}
                         <hr />
                         <ul className="packDetailsList" >
                             <li>{basic.price}€</li>

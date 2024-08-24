@@ -26,7 +26,7 @@ class ServicesServices {
         return this.axiosApp.get(`/services/${serviceId}`)
     }
 
-    createServices(serviceData) {
+    createService(serviceData) {
         return this.axiosApp.post(`/services`, serviceData)
     }
 }

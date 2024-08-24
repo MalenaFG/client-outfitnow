@@ -32,14 +32,20 @@ const StylistDetailsPage = () => {
                 isLoading ?
                     <p>Loading info</p>
                     :
+                    <section >
+                        <Row>
+                            <Col md={{ span: 3 }} className="stylistInfo">
+                                <h1>{userData.userName}</h1>
 
-                    <Row>
-                        <Col md={{ span: 6 }}>
-                            <h1>{userData.userName}</h1>
-
-                            <Image src={userData.avatar} />
-                        </Col>
-                    </Row>
+                                <Image src={userData.avatar} />
+                                <p>{userData.aboutMe}</p>
+                            </Col>
+                            <Col>
+                                <h2>My services:</h2>
+                                {userData.services.title}
+                            </Col>
+                        </Row>
+                    </section>
 
             }
         </Container>
