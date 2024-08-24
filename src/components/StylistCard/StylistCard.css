@@ -3,11 +3,18 @@
     overflow-y: scroll;
     scrollbar-color: rgb(246, 225, 225) rgb(255, 255, 255);
     margin-bottom: 0px;
-
 }
 
 .favoriteStyles {
     height: 60px;
     overflow: hidden;
     scrollbar-color: rgb(246, 225, 225) rgb(255, 255, 255);
+}
+
+.learnMore {
+    display: flex;
+    justify-content: end;
+    font-size: small;
+    font-style: italic;
+    color: rgb(16, 0, 160);
 }
