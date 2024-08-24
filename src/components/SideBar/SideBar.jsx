@@ -9,7 +9,6 @@ import { AuthContext } from '../../contexts/auth.context';
 
 const SideBar = () => {
 
-
     const { loggedUser, logoutUser } = useContext(AuthContext)
     const [showOffset, setShowOffset] = useState(false)
 
@@ -40,9 +39,10 @@ const SideBar = () => {
                     </Offcanvas.Header>
 
                     <Offcanvas.Body>
+                        <Nav.Link href={'/'}>Home</Nav.Link>
                         <Nav.Link href={'/services'}>Services</Nav.Link>
                         {
-                            loggedUser && <Nav.Link href={`/profile/66c604f0ef32e73539faba6b`}>My profile</Nav.Link>
+                            loggedUser && <Nav.Link href={`/profile/${loggedUser._id}`}>My profile</Nav.Link>
                         }
 
                     </Offcanvas.Body>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { Form } from "react-bootstrap"
 import GooglePlacesAutocomplete from "react-google-places-autocomplete"
 import { geocodeByAddress, getLatLng } from "react-google-places-autocomplete"
 
@@ -30,7 +29,7 @@ const NewItemForm = ({ setUserData }) => {
     return (
         <div className="NewItemForm">
             <GooglePlacesAutocomplete
-                apiKey='AIzaSyADwT7bWdm7bwgC_qo3rB-AfqRdNilXCIk'
+                apiKey='process.env.REACT_APP_GOOGLE_MAPS_API_KEY'
                 selectProps={{
                     addressValue,
                     onChange: setAddressValue

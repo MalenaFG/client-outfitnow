@@ -105,11 +105,10 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
                 <Row>
 
                     <Form.Group className="mb-3" controlId="comments">
-                        <Form.Label>Example textarea</Form.Label>
+                        <Form.Label></Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
-                            required
                             placeholder="Add your suggestions"
                             onChange={handleBookingChange}
                             value={bookingData.comment}
