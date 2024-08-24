@@ -8,16 +8,17 @@ const MyProfilePage = () => {
 
     return (
         <div className="MyProfilePage">
-            <Container>
-                <Row>
-                    <Col>
-                        <UserProfileCard />
-                    </Col>
-                    <Col style={{ marginTop: '80px' }}>
-                        <BookingsAccordion />
-                    </Col>
-                </Row>
-            </Container>
+            {
+                <Container>
+                    <Row>
+                        <Col>
+                            <UserProfileCard />
+                        </Col>
+                        <Col style={{ marginTop: '80px' }}>
+                            <BookingsAccordion />
+                        </Col>
+                    </Row>
+                </Container>}
 
         </div>
     )

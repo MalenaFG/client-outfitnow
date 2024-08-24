@@ -27,6 +27,8 @@ const UserProfileCard = () => {
         <div className="UserProfileCard">
             {
                 userData &&
+
+                // TODO: QUE MUESTRE DISTINTA INFO EN FUNCION DE STYLIST O USER, CMO EN EL ACORDEON DE BOOKINGS
                 <Card style={{ marginTop: '80px' }}>
                     <div className="d-flex">
                         <Card.Img variant="top" src={userData.avatar} />

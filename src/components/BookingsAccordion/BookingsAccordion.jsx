@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Accordion, Col, Row } from "react-bootstrap"
+import { Accordion, Col, Row, Modal } from "react-bootstrap"
+import EditBookingForm from "../EditBookingForm/EditBookingForm";
 import bookingsServices from './../../services/bookings.services'
 import { useParams } from "react-router-dom"
 import './BookingsAccordion.css'
@@ -9,6 +10,11 @@ const BookingsAccordion = () => {
     const { userId } = useParams()
 
     const [bookingData, setBookingData] = useState([])
+    const [showModal, setShowModal] = useState(false)
+
+    const handleShowModal = () => {
+        setShowModal(true)
+    }
 
     const loadBookingsByUser = () => {
 
@@ -32,7 +38,7 @@ const BookingsAccordion = () => {
                     return (
                         <Accordion >
                             <Accordion.Item eventKey={idx + 1}>
-                                <Accordion.Header>{idx + 1}º Booking - {elm.pack}</Accordion.Header>
+                                <Accordion.Header>{idx + 1}º Service - {elm.service.title}</Accordion.Header>
                                 <Accordion.Body className="accordionBody">
                                     <Row>
                                         <Col>
@@ -45,11 +51,19 @@ const BookingsAccordion = () => {
                                             </ul>
                                         </Col>
                                         <Col>
-                                            <h6>Service:</h6>
-                                            <p>{elm.service.title}</p>
+                                            <h6>Pack:</h6>
+                                            <p>{elm.pack.charAt(0).toUpperCase() + elm.pack.slice(1)}</p>
 
                                             <h6>Deadline:</h6>
                                             <p>{new Date(elm.deadline).toLocaleDateString()}</p>
+                                        </Col>
+                                        <Col className="text-end">
+                                            <img
+                                                src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
+                                                onClick={handleShowModal}
+                                                style={{ cursor: 'pointer' }}
+                                                alt="editIcon"
+                                            />
                                         </Col>
                                     </Row>
                                     <Row>
@@ -61,13 +75,28 @@ const BookingsAccordion = () => {
                                                 </>)
                                             }
                                         </Col>
+                                        <Col className="text-end">
+
+                                            <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
+
+                                        </Col>
                                     </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
+
                     )
                 })
             }
+
+            <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingEditModal'>
+                <Modal.Header closeButton className='flex-column'>
+                    <Modal.Title>Edit Booking Form </Modal.Title>
+                    <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                        <EditBookingForm closeModal={setShowModal} />
+                    </Modal.Body>
+                </Modal.Header>
+            </Modal>
 
         </div>
     )
