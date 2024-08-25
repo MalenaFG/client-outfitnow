@@ -17,6 +17,10 @@ const BookingsAccordion = () => {
         setShowModal(true)
         setSelectedBookingId(bookingId)
     }
+    const handleCloseModal = () => {
+        setShowModal(false)
+        loadBookingsByUser()
+    }
 
     const loadBookingsByUser = () => {
 
@@ -25,8 +29,16 @@ const BookingsAccordion = () => {
             .getBookingsByUser(userId)
             .then(({ data }) => {
                 setBookingData(data)
-
             })
+            .catch(err => console.log(err))
+    }
+
+    const deleteBooking = (bookingId) => {
+
+        bookingsServices
+
+            .deleteOneBooking(bookingId)
+            .then(() => loadBookingsByUser())
             .catch(err => console.log(err))
     }
 
@@ -82,7 +94,7 @@ const BookingsAccordion = () => {
                                         </Col>
                                         <Col className="text-end">
 
-                                            <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
+                                            <img onClick={() => deleteBooking(elm._id)} src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
 
                                         </Col>
                                     </Row>
@@ -98,7 +110,11 @@ const BookingsAccordion = () => {
                 <Modal.Header closeButton className='flex-column'>
                     <Modal.Title>Edit Booking Form </Modal.Title>
                     <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                        <EditBookingForm bookingId={selectedBookingId} closeModal={setShowModal} />
+                        <EditBookingForm
+                            bookingId={selectedBookingId}
+                            closeModal={handleCloseModal}
+                            loadBookingsByUser={loadBookingsByUser}
+                        />
                     </Modal.Body>
                 </Modal.Header>
             </Modal>

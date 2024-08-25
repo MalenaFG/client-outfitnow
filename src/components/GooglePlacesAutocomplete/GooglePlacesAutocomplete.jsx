@@ -29,9 +29,9 @@ const NewItemForm = ({ setUserData }) => {
     return (
         <div className="NewItemForm">
             <GooglePlacesAutocomplete
-                apiKey='process.env.REACT_APP_GOOGLE_MAPS_API_KEY'
+                apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
                 selectProps={{
-                    addressValue,
+                    value: addressValue,
                     onChange: setAddressValue
                 }} />
         </div>

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import NewItemForm from '../GooglePlacesAutocomplete/GooglePlacesAutocomplete'
 import authServices from '../../services/auth.services'
+import uploadServices from '../../services/upload.services'
 
 const CreateUserForm = ({ setAccessModal }) => {
 
@@ -15,12 +16,32 @@ const CreateUserForm = ({ setAccessModal }) => {
         longitude: '',
     })
 
+    const [loadingImage, setLoadingImage] = useState(false)
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setUserData({ ...userData, [name]: value })
     }
 
+    const handleFileUpload = e => {
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadImage(formData)
+            .then(res => {
+                setUserData({ ...userData, avatar: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+
+            })
+    }
+
     const handleFormSubmit = e => {
+
         e.preventDefault()
 
         authServices
@@ -41,9 +62,9 @@ const CreateUserForm = ({ setAccessModal }) => {
                     <Form.Control type="string" value={userData.userName} name='userName' onChange={handleInputChange} />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="string" value={userData.avatar} name='avatar' onChange={handleInputChange} />
+                    <Form.Control type="file" name='avatar' onChange={handleFileUpload} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -67,8 +88,8 @@ const CreateUserForm = ({ setAccessModal }) => {
                     <NewItemForm setUserData={setUserData} />
                 </Form.Group>
 
-                <Button variant="dark" type="submit">
-                    Sign Up
+                <Button variant="dark" type="submit" disabled={loadingImage} >
+                    {loadingImage ? 'Loading Image...' : 'Sign Up'}
                 </Button>
 
             </Form>
