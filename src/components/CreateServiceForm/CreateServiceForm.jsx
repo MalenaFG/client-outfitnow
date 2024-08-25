@@ -36,7 +36,7 @@ const CreateServiceForm = () => {
         minimumNotice: 0
     });
 
-    const handleImputChange = e => {
+    const handleInputChange = e => {
 
         const { value, name } = e.target;
         setServiceData({ ...serviceData, [name]: value })
@@ -75,23 +75,22 @@ const CreateServiceForm = () => {
 
 
     return (
-        // TODOMALENA: INCLUIR REQUIRED
 
         <Form onSubmit={handleSubmit}>
             <h2>New Service</h2>
             <Form.Group className="mb-3">
                 <Form.Label>Service title</Form.Label>
-                <Form.Control type="string" required value={serviceData.title} name='title' onChange={handleImputChange} />
+                <Form.Control type="string" required value={serviceData.title} name='title' onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Group className="mb-3">
                 <Form.Label>Cover image</Form.Label>
-                <Form.Control type="string" required value={serviceData.coverImage} name='coverImage' onChange={handleImputChange} />
+                <Form.Control type="string" required value={serviceData.coverImage} name='coverImage' onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Group className="mb-3">
                 <Form.Label>Images for Carousel</Form.Label>
-                <Form.Control type="string" required value={serviceData.images} name='images' onChange={handleImputChange} />
+                <Form.Control type="string" required value={serviceData.images} name='images' onChange={handleInputChange} />
             </Form.Group>
 
             <Row>
@@ -105,7 +104,7 @@ const CreateServiceForm = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control required type="string" value={basicPack.description} name='description' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                        <Form.Control required type="string" value={basicPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -137,7 +136,7 @@ const CreateServiceForm = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control required type="string" value={premiumPack.description} name='description' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                        <Form.Control required type="string" value={premiumPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -169,7 +168,7 @@ const CreateServiceForm = () => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Description</Form.Label>
-                        <Form.Control required type="string" value={glamPack.description} name='description' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                        <Form.Control required type="string" value={glamPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
