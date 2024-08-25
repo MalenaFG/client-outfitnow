@@ -105,7 +105,7 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
                 <Row>
 
                     <Form.Group className="mb-3" controlId="comments">
-                        <Form.Label></Form.Label>
+                        <Form.Label>Comments</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}

@@ -4,7 +4,7 @@ import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"
 import bookingsServices from "../../services/bookings.services"
 
 
-const EditBookingForm = ({ closeModal, bookingId }) => {
+const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
 
     const [bookingData, setBookingData] = useState({
         deadline: '',
@@ -28,6 +28,7 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
     }
     const handleMeasurementsChange = (e) => {
         const { name, value } = e.target;
+        console.log(`Updating measurement ${name}: ${value}`)
         setMeasurementsData({ ...measurementsData, [name]: value })
     }
 
@@ -54,12 +55,14 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
             ...bookingData,
             measurements: measurementsData,
         }
+        console.log("Submitting data:", requestBody)
 
         bookingsServices
-            .editOneBooking(requestBody)
+            .editOneBooking(bookingId, requestBody)
             .then(() => {
-                setBookingData(requestBody)
-                closeModal(false)
+                closeModal()
+                loadBookingsByUser()
+                // TODO: NO CONSIGO QUE SE ACTUALICEN LOS DATOS DESPUES DEL SUBMIT DEL FORMULARIO
             })
             .catch(err => console.log(err))
     }
@@ -91,7 +94,12 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
                         </Form.Group>
                         <Form.Group controlId="topSize" className="mb-3">
                             <Form.Label>Top Size</Form.Label>
-                            <Form.Select type="string" value={measurementsData.topSize} name='topSize' required onChange={handleMeasurementsChange} >
+                            <Form.Select
+                                type="string"
+                                value={measurementsData.topSize}
+                                name='topSize'
+                                required
+                                onChange={handleMeasurementsChange} >
                                 <option>Select your size</option>
                                 {
                                     OPTIONS_SELECT_SIZES.map(size => (
@@ -119,7 +127,7 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
                 <Row>
 
                     <Form.Group className="mb-3" controlId="comments">
-                        <Form.Label></Form.Label>
+                        <Form.Label>Comments</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
@@ -135,7 +143,7 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
                         <Form.Label>Deadline</Form.Label>
                         <Form.Control
                             type="date"
-                            value={bookingData.deadline}
+                            value={bookingData.deadline.split('T')[0]}
                             name='deadline'
                             required
                             onChange={handleBookingChange} />
@@ -144,7 +152,7 @@ const EditBookingForm = ({ closeModal, bookingId }) => {
                 </Row>
 
                 <Button variant="dark" type="submit">
-                    Confirm reservation
+                    Save
                 </Button>
             </Form>
         </div>
