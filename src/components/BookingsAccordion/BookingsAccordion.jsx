@@ -11,9 +11,11 @@ const BookingsAccordion = () => {
 
     const [bookingData, setBookingData] = useState([])
     const [showModal, setShowModal] = useState(false)
+    const [selectedBookingId, setSelectedBookingId] = useState(null)
 
-    const handleShowModal = () => {
+    const handleShowModal = (bookingId) => {
         setShowModal(true)
+        setSelectedBookingId(bookingId)
     }
 
     const loadBookingsByUser = () => {
@@ -21,7 +23,10 @@ const BookingsAccordion = () => {
         bookingsServices
 
             .getBookingsByUser(userId)
-            .then(({ data }) => setBookingData(data))
+            .then(({ data }) => {
+                setBookingData(data)
+
+            })
             .catch(err => console.log(err))
     }
 
@@ -36,7 +41,7 @@ const BookingsAccordion = () => {
                 bookingData.map((elm, idx) => {
 
                     return (
-                        <Accordion >
+                        <Accordion key={elm._id} >
                             <Accordion.Item eventKey={idx + 1}>
                                 <Accordion.Header>{idx + 1}º Service - {elm.service.title}</Accordion.Header>
                                 <Accordion.Body className="accordionBody">
@@ -60,7 +65,7 @@ const BookingsAccordion = () => {
                                         <Col className="text-end">
                                             <img
                                                 src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
-                                                onClick={handleShowModal}
+                                                onClick={() => handleShowModal(elm._id)}
                                                 style={{ cursor: 'pointer' }}
                                                 alt="editIcon"
                                             />
@@ -93,7 +98,7 @@ const BookingsAccordion = () => {
                 <Modal.Header closeButton className='flex-column'>
                     <Modal.Title>Edit Booking Form </Modal.Title>
                     <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                        <EditBookingForm closeModal={setShowModal} />
+                        <EditBookingForm bookingId={selectedBookingId} closeModal={setShowModal} />
                     </Modal.Body>
                 </Modal.Header>
             </Modal>

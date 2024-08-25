@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import bookingsServices from "../../services/bookings.services"
 import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"

@@ -10,7 +10,6 @@ const UserProfileCard = () => {
     const { userId } = useParams()
 
     const [userData, setUserData] = useState()
-    console.log(userData)
     const loadUserById = () => {
 
         userServices
