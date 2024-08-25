@@ -1,3 +1,8 @@
 .accordionBody h6 {
     text-decoration: underline;
 }
+
+.accordionBody img {
+    width: auto;
+    height: 30px;
+}

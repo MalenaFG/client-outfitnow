@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
 import StylistsList from "../../components/StylistList/StylistsList"
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row, Spinner } from "react-bootstrap"
 
 const ServiceDetailsPage = () => {
 
@@ -32,7 +32,7 @@ const ServiceDetailsPage = () => {
         <>
 
             {isLoading
-                ? <h1>cargando</h1>
+                ? <Spinner />
                 : <div className="ServiceDetailsPage">
 
                     <section className="mb-5">
