@@ -26,7 +26,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
     const [styles, setStyles] = useState()
     const [services, setServices] = useState()
     const [isLoading, setIsLoading] = useState(true)
-
+    /* TODO: el isLoading sigue dando problemas con los checkboxes */
     const loadStyles = () => {
         stylesServices
             .getAllStyles()
