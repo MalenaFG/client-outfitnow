@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Form } from "react-bootstrap"
 import ServicesFilteredList from "../ServicesFilteredList/ServicesFilteredList"
 import servicesServices from "../../services/services.services"
+import './ServiceFilter.css'
 
 const ServiceFilter = () => {
 
@@ -20,9 +21,9 @@ const ServiceFilter = () => {
     }
 
     return (
-        <div className="ServiceFilter">
+        <div className="ServiceFilterWrapper">
 
-            <Form className="d-flex" >
+            <Form className="ServiceFilterForm d-flex">
                 <Form.Control
                     type="search"
                     placeholder="Search by service"
@@ -38,3 +39,4 @@ const ServiceFilter = () => {
     )
 }
 export default ServiceFilter
+

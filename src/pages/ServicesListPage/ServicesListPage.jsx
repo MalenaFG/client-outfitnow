@@ -9,8 +9,7 @@ const ServicesListPage = () => {
 
             <ServicesSlider />
             <ServiceFilter />
-
-            {/* TODO: filtro para filtrar por servicio */}
+            {/* TODO: MOSTRAR LA SERVICE LIST FILTERED CUANDO SE USE EL FILTRO Y SI NO EL SLIDER */}
         </div>
     )
 }

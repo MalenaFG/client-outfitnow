@@ -1,4 +1,11 @@
 .ServicesListPage {
     background-color: grey;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }

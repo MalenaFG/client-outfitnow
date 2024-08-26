@@ -5,6 +5,7 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { Link } from "react-router-dom"
 import { RESPONSIVE_SIZES } from "../../consts/slider.consts"
+import './ServicesSlider.css'
 
 const ServicesSlider = () => {
 
@@ -26,7 +27,14 @@ const ServicesSlider = () => {
 
         <div className="ServicesSlider">
 
-            <Carousel infinite={true} keyBoardControl={true} autoPlay={true} autoPlaySpeed={2000} responsive={RESPONSIVE_SIZES}>
+            <Carousel
+                infinite={true}
+                keyBoardControl={true}
+                autoPlay={true}
+                autoPlaySpeed={2000}
+                responsive={RESPONSIVE_SIZES}
+                containerClass="carousel-container"
+            >
                 {
                     services.map(elm => (
                         <Link to={`/services/${elm._id}`}>

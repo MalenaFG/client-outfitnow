@@ -1,0 +1,31 @@
+.ServiceFilterForm {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.ServiceFilterForm input {
+    background: transparent;
+    border: none;
+    color: #333;
+    outline: none;
+}
+
+.ServiceFilterForm input::placeholder {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .ServiceFilterForm {
+        width: 50%;
+    }
+}
