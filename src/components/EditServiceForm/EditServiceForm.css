@@ -3,3 +3,21 @@
     border-radius: 5px;
     padding: 10px;
 }
+
+.coverImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.carouselImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.carouselPreview {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

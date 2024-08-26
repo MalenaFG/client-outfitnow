@@ -3,6 +3,7 @@ import { Button, Col, Form, Row } from "react-bootstrap"
 import './CreateServiceForm.css'
 
 import servicesServices from "../../services/services.services"
+import uploadServices from "../../services/upload.services"
 
 const CreateServiceForm = () => {
 
@@ -18,7 +19,7 @@ const CreateServiceForm = () => {
         outfitsIncluded: 0,
         homeService: false,
         minimumNotice: 0
-    });
+    })
 
     const [premiumPack, setPremiumPack] = useState({
         price: 0,
@@ -26,7 +27,7 @@ const CreateServiceForm = () => {
         outfitsIncluded: 0,
         homeService: false,
         minimumNotice: 0
-    });
+    })
 
     const [glamPack, setGlamPack] = useState({
         price: 0,
@@ -34,7 +35,9 @@ const CreateServiceForm = () => {
         outfitsIncluded: 0,
         homeService: false,
         minimumNotice: 0
-    });
+    })
+
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
 
@@ -52,8 +55,45 @@ const CreateServiceForm = () => {
         }))
     }
 
+    const handleCoverUpload = e => {
+        setLoadingImage(true)
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadOneImage(formData)
+            .then(({ data }) => {
+                setServiceData({ ...serviceData, coverImage: data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
+    }
+
+    const handleImagesUpload = e => {
+        setLoadingImage(true)
+        const formData = new FormData()
+
+        for (let i = 0; i < e.target.files.length; i++) {
+            formData.append('imagesData', e.target.files[i])
+        }
+
+        uploadServices
+            .uploadSomeImages(formData)
+            .then(({ data }) => {
+                setServiceData({ ...serviceData, images: data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+            })
+    }
+
     const handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
 
         const finalServiceData = {
             ...serviceData,
@@ -63,7 +103,7 @@ const CreateServiceForm = () => {
                 premium: premiumPack,
                 glam: glamPack
             }
-        };
+        }
 
         servicesServices
             .createService(finalServiceData)
@@ -83,14 +123,14 @@ const CreateServiceForm = () => {
                 <Form.Control type="string" required value={serviceData.title} name='title' onChange={handleInputChange} />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group as={Col}>
                 <Form.Label>Cover image</Form.Label>
-                <Form.Control type="string" required value={serviceData.coverImage} name='coverImage' onChange={handleInputChange} />
+                <Form.Control type="file" required name='coverImage' onChange={handleCoverUpload} />
             </Form.Group>
-
+            {/* TODO MALENA: NO SÉ CÓMO SE SUBEN VARIAS IMÁGENES PARA EL CAROUSSEL */}
             <Form.Group className="mb-3">
                 <Form.Label>Images for Carousel</Form.Label>
-                <Form.Control type="string" required value={serviceData.images} name='images' onChange={handleInputChange} />
+                <Form.Control type="file" required name='images' onChange={handleImagesUpload} multiple />
             </Form.Group>
 
             <Row>
@@ -193,7 +233,11 @@ const CreateServiceForm = () => {
 
             </Row>
 
-            <Button variant="dark" type="submit">Upload new service</Button>
+            <Button variant="dark" type="submit" disabled={loadingImage}>
+                {loadingImage ?
+                    'Loading image...'
+                    :
+                    'Upload new service'}</Button>
 
         </Form>
 

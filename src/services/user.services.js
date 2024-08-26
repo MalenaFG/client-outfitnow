@@ -29,6 +29,10 @@ class UserServices {
         return this.axiosApp(`users/services/${serviceId}`)
     }
 
+    getOneStylist(stylistId) {
+        return this.axiosApp(`users/role/stylist/${stylistId}`)
+    }
+
 }
 
 export default new UserServices()

@@ -16,6 +16,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
         phone: '',
         latitude: '',
         longitude: '',
+        galery: [],
         styles: [],
         services: [],
         aboutMe: '',

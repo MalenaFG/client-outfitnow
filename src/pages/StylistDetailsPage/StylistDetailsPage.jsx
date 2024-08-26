@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom"
 import userServices from "../../services/user.services"
 import { useEffect, useState } from "react"
-import { Col, Container, Image, Row } from "react-bootstrap"
+import { Card, Col, Container, Image, Row } from "react-bootstrap"
 import './StylistDetailsPage.css'
+import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
+import StylistImagesCarousel from "../../components/StylistImagesCarousel/StylistImagesCarousel"
 
 
 const StylistDetailsPage = () => {
@@ -13,7 +15,7 @@ const StylistDetailsPage = () => {
 
     const loadUserData = () => {
         userServices
-            .getOneUser(stylistId)
+            .getOneStylist(stylistId)
             .then(({ data }) => {
                 setUserData(data)
                 setIsLoading(false)
@@ -25,7 +27,7 @@ const StylistDetailsPage = () => {
         loadUserData()
     }, [])
 
-    //const { userName, avatar, phone, styles, services, gallery, aboutMe, location } = userData
+    const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
     return (
         <Container className="StylistDetailsPage">
             {
@@ -35,14 +37,43 @@ const StylistDetailsPage = () => {
                     <section >
                         <Row>
                             <Col md={{ span: 3 }} className="stylistInfo">
-                                <h1>{userData.userName}</h1>
+                                <h1>{userName}</h1>
+                                <Image src={avatar} />
+                                <p>{aboutMe}</p>
+                            </Col>
 
-                                <Image src={userData.avatar} />
-                                <p>{userData.aboutMe}</p>
+                            <Col md={{ span: 4 }}>
+                                <section className="servicesSection">
+                                    <h2 className="mb-0">My services:</h2>
+                                    <hr />
+                                    {services.map(e => {
+                                        return (
+                                            <article key={e._id}>
+                                                <h4>{e.title}</h4>
+                                                <ul>
+                                                    <li>Basic: {e.packs.basic.price}€</li>
+                                                    <li>Premium: {e.packs.premium.price}€</li>
+                                                    <li>Glam: {e.packs.glam.price}€</li>
+                                                </ul>
+                                            </article>
+                                        )
+                                    })
+                                    }
+                                </section>
+                                <br />
+                                <section className="stylesSection">
+                                    <h3>My favorite styles:</h3>
+                                    {styles.map(e => {
+                                        const { style } = e
+                                        return (
+                                            ` ${style}`
+                                        )
+                                    }).toString()
+                                    }
+                                </section>
                             </Col>
                             <Col>
-                                <h2>My services:</h2>
-                                {userData.services.title}
+                                <StylistImagesCarousel {...userData} />
                             </Col>
                         </Row>
                     </section>
