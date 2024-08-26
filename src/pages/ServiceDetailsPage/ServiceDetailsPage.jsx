@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import servicesServices from "../../services/services.services"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
 import StylistsList from "../../components/StylistList/StylistsList"
@@ -19,6 +19,8 @@ const ServiceDetailsPage = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [accessModal, setAccessModal] = useState(false)
     const [selectedStylist, setSelectedStylist] = useState(null)
+
+    const navigate = useNavigate()
 
     const showAccessModal = content => {
         setAccessModal({ show: true })
@@ -43,6 +45,12 @@ const ServiceDetailsPage = () => {
         setService(updatedService)
     }
 
+    const deleteService = () => {
+        servicesServices
+            .deleteService(serviceId)
+            .then(() => navigate('/services'))
+    }
+
     return (
         <>
 
@@ -55,7 +63,22 @@ const ServiceDetailsPage = () => {
                     </section>
                     {/* TODO MALENA: FALTA LA LÓGICA PARA QUE EL BOTÓN DE EDITAR SOLO APAREZCA SI ERES ESTILISTA */}
                     <Container>
-                        {loggedUser && <Button variant="dark" className="editButton" onClick={showAccessModal}>Edit this service</Button>}
+                        {loggedUser &&
+                            <div>
+                                <img
+                                    className="icons me-3"
+                                    onClick={showAccessModal}
+                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
+                                    style={{ cursor: 'pointer' }}
+                                    alt="edit icon" />
+                                <img
+                                    className="icons"
+                                    onClick={deleteService}
+                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png"
+                                    style={{ cursor: 'pointer' }}
+                                    alt="delete icon" />
+                            </div>
+                        }
                         <Modal className='accessModal' size="lg" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
 
                             <Modal.Body className='modalBodyContainer flex-column mb-3' ><EditServiceForm setAccessModal={setAccessModal} updateServiceData={updateServiceData} /></Modal.Body>
