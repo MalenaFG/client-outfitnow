@@ -30,8 +30,8 @@ class BookingsServices {
         return this.axiosApp.post(`/bookings`, bookingData)
     }
 
-    editOneBooking(bookingId) {
-        return this.axiosApp.put(`/bookings/${bookingId}`)
+    editOneBooking(bookingId, requestBody) {
+        return this.axiosApp.put(`/bookings/${bookingId}`, requestBody)
     }
 
     deleteOneBooking(bookingId) {
@@ -40,6 +40,10 @@ class BookingsServices {
 
     getBookingsByUser(userId) {
         return this.axiosApp.get(`/bookings/users/${userId}`)
+    }
+
+    getBookingsByStylist(userId) {
+        return this.axiosApp.get(`/bookings/stylist/${userId}`)
     }
 }
 

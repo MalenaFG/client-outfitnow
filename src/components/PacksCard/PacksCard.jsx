@@ -4,7 +4,7 @@ import { useContext, useState } from "react"
 import './PacksCard.css'
 import { AuthContext } from '../../contexts/auth.context'
 
-const PacksCard = ({ packs }) => {
+const PacksCard = ({ packs, selectedStylist }) => {
 
     const [basicPackTitle, premiumPackTitle, glamPackTitle] = Object.keys(packs)
 
@@ -101,7 +101,7 @@ const PacksCard = ({ packs }) => {
                     <Modal.Header closeButton className='flex-column'>
                         <Modal.Title> Booking Form </Modal.Title>
                         <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                            <CreateBookingForm closeModal={setShowModal} packsData={packsData} />
+                            <CreateBookingForm closeModal={setShowModal} packsData={packsData} selectedStylist={selectedStylist} />
                         </Modal.Body>
                     </Modal.Header>
                 </Modal>

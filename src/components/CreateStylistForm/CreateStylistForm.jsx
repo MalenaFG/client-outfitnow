@@ -4,6 +4,7 @@ import authServices from "../../services/auth.services"
 import servicesServices from "../../services/services.services"
 import { useEffect, useState } from "react"
 import NewItemForm from "../GooglePlacesAutocomplete/GooglePlacesAutocomplete"
+import uploadServices from "../../services/upload.services"
 
 const CreateStylistForm = ({ setAccessModal }) => {
 
@@ -21,39 +22,53 @@ const CreateStylistForm = ({ setAccessModal }) => {
         role: 'STYLIST'
     })
 
-
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const [styles, setStyles] = useState()
     const [services, setServices] = useState()
     const [isLoading, setIsLoading] = useState(true)
-    /* TODO: el isLoading sigue dando problemas con los checkboxes */
-    const loadStyles = () => {
-        stylesServices
-            .getAllStyles()
-            .then(({ data }) => {
-                setStyles(data)
-                styles && setIsLoading(false)
+
+    const loadStylesServices = () => {
+
+        const promises = [
+            stylesServices.getAllStyles(),
+            servicesServices.getAllServices()
+        ]
+
+        Promise
+            .all(promises)
+            .then(([styles, services]) => {
+                setServices(services.data)
+                setStyles(styles.data)
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
 
-    const loadServices = () => {
-        servicesServices
-            .getAllServices()
-            .then(({ data }) => {
-                setServices(data)
-                services && setIsLoading(false)
-            })
-    }
-
     useEffect(() => {
-        loadStyles()
-        loadServices()
+        loadStylesServices()
     }, [])
 
     const handleInputChange = e => {
         const { value, name } = e.target
         setUserData({ ...userData, [name]: value })
+    }
+
+    const handleFileUpload = e => {
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadImage(formData)
+            .then(res => {
+                setUserData({ ...userData, avatar: res.data.cloudinary_url })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
+
+            })
     }
 
     const handleStyleCheckboxChange = (e) => {
@@ -114,7 +129,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
                 <Form.Group className="mb-3">
                     <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="string" value={userData.avatar} name="avatar" onChange={handleInputChange} />
+                    <Form.Control type="file" name="avatar" onChange={handleFileUpload} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -213,8 +228,8 @@ const CreateStylistForm = ({ setAccessModal }) => {
                     />
                 </Form.Group>
 
-                <Button variant="dark" type="submit">
-                    Sign Up
+                <Button variant="dark" type="submit" disabled={loadingImage} >
+                    {loadingImage ? 'Loading Image...' : 'Sign Up'}
                 </Button>
 
             </Form>

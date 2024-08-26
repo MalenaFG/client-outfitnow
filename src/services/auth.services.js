@@ -17,7 +17,6 @@ class authServices {
             return config
         })
     }
-    // TODO: poner interceptores en todos los servicios de axios (creo que solo falta añadirselo al services de users)
     signupUser(userData) {
         return this.axiosApp.post('/auth/signup', userData)
     }

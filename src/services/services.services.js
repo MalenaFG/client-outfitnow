@@ -26,6 +26,10 @@ class ServicesServices {
         return this.axiosApp.get(`/services/${serviceId}`)
     }
 
+    getFilteredServices(value) {
+        return this.axiosApp.get(`/services/search?title=${value}`)
+    }
+
     createService(serviceData) {
         return this.axiosApp.post(`/services`, serviceData)
     }

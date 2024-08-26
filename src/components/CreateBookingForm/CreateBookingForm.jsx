@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import bookingsServices from "../../services/bookings.services"
 import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"
 
-const CreateBookingForm = ({ packsData, closeModal }) => {
+const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
 
     const { serviceId } = useParams()
 
@@ -13,6 +13,7 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
         comment: '',
         service: serviceId,
         pack: packsData,
+        stylist: selectedStylist,
     })
 
     const [measurementsData, setMeasurementsData] = useState({
@@ -28,8 +29,9 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
         const { value, name } = e.target
         setBookingData({ ...bookingData, [name]: value })
     }
+
     const handleMeasurementsChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
         setMeasurementsData({ ...measurementsData, [name]: value })
     }
 
@@ -40,6 +42,8 @@ const CreateBookingForm = ({ packsData, closeModal }) => {
             ...bookingData,
             measurements: measurementsData,
         }
+
+        console.log("Request body:", requestBody)
 
         bookingsServices
             .createBookings(requestBody)

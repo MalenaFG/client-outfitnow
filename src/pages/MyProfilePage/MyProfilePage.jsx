@@ -3,8 +3,12 @@ import { Row, Col, Container } from "react-bootstrap"
 import UserProfileCard from '../../components/UserProfileCard/UserProfileCard'
 import BookingsAccordion from '../../components/BookingsAccordion/BookingsAccordion'
 import CreateServiceForm from '../../components/CreateServiceForm/CreateServiceForm'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/auth.context'
 
 const MyProfilePage = () => {
+
+    const { loggedUser } = useContext(AuthContext)
 
 
     return (
@@ -15,8 +19,11 @@ const MyProfilePage = () => {
                         <UserProfileCard />
                     </Col>
                     <Col style={{ marginTop: '80px' }}>
-                        <BookingsAccordion />
-                        <CreateServiceForm />
+                        {
+                            loggedUser.role === "ADMIN"
+                                ? <CreateServiceForm />
+                                : <BookingsAccordion />
+                        }
                     </Col>
                 </Row>
             </Container>

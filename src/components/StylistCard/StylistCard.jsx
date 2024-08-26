@@ -4,9 +4,13 @@ import { AuthContext } from '../../contexts/auth.context'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-const StylistCard = ({ userName, avatar, styles, services, _id: stylistId }) => {
+const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selectedStylist, setSelectedStylist }) => {
 
     const { loggedUser, logoutUser } = useContext(AuthContext)
+
+    const handleSelectStylist = (stylistId) => {
+        setSelectedStylist(stylistId)
+    }
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
@@ -58,7 +62,7 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId }) => 
 
                     {
                         loggedUser &&
-                        <Button variant='dark'>Choose <b>{userName}</b> as your stylist</Button>
+                        <Button onClick={() => handleSelectStylist(stylistId)} variant='dark'>Choose <b>{userName}</b> as your stylist</Button>
 
                     }
                 </Card.Body>

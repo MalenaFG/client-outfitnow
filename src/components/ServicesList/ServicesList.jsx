@@ -2,7 +2,6 @@ import { useState } from "react"
 import ServiceCard from "../ServiceCard/ServiceCard"
 import { useEffect } from "react"
 
-import ServicesSlider from "../ServicesSlider/ServicesSlider"
 import servicesServices from "../../services/services.services"
 
 const ServicesList = () => {

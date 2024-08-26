@@ -18,6 +18,7 @@ const ServiceDetailsPage = () => {
     const [service, setService] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [accessModal, setAccessModal] = useState(false)
+    const [selectedStylist, setSelectedStylist] = useState(null)
 
     const showAccessModal = content => {
         setAccessModal({ show: true })
@@ -64,12 +65,14 @@ const ServiceDetailsPage = () => {
                         <section className="mb-5">
                             <h1> Choose your stylist</h1>
                             <Row className="d-flex">
-                                <StylistsList />
+                                <StylistsList
+                                    selectedStylist={selectedStylist}
+                                    setSelectedStylist={setSelectedStylist} />
                             </Row>
                         </section>
 
                         <section className="mb-5">
-                            <PacksCard {...service} />
+                            <PacksCard {...service} selectedStylist={selectedStylist} />
                         </section>
                     </Container>
 

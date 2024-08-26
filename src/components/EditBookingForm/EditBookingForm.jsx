@@ -1,68 +1,22 @@
-import { useEffect, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"
 import bookingsServices from "../../services/bookings.services"
 
 
-const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
-
-    const [bookingData, setBookingData] = useState({
-        deadline: '',
-        comment: '',
-        service: '',
-        pack: '',
-    })
-
-    const [measurementsData, setMeasurementsData] = useState({
-        height: '',
-        topSize: '',
-        bottomSize: '',
-        shoeSize: '',
-    })
-
-    const [isLoading, setIsLoading] = useState(true)
-
-    const handleBookingChange = e => {
-        const { value, name } = e.target
-        setBookingData({ ...bookingData, [name]: value })
-    }
-    const handleMeasurementsChange = (e) => {
-        const { name, value } = e.target;
-        console.log(`Updating measurement ${name}: ${value}`)
-        setMeasurementsData({ ...measurementsData, [name]: value })
-    }
-
-    useEffect(() => {
-        fetchBookingData()
-    }, [])
-
-    const fetchBookingData = () => {
-
-        bookingsServices
-            .getOneBooking(bookingId)
-            .then((response) => {
-                setBookingData(response.data)
-                setMeasurementsData(response.data.measurements)
-                setIsLoading(false)
-            })
-            .catch(err => console.log(err))
-    }
+const EditBookingForm = ({ closeModal, loadBookingsByUser, handleBookingChange, handleMeasurementsChange, bookingData }) => {
 
     const handleFormSubmit = e => {
         e.preventDefault()
 
         const requestBody = {
-            ...bookingData,
-            measurements: measurementsData,
+            ...bookingData
         }
-        console.log("Submitting data:", requestBody)
 
         bookingsServices
-            .editOneBooking(bookingId, requestBody)
+            .editOneBooking(bookingData._id, requestBody)
             .then(() => {
-                closeModal()
                 loadBookingsByUser()
-                // TODO: NO CONSIGO QUE SE ACTUALICEN LOS DATOS DESPUES DEL SUBMIT DEL FORMULARIO
+                closeModal()
             })
             .catch(err => console.log(err))
     }
@@ -78,10 +32,10 @@ const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
                             <Form.Label>Bottom Size</Form.Label>
                             <Form.Select
                                 type="string"
-                                value={measurementsData.bottomSize}
+                                value={bookingData.measurements.bottomSize}
                                 name='bottomSize'
                                 required
-                                onChange={handleMeasurementsChange} >
+                                onChange={e => handleMeasurementsChange(e, bookingData._id)} >
 
                                 <option>Select your size</option>
                                 {
@@ -96,10 +50,10 @@ const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
                             <Form.Label>Top Size</Form.Label>
                             <Form.Select
                                 type="string"
-                                value={measurementsData.topSize}
+                                value={bookingData.measurements.topSize}
                                 name='topSize'
                                 required
-                                onChange={handleMeasurementsChange} >
+                                onChange={e => handleMeasurementsChange(e, bookingData._id)} >
                                 <option>Select your size</option>
                                 {
                                     OPTIONS_SELECT_SIZES.map(size => (
@@ -114,12 +68,22 @@ const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
                     <Col md={{ span: 6, offset: 0 }}>
                         <Form.Group controlId="shoeSize" className="mb-3">
                             <Form.Label>Shoe Size</Form.Label>
-                            <Form.Control type="number" value={measurementsData.shoeSize} name='shoeSize' required onChange={handleMeasurementsChange} />
+                            <Form.Control
+                                type="number"
+                                value={bookingData.measurements.shoeSize}
+                                name='shoeSize'
+                                required
+                                onChange={e => handleMeasurementsChange(e, bookingData._id)} />
                         </Form.Group>
 
                         <Form.Group controlId="height" className="mb-3 ">
                             <Form.Label>Height</Form.Label>
-                            <Form.Control type="number" value={measurementsData.height} name='height' required onChange={handleMeasurementsChange} />
+                            <Form.Control
+                                type="number"
+                                value={bookingData.measurements.height}
+                                name='height'
+                                required
+                                onChange={e => handleMeasurementsChange(e, bookingData._id)} />
                         </Form.Group>
 
                     </Col>
@@ -132,8 +96,8 @@ const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
                             as="textarea"
                             rows={3}
                             placeholder="Add your suggestions"
-                            onChange={handleBookingChange}
                             value={bookingData.comment}
+                            onChange={e => handleBookingChange(e, bookingData._id)}
                             name='comment'
                             type="text"
                         />
@@ -146,7 +110,7 @@ const EditBookingForm = ({ closeModal, bookingId, loadBookingsByUser }) => {
                             value={bookingData.deadline.split('T')[0]}
                             name='deadline'
                             required
-                            onChange={handleBookingChange} />
+                            onChange={e => handleBookingChange(e, bookingData._id)} />
                     </Form.Group>
 
                 </Row>

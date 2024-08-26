@@ -4,7 +4,7 @@ import StylistCard from '../StylistCard/StylistCard'
 import { useParams } from 'react-router-dom'
 import { Row } from 'react-bootstrap'
 
-const StylistsList = () => {
+const StylistsList = ({ selectedStylist, setSelectedStylist }) => {
 
     const [stylistsList, setStylistsList] = useState([])
     const { serviceId } = useParams()
@@ -25,7 +25,11 @@ const StylistsList = () => {
             <Row>
                 {
                     stylistsList.map(e =>
-                        <StylistCard {...e} key={e._id} />
+                        <StylistCard {...e}
+                            key={e._id}
+                            selectedStylist={selectedStylist}
+                            setSelectedStylist={setSelectedStylist}
+                        />
                     )
                 }
             </Row>

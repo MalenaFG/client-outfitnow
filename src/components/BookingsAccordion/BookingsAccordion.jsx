@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Accordion, Col, Row, Modal } from "react-bootstrap"
 import EditBookingForm from "../EditBookingForm/EditBookingForm";
 import bookingsServices from './../../services/bookings.services'
 import { useParams } from "react-router-dom"
 import './BookingsAccordion.css'
+import { AuthContext } from "../../contexts/auth.context";
+import UserMap from "../UserMap/UserMap";
 
 const BookingsAccordion = () => {
 
     const { userId } = useParams()
+
+    const { loggedUser } = useContext(AuthContext)
 
     const [bookingData, setBookingData] = useState([])
     const [showModal, setShowModal] = useState(false)
@@ -19,13 +23,11 @@ const BookingsAccordion = () => {
     }
     const handleCloseModal = () => {
         setShowModal(false)
-        loadBookingsByUser()
     }
 
     const loadBookingsByUser = () => {
 
         bookingsServices
-
             .getBookingsByUser(userId)
             .then(({ data }) => {
                 setBookingData(data)
@@ -33,28 +35,79 @@ const BookingsAccordion = () => {
             .catch(err => console.log(err))
     }
 
+    const loadBookingsByStylist = () => {
+
+        bookingsServices
+            .getBookingsByStylist(userId)
+            .then(({ data }) => {
+                setBookingData(data)
+            })
+            .catch(err => console.log(err))
+
+    }
+
     const deleteBooking = (bookingId) => {
 
         bookingsServices
-
             .deleteOneBooking(bookingId)
             .then(() => loadBookingsByUser())
             .catch(err => console.log(err))
     }
 
+    const handleBookingChange = (e, bookingId) => {
+
+        const { value, name } = e.target
+
+        let currentBooking = bookingData.find(elm => elm._id == bookingId)
+        currentBooking = { ...currentBooking, [name]: value }
+
+        const bookingDataCopy = bookingData.map(elm => {
+            if (elm._id === bookingId) {
+                return currentBooking
+            }
+            return elm
+        })
+
+        setBookingData(bookingDataCopy)
+    }
+
+    const handleMeasurementsChange = (e, bookingId) => {
+        const { value, name } = e.target
+
+        let currentBooking = bookingData.find(elm => elm._id == bookingId)
+
+        const currentMeasurements = { ...currentBooking.measurements, [name]: value }
+        currentBooking = { ...currentBooking, measurements: currentMeasurements }
+
+        const bookingDataCopy = bookingData.map(elm => {
+            if (elm._id === bookingId) {
+                return currentBooking
+            }
+            return elm
+        })
+
+        setBookingData(bookingDataCopy)
+    }
+
     useEffect(() => {
-        loadBookingsByUser()
+        {
+            loggedUser.role === "USER"
+                ? loadBookingsByUser()
+                : loadBookingsByStylist()
+        }
+
     }, [])
 
     return (
 
         <div className="BookingsAccordion">
-            {
-                bookingData.map((elm, idx) => {
+            <Accordion>
 
-                    return (
-                        <Accordion key={elm._id} >
-                            <Accordion.Item eventKey={idx + 1}>
+                {
+                    bookingData.map((elm, idx) => {
+
+                        return (
+                            <Accordion.Item eventKey={idx + 1} key={elm._id}>
                                 <Accordion.Header>{idx + 1}º Service - {elm.service.title}</Accordion.Header>
                                 <Accordion.Body className="accordionBody">
                                     <Row>
@@ -83,6 +136,29 @@ const BookingsAccordion = () => {
                                             />
                                         </Col>
                                     </Row>
+
+                                    <Row>
+                                        <Col>
+                                            {
+                                                loggedUser.role === "STYLIST" && (<>
+                                                    <h6>Cliente</h6>
+                                                    <p>{elm.client.email}</p>
+                                                    <p>{elm.client.userName}</p>
+                                                    <p>{elm.client.phone}</p>
+                                                </>)
+                                            }
+                                        </Col>
+                                        <Col>
+                                            {
+                                                loggedUser.role === "STYLIST" && (
+
+                                                    <UserMap location={elm.client.location.coordinates} />
+
+                                                )
+                                            }
+                                        </Col>
+                                    </Row>
+
                                     <Row>
                                         <Col>
                                             {
@@ -92,6 +168,9 @@ const BookingsAccordion = () => {
                                                 </>)
                                             }
                                         </Col>
+
+                                    </Row>
+                                    <Row>
                                         <Col className="text-end">
 
                                             <img onClick={() => deleteBooking(elm._id)} src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
@@ -100,20 +179,24 @@ const BookingsAccordion = () => {
                                     </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
-                        </Accordion>
 
-                    )
-                })
-            }
+                        )
+                    })
+
+                }
+            </Accordion>
+
 
             <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingEditModal'>
                 <Modal.Header closeButton className='flex-column'>
                     <Modal.Title>Edit Booking Form </Modal.Title>
                     <Modal.Body className='modalBodyContainer flex-column mb-3'>
                         <EditBookingForm
-                            bookingId={selectedBookingId}
                             closeModal={handleCloseModal}
                             loadBookingsByUser={loadBookingsByUser}
+                            handleBookingChange={handleBookingChange}
+                            handleMeasurementsChange={handleMeasurementsChange}
+                            bookingData={bookingData.find(elm => elm._id == selectedBookingId)}
                         />
                     </Modal.Body>
                 </Modal.Header>

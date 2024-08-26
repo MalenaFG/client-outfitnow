@@ -6,6 +6,7 @@ const AuthContext = createContext()
 const AuthProviderWrapper = (props) => {
 
     const [loggedUser, setLoggedUser] = useState(null)
+
     const [isLoading, setIsLoading] = useState(true)
 
     const loginUser = loginData => {
