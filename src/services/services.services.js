@@ -37,6 +37,10 @@ class ServicesServices {
     editService(serviceId, serviceData) {
         return this.axiosApp.put(`/services/${serviceId}`, serviceData)
     }
+
+    deleteService(serviceId) {
+        return this.axiosApp.delete(`/services/${serviceId}`)
+    }
 }
 
 export default new ServicesServices()

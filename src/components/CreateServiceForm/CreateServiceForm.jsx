@@ -4,6 +4,7 @@ import './CreateServiceForm.css'
 
 import servicesServices from "../../services/services.services"
 import uploadServices from "../../services/upload.services"
+import { useNavigate } from "react-router-dom"
 
 const CreateServiceForm = () => {
 
@@ -38,6 +39,8 @@ const CreateServiceForm = () => {
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
 
@@ -97,7 +100,7 @@ const CreateServiceForm = () => {
 
         const finalServiceData = {
             ...serviceData,
-            images: serviceData.images.split(','),
+            // images: serviceData.images.split(','),
             packs: {
                 basic: basicPack,
                 premium: premiumPack,
@@ -107,7 +110,7 @@ const CreateServiceForm = () => {
 
         servicesServices
             .createService(finalServiceData)
-            .then(() => console.log('Servicio creado'))
+            .then(() => navigate('/services'))
             .catch(err => console.log(err));
     }
 
