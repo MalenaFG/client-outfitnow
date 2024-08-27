@@ -5,16 +5,16 @@ const ServiceFilteredCard = ({ title, coverImage }) => {
 
     return (
         <div className="ServiceCard">
-            <Card bg="dark" data-bs-theme='dark' style={{ width: '150px', margin: '10px' }}>
-                <Row className="g-0">
+            <Card bg="dark" data-bs-theme='dark' style={{ width: '200px', margin: '10px', height: '350px' }}>
+                <Row >
                     <Col>
-                        <Card.Img style={{ height: '200px' }} variant="top" src={coverImage} />
+                        <Card.Img style={{ height: '280px', objectFit: 'cover', overflow: 'hidden' }} variant="top" src={coverImage} />
                     </Col>
                 </Row>
-                <Row className="g-0">
+                <Row >
                     <Col>
                         <Card.Body>
-                            <Card.Title>{title}</Card.Title>
+                            <Card.Title style={{ textAlign: 'center' }}>{title}</Card.Title>
                         </Card.Body>
                     </Col>
                 </Row>

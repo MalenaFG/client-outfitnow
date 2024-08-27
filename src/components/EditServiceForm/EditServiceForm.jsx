@@ -124,7 +124,6 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
         setServiceData({ ...serviceData, images: imagesCopy })
     }
 
-    // TODO MALENA: NO SE ELIMINA LA IMAGEN IGUAL QUE LAS DEL CAROUSEL
     const handleCoverImage = () => {
 
         setServiceData({ ...serviceData, coverImage: '' })
@@ -157,133 +156,198 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
             {isLoading ?
                 <Spinner />
                 :
-                <Form onSubmit={handleSubmit}>
+                <Form className="form" onSubmit={handleSubmit}>
                     <h2>Edit Service</h2>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Service title</Form.Label>
-                        <Form.Control type="string" value={serviceData.title} name='title' onChange={handleInputChange} />
-                    </Form.Group>
+                    <Row>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Cover image</Form.Label>
-                        <Form.Control className='mb-3' type="file" name='coverImage' onChange={handleCoverUpload} />
-                        <div className="imageContainer">
-                            <img className="coverImage" src={serviceData.coverImage} />
-                        </div>
-                    </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Service title</Form.Label>
+                            <Form.Control type="string" value={serviceData.title} name='title' onChange={handleInputChange} />
+                        </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Images for Carousel</Form.Label>
-                        <Form.Control className='mb-3' type="file" name='images' onChange={handleImagesUpload} multiple />
-                        <div className="carouselPreview">
-                            {
-                                serviceData.images.map((e, index) => {
-                                    return (
-                                        <div className="imageContainer" key={e}>
-                                            <img className="carouselImage" onClick={() => handleCarouselImages(index)} src={e} />
-                                            <p><i>Click to delete</i></p>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </Form.Group>
+                        <Col>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Cover image</Form.Label>
+                                <Form.Control className='mb-3' type="file" name='coverImage' onChange={handleCoverUpload} />
+                                <div className="imageCoverContainer">
+                                    <img className="coverImage" src={serviceData.coverImage} />
+                                </div>
+                            </Form.Group>
+
+                        </Col>
+                        <Col>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Images for Carousel</Form.Label>
+                                <Form.Control className='mb-3' type="file" name='images' onChange={handleImagesUpload} multiple />
+                                <div className="carouselPreview">
+                                    {
+                                        serviceData.images.map((e, index) => {
+                                            return (
+                                                <div className="imagesContainer" key={e}>
+                                                    <img className="carouselImage mb-2" onClick={() => handleCarouselImages(index)} src={e} />
+                                                    <img
+                                                        className="deleteIcon"
+                                                        src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png"
+                                                        alt="deleteIcon" />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </Form.Group>
+                        </Col>
+                    </Row>
 
                     <Row className="packsImputs">
 
                         <Col>
                             <h5>Basic Pack</h5>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control type="number" value={basicPack.price} name='price' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
-                            </Form.Group>
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Price</Form.Label>
+                                        <Form.Control type="number" value={basicPack.price} name='price' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                    </Form.Group>
 
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Outfits included</Form.Label>
+                                        <Form.Control type="number" value={basicPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                    </Form.Group>
+                                </Col>
+
+                            </Row>
+
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Days until deadline</Form.Label>
+                                        <Form.Control type="number" value={basicPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                    </Form.Group>
+
+                                </Col>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Home service</Form.Label>
+                                        <Form.Check
+                                            type="checkbox"
+                                            name='homeService'
+                                            checked={basicPack.homeService}
+                                            onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                    </Form.Group>
+
+                                </Col>
+                            </Row>
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="string" value={basicPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Number of outfits included</Form.Label>
-                                <Form.Control type="number" value={basicPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Home service included</Form.Label>
-                                <Form.Check
-                                    type="checkbox"
-                                    name='homeService'
-                                    checked={basicPack.homeService}
+                                <Form.Control
+                                    style={{ height: '200px' }}
+                                    type="string"
+                                    value={basicPack.description}
+                                    name='description'
+                                    as='textarea'
                                     onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Minimum days until the deadline date</Form.Label>
-                                <Form.Control type="number" value={basicPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
                             </Form.Group>
                         </Col>
 
                         <Col>
                             <h5>Premium Pack</h5>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control type="number" value={premiumPack.price} name='price' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
-                            </Form.Group>
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Price</Form.Label>
+                                        <Form.Control type="number" value={premiumPack.price} name='price' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Outfits included</Form.Label>
+                                        <Form.Control type="number" value={premiumPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Days until deadline</Form.Label>
+                                        <Form.Control type="number" value={premiumPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Home service</Form.Label>
+                                        <Form.Check
+                                            type="checkbox"
+                                            name='homeService'
+                                            checked={premiumPack.homeService}
+                                            onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="string" value={premiumPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Number of outfits included</Form.Label>
-                                <Form.Control type="number" value={premiumPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Home service included</Form.Label>
-                                <Form.Check
-                                    type="checkbox"
-                                    name='homeService'
-                                    checked={premiumPack.homeService}
+                                <Form.Control
+                                    style={{ height: '200px' }}
+                                    type="string"
+                                    value={premiumPack.description}
+                                    name='description'
+                                    as='textarea'
                                     onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
                             </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Minimum days until the deadline date</Form.Label>
-                                <Form.Control type="number" value={premiumPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
-                            </Form.Group>
                         </Col>
-
                         <Col>
                             <h5>Glam Pack</h5>
-                            <Form.Group className="mb-3">
-                                <Form.Label>Price</Form.Label>
-                                <Form.Control type="number" value={glamPack.price} name='price' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
-                            </Form.Group>
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Price</Form.Label>
+                                        <Form.Control type="number" value={glamPack.price} name='price' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Outfits included</Form.Label>
+                                        <Form.Control type="number" value={glamPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Days until deadline</Form.Label>
+                                        <Form.Control type="number" value={glamPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Home service</Form.Label>
+                                        <Form.Check
+                                            type="checkbox"
+                                            name='homeService'
+                                            checked={glamPack.homeService}
+                                            onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
 
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="string" value={glamPack.description} name='description' as='textarea' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Number of outfits included</Form.Label>
-                                <Form.Control type="number" value={glamPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Home service included</Form.Label>
-                                <Form.Check
-                                    type="checkbox"
-                                    name='homeService'
-                                    checked={glamPack.homeService}
+                                <Form.Control
+                                    style={{ height: '200px' }}
+                                    type="string"
+                                    value={glamPack.description}
+                                    name='description'
+                                    as='textarea'
                                     onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Minimum days until the deadline date</Form.Label>
-                                <Form.Control type="number" value={glamPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
                             </Form.Group>
                         </Col>
 

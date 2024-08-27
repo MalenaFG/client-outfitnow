@@ -14,10 +14,29 @@
     height: 100px;
     width: 100px;
     object-fit: cover;
+    margin-right: 10px;
 }
 
 .carouselPreview {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
+
+}
+
+.form {
+    background-color: rgba(65, 65, 65, 0);
+    /* Fondo oscuro con transparencia */
+
+}
+
+.deleteIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.imagesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

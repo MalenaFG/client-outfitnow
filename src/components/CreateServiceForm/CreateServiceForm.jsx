@@ -130,7 +130,6 @@ const CreateServiceForm = () => {
                 <Form.Label>Cover image</Form.Label>
                 <Form.Control type="file" required name='coverImage' onChange={handleCoverUpload} />
             </Form.Group>
-            {/* TODO MALENA: NO SÉ CÓMO SE SUBEN VARIAS IMÁGENES PARA EL CAROUSSEL */}
             <Form.Group className="mb-3">
                 <Form.Label>Images for Carousel</Form.Label>
                 <Form.Control type="file" required name='images' onChange={handleImagesUpload} multiple />

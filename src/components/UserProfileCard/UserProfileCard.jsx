@@ -81,7 +81,6 @@ const UserProfileCard = () => {
 
                     </div>
                     <UserMap location={userData.location.coordinates} />
-                    <Button variant="dark">Edit profile</Button>
                 </Card>
             }
 
