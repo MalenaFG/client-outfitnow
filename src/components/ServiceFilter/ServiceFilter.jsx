@@ -4,7 +4,7 @@ import ServicesFilteredList from "../ServicesFilteredList/ServicesFilteredList"
 import servicesServices from "../../services/services.services"
 import './ServiceFilter.css'
 
-const ServiceFilter = () => {
+const ServiceFilter = ({ setShowSlider }) => {
 
     const [servicesFiltered, setServicesFiltered] = useState([])
     const [searchInput, setSearchInput] = useState('')
@@ -14,10 +14,20 @@ const ServiceFilter = () => {
         const { value } = e.target
         setSearchInput(value)
 
-        servicesServices
-            .getFilteredServices(value)
-            .then(({ data }) => setServicesFiltered(data))
-            .catch(err => console.log(err))
+        value === ''
+
+            ? (setShowSlider(true),
+                setServicesFiltered([]))
+
+            : servicesServices
+                .getFilteredServices(value)
+                .then(({ data }) => {
+                    setServicesFiltered(data)
+                    setShowSlider(false)
+                })
+
+                .catch(err => console.log(err))
+
     }
 
     return (

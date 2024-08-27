@@ -65,7 +65,7 @@ const ServiceDetailsPage = () => {
                     </section>
                     {/* TODO MALENA: FALTA LA LÓGICA PARA QUE EL BOTÓN DE EDITAR SOLO APAREZCA SI ERES ESTILISTA */}
                     <Container>
-                        {loggedUser &&
+                        {loggedUser.role === 'ADMIN' &&
                             <div>
                                 <img
                                     className="icons me-3"
@@ -81,9 +81,11 @@ const ServiceDetailsPage = () => {
                                     alt="delete icon" />
                             </div>
                         }
-                        <Modal className='accessModal' size="lg" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
+                        <Modal className='accessModal' size="xl" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
 
-                            <Modal.Body className='modalBodyContainer flex-column mb-3' ><EditServiceForm setAccessModal={setAccessModal} updateServiceData={updateServiceData} /></Modal.Body>
+                            <Modal.Body className='modalBodyContainer flex-column' >
+                                <EditServiceForm setAccessModal={setAccessModal} updateServiceData={updateServiceData} />
+                            </Modal.Body>
 
                         </Modal>
 

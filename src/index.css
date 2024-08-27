@@ -10,4 +10,6 @@ body {
   font-family: sans-serif;
   padding: 0;
   margin: 0;
+  background: rgb(162, 161, 168);
+  background: radial-gradient(circle, rgba(162, 161, 168, 0.633578431372549) 0%, rgba(72, 86, 102, 0.6251750700280112) 100%);
 }

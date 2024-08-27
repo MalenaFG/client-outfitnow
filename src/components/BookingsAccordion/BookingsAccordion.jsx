@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 import { Accordion, Col, Row, Modal } from "react-bootstrap"
-import EditBookingForm from "../EditBookingForm/EditBookingForm";
+import EditBookingForm from "../EditBookingForm/EditBookingForm"
 import bookingsServices from './../../services/bookings.services'
 import { useParams } from "react-router-dom"
 import './BookingsAccordion.css'
-import { AuthContext } from "../../contexts/auth.context";
-import UserMap from "../UserMap/UserMap";
+import { AuthContext } from "../../contexts/auth.context"
+import UserMap from "../UserMap/UserMap"
 
 const BookingsAccordion = () => {
 
@@ -14,6 +14,7 @@ const BookingsAccordion = () => {
     const { loggedUser } = useContext(AuthContext)
 
     const [bookingData, setBookingData] = useState([])
+
     const [showModal, setShowModal] = useState(false)
     const [selectedBookingId, setSelectedBookingId] = useState(null)
 
@@ -167,6 +168,10 @@ const BookingsAccordion = () => {
                                                     <p>{elm.comment}</p>
                                                 </>)
                                             }
+                                            <div>
+                                                <h6>Stylist</h6>
+                                                <p>{elm.stylist.userName}</p>
+                                            </div>
                                         </Col>
 
                                     </Row>

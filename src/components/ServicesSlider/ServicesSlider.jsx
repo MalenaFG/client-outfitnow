@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import { RESPONSIVE_SIZES } from "../../consts/slider.consts"
 import './ServicesSlider.css'
 
-const ServicesSlider = () => {
+const ServicesSlider = ({ setShowSlider }) => {
 
     const [services, setServices] = useState([])
 
@@ -19,7 +19,10 @@ const ServicesSlider = () => {
 
         servicesServices
             .getAllServices()
-            .then(({ data }) => setServices(data))
+            .then(({ data }) => {
+                setServices(data)
+                setShowSlider(true)
+            })
             .catch(err => console.log(err))
     }
 
