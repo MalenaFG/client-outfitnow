@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import userServices from './../../services/user.services'
+import userServices from '../../services/user.services'
 import StylistCard from '../StylistCard/StylistCard'
 import { useParams } from 'react-router-dom'
 import { Row } from 'react-bootstrap'

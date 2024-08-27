@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import bookingsServices from "../../services/bookings.services"
 import { OPTIONS_SELECT_SIZES } from "../../consts/booking.costs"
+import { AuthContext } from "../../contexts/auth.context"
 
 const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
 
     const { serviceId } = useParams()
+    const { loggedUser } = useContext(AuthContext)
 
     const [bookingData, setBookingData] = useState({
         deadline: '',
@@ -24,6 +26,8 @@ const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
     })
 
     const [isLoading, setIsLoading] = useState(true)
+
+    const navigate = useNavigate()
 
     const handleBookingChange = e => {
         const { value, name } = e.target
@@ -50,6 +54,8 @@ const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
             .then(() => {
                 setBookingData(requestBody)
                 closeModal(false)
+                navigate(`/profile/${loggedUser._id}`)
+
             })
             .catch(err => console.log(err))
     }

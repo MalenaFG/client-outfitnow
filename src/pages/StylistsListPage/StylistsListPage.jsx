@@ -1,8 +1,11 @@
+import StylistsCompleteList from "../../components/StylistsCompleteList/StylistsCompleteList"
+
+
 const StylistsListPage = () => {
 
     return (
         <div className="StylistsListPage">
-            <h1>Stylists List Page</h1>
+            <StylistsCompleteList />
         </div>
     )
 }

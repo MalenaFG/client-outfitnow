@@ -6,6 +6,7 @@ import { Modal, Nav, Tab, Tabs } from 'react-bootstrap';
 import LoginForm from '../LoginForm/LoginForm';
 import TabsSignupForms from '../TabsSignupForms/TabsSignupForms';
 import { AuthContext } from '../../contexts/auth.context';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
 
@@ -39,10 +40,14 @@ const SideBar = () => {
                     </Offcanvas.Header>
 
                     <Offcanvas.Body>
-                        <Nav.Link href={'/'}>Home</Nav.Link>
-                        <Nav.Link href={'/services'}>Services</Nav.Link>
+                        <Link to={'/'}>Home</Link>
+                        <br />
+                        <Link to={'/services'}>Services</Link>
+                        <br />
+                        <Link to={'/stylists'}>Stylists</Link>
+                        <br />
                         {
-                            loggedUser && <Nav.Link href={`/profile/${loggedUser._id}`}>My profile</Nav.Link>
+                            loggedUser && <Link to={`/profile/${loggedUser._id}`}>My profile</Link>
                         }
 
                     </Offcanvas.Body>

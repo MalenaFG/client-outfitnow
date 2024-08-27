@@ -86,7 +86,7 @@ const CreateServiceForm = () => {
         uploadServices
             .uploadSomeImages(formData)
             .then(({ data }) => {
-                setServiceData({ ...serviceData, images: data.cloudinary_url })
+                setServiceData({ ...serviceData, images: data.cloudinary_urls })
                 setLoadingImage(false)
             })
             .catch(err => {
@@ -100,7 +100,7 @@ const CreateServiceForm = () => {
 
         const finalServiceData = {
             ...serviceData,
-            // images: serviceData.images.split(','),
+
             packs: {
                 basic: basicPack,
                 premium: premiumPack,

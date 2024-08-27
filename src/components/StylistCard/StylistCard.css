@@ -1,3 +1,123 @@
+/* Asegúrate de que el archivo CSS esté en el mismo directorio que el componente */
+
+.StylistCard {
+    margin-bottom: 20px;
+    margin-left: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContent {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    /* max-width: 300px;
+    min-height: 400px; */
+}
+
+.cardContent:hover {
+    transform: scale(1.05);
+}
+
+.stylistName {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.avatarImage {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.learnMore {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.learnMore:hover {
+    text-decoration: underline;
+}
+
+.servicesList,
+.favoriteStyles {
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    height: 50px;
+    overflow-y: scroll;
+    scrollbar-color: rgb(246, 225, 225) rgb(255, 255, 255);
+    margin-bottom: 0px;
+
+}
+
+.list-group-flush .list-group-item {
+    border: 0;
+}
+
+.favoriteStyles {
+    color: #555;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+.StylistCard .btn {
+    margin-top: 10px;
+    background-color: #343a40;
+    border: none;
+}
+
+.StylistCard .btn:hover {
+    background-color: #23272b;
+}
+
+.StylistCard .btn b {
+    color: #fff;
+}
+
+
+
+/* .cardContent {
+    align-items: center;
+}
+
+.avatarImage {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.stylistName {
+    font-size: medium;
+    text-align: center;
+}
+
 .servicesList {
     height: 90px;
     overflow-y: scroll;
@@ -17,4 +137,4 @@
     font-size: small;
     font-style: italic;
     color: rgb(16, 0, 160);
-}
+} */

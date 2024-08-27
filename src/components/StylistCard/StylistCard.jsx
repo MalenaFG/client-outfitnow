@@ -1,5 +1,5 @@
 import './StylistCard.css'
-import { Button, Card, Col, Image, ListGroup } from "react-bootstrap"
+import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap"
 import { AuthContext } from '../../contexts/auth.context'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
@@ -14,18 +14,15 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
-            <Card>
+            <Card className='cardContent'>
+                <Card.Title className=' mb-0 '>
+                    <b className='stylistName'>{userName.toUpperCase()}</b>
+                </Card.Title>
+
                 <Card.Body>
-                    <ListGroup className="mb-3">
-                        <ListGroup.Item >
-                            <Card.Title className=' mb-0 '>
-                                <b>{userName.toUpperCase()}</b>
-                            </Card.Title>
-                        </ListGroup.Item>
-                    </ListGroup>
-                    <Image src={avatar} roundedCircle className="mb-3" />
-
-
+                    <div className='imgContainer'>
+                        <Card.Img src={avatar} className="avatarImage " />
+                    </div>
 
                     <Card.Text as={Link} to={`/stylists/${stylistId}`} className='learnMore'>Learn more</Card.Text>
 
@@ -49,6 +46,7 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
                             </ListGroup.Item>
                             <ListGroup.Item className='favoriteStyles '>
                                 <b> Favorite styles:</b>
+                                <br />
                                 {
                                     styles.map(e => {
                                         const { style } = e
@@ -58,12 +56,9 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
-
-
                     {
                         loggedUser &&
                         <Button onClick={() => handleSelectStylist(stylistId)} variant='dark'>Choose <b>{userName}</b> as your stylist</Button>
-
                     }
                 </Card.Body>
             </Card>
