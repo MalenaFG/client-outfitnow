@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 
 const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selectedStylist, setSelectedStylist }) => {
 
-    const { loggedUser, logoutUser } = useContext(AuthContext)
-
     const handleSelectStylist = (stylistId) => {
         setSelectedStylist(stylistId)
     }
@@ -16,7 +14,7 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
-            <Card className='transformCard'>
+            <Card onClick={() => handleSelectStylist(stylistId)} className='transformCard'>
                 <div className={`${isSelected ? 'selectedCard' : 'cardContent'}`}>
 
                     <Card.Title className=' mb-0 '>
@@ -24,46 +22,27 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
                     </Card.Title>
 
                     <Card.Body>
-                        <div className='imgContainer'>
-                            <Card.Img src={avatar} className="avatarImage " />
+                        <div className='avatarImage'>
+                            <img src={avatar} />
                         </div>
 
-                        <Card.Text as={Link} to={`/stylists/${stylistId}`} className='learnMore'>Learn more</Card.Text>
+                        <div className="learnMoreContainer">
+                            <Card.Text as={Link} to={`/stylists/${stylistId}`} className='learnMore'>Learn more</Card.Text>
+                        </div>
 
+                        <div className="list-group-flush">
 
-                        <Card className='mb-3'>
+                            <b> Favorite styles:</b>
+                            <div className='favoriteStyles '>
+                                {
+                                    styles.map(e => {
+                                        const { style } = e
+                                        return ` ${style}`
+                                    }).toString()
+                                }
+                            </div>
 
-                            <ListGroup className="list-group-flush">
-
-                                <ListGroup.Item className="servicesList" >
-                                    <b> My services:</b>
-                                    <ul className='mb-0'>
-                                        {
-                                            services.map(({ title }) => {
-                                                return (
-                                                    <li key={title}>{title}</li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </ListGroup.Item>
-                                <ListGroup.Item className='favoriteStyles '>
-                                    <b> Favorite styles:</b>
-                                    <br />
-                                    {
-                                        styles.map(e => {
-                                            const { style } = e
-                                            return ` ${style}`
-                                        }).toString()
-                                    }
-                                </ListGroup.Item>
-
-                            </ListGroup>
-                        </Card>
-                        {
-                            loggedUser &&
-                            <Button onClick={() => handleSelectStylist(stylistId)} variant='dark'>Choose <b>{userName}</b></Button>
-                        }
+                        </div>
                     </Card.Body >
                 </div >
             </Card >
