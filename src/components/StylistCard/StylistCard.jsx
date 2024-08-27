@@ -58,7 +58,7 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
                     </Card>
                     {
                         loggedUser &&
-                        <Button onClick={() => handleSelectStylist(stylistId)} variant='dark'>Choose <b>{userName}</b> as your stylist</Button>
+                        <Button onClick={() => handleSelectStylist(stylistId)} variant='dark'>Choose <b>{userName}</b></Button>
                     }
                 </Card.Body>
             </Card>

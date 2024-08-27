@@ -23,7 +23,7 @@ const PacksCard = ({ packs, selectedStylist }) => {
 
     return (
         <div className="PackCard">
-
+            {loggedUser && <h1 className="choosePack mb-5">Choose your pack:</h1>}
             <CardGroup >
                 <Card>
                     <Card.Body>

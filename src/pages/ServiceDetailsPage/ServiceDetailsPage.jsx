@@ -65,7 +65,7 @@ const ServiceDetailsPage = () => {
                     </section>
                     {/* TODO MALENA: FALTA LA LÓGICA PARA QUE EL BOTÓN DE EDITAR SOLO APAREZCA SI ERES ESTILISTA */}
                     <Container>
-                        {loggedUser.role === 'ADMIN' &&
+                        {(loggedUser && loggedUser.role === 'ADMIN') &&
                             <div>
                                 <img
                                     className="icons me-3"
@@ -90,12 +90,9 @@ const ServiceDetailsPage = () => {
                         </Modal>
 
                         <section className="mb-5">
-                            <h1> Choose your stylist</h1>
-                            <Row className="d-flex">
-                                <StylistsList
-                                    selectedStylist={selectedStylist}
-                                    setSelectedStylist={setSelectedStylist} />
-                            </Row>
+                            <StylistsList
+                                selectedStylist={selectedStylist}
+                                setSelectedStylist={setSelectedStylist} />
                         </section>
 
                         <section className="mb-5">

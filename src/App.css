@@ -9,3 +9,7 @@ a:active {
 a:hover {
     color: darkgray
 }
+
+::marker {
+    font-size: 0;
+}

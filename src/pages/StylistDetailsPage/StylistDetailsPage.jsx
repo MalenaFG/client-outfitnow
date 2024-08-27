@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import userServices from "../../services/user.services"
 import { useEffect, useState } from "react"
-import { Card, Col, Container, Image, Row } from "react-bootstrap"
+import { Col, Container, Image, Row, Spinner } from "react-bootstrap"
 import './StylistDetailsPage.css'
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import StylistImagesCarousel from "../../components/StylistImagesCarousel/StylistImagesCarousel"
@@ -32,7 +32,7 @@ const StylistDetailsPage = () => {
         <Container className="StylistDetailsPage">
             {
                 isLoading ?
-                    <p>Loading info</p>
+                    <Spinner />
                     :
                     <section >
                         <Row>

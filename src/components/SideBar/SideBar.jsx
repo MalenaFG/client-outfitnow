@@ -38,7 +38,7 @@ const SideBar = () => {
                             <Offcanvas.Title className='ofcanvas_title'>OutfitNow</Offcanvas.Title>
                         </Nav.Link>
                     </Offcanvas.Header>
-                    {/* TODO: CAMBIAR LOS HREF POR LINK */}
+
                     <Offcanvas.Body>
                         <Link to={'/'}>Home</Link>
                         <br />

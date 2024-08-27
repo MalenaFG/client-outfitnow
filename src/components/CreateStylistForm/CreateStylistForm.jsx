@@ -16,7 +16,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
         phone: '',
         latitude: '',
         longitude: '',
-        galery: [],
+        gallery: [],
         styles: [],
         services: [],
         aboutMe: '',
@@ -56,11 +56,12 @@ const CreateStylistForm = ({ setAccessModal }) => {
     }
 
     const handleFileUpload = e => {
+        setLoadingImage(true)
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
         uploadServices
-            .uploadImage(formData)
+            .uploadOneImage(formData)
             .then(res => {
                 setUserData({ ...userData, avatar: res.data.cloudinary_url })
                 setLoadingImage(false)
@@ -69,6 +70,26 @@ const CreateStylistForm = ({ setAccessModal }) => {
                 console.log(err)
                 setLoadingImage(false)
 
+            })
+    }
+
+    const handleImagesUpload = e => {
+        setLoadingImage(true)
+        const formData = new FormData()
+
+        for (let i = 0; i < e.target.files.length; i++) {
+            formData.append('imagesData', e.target.files[i])
+        }
+
+        uploadServices
+            .uploadSomeImages(formData)
+            .then(({ data }) => {
+                setUserData({ ...userData, gallery: data.cloudinary_urls })
+                setLoadingImage(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoadingImage(false)
             })
     }
 
@@ -125,12 +146,12 @@ const CreateStylistForm = ({ setAccessModal }) => {
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>User Name</Form.Label>
-                    <Form.Control type="string" value={userData.userName} name="userName" onChange={handleInputChange} />
+                    <Form.Control required type="string" value={userData.userName} name="userName" onChange={handleInputChange} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="file" name="avatar" onChange={handleFileUpload} />
+                    <Form.Control required type="file" name="avatar" onChange={handleFileUpload} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -151,7 +172,12 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
                 <Form.Group className="mb-3">
                     <Form.Label>Adress</Form.Label>
-                    <NewItemForm setUserData={setUserData} />
+                    <NewItemForm required setUserData={setUserData} />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Previous work</Form.Label>
+                    <Form.Control type="file" required name='gallery' onChange={handleImagesUpload} multiple />
                 </Form.Group>
 
                 <Row>
@@ -174,6 +200,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
                                             id={e._id}
                                             key={e._id}
                                             onChange={handleStyleCheckboxChange}
+
                                         />)
 
                                 })
@@ -205,6 +232,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
                                             id={e._id}
                                             key={e._id}
                                             onChange={handleServiceCheckboxChange}
+
                                         />)
 
                                 })

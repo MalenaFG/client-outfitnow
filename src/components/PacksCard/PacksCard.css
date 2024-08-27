@@ -3,3 +3,7 @@
     font-weight: 600;
     font-size: larger;
 }
+
+button:hover {
+    transform: scale(1.05);
+}

@@ -1,8 +1,5 @@
-/* Asegúrate de que el archivo CSS esté en el mismo directorio que el componente */
-
 .StylistCard {
     margin-bottom: 20px;
-    margin-left: 15px;
     justify-content: center;
     align-items: center;
 }
@@ -18,8 +15,6 @@
     align-items: center;
     height: 300px;
     width: 100%;
-    /* max-width: 300px;
-    min-height: 400px; */
 }
 
 .cardContent:hover {
@@ -86,6 +81,7 @@ ul li {
 
 .StylistCard .btn {
     margin-top: 10px;
+    width: 100%;
     background-color: #343a40;
     border: none;
 }
