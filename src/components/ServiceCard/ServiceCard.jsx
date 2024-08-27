@@ -1,10 +1,6 @@
 import { Card } from "react-bootstrap"
 
-
 const ServiceCard = ({ title, coverImage }) => {
-
-    // TODO DE MALENA: he añadido un campo CoverImage al modelo para que haya una imagen horizontal que sea la portada de la card, 
-    // hay que implementarlo aquí cuando podamos editar los servicios que ya tenemos
 
     return (
         <div className="ServiceCard">

@@ -26,7 +26,6 @@ const ServiceDetailsPage = () => {
         setAccessModal({ show: true })
     }
 
-
     useEffect(() => {
         loadServiceDetails()
     }, [])
@@ -63,9 +62,8 @@ const ServiceDetailsPage = () => {
                     <section className="mb-5">
                         <ServiceImgCarousel {...service} />
                     </section>
-                    {/* TODO MALENA: FALTA LA LÓGICA PARA QUE EL BOTÓN DE EDITAR SOLO APAREZCA SI ERES ESTILISTA */}
                     <Container>
-                        {loggedUser.role === 'ADMIN' &&
+                        {(loggedUser && loggedUser.role === 'ADMIN') &&
                             <div>
                                 <img
                                     className="icons me-3"

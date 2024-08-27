@@ -28,7 +28,7 @@ const CreateUserForm = ({ setAccessModal }) => {
         formData.append('imageData', e.target.files[0])
 
         uploadServices
-            .uploadImage(formData)
+            .uploadOneImage(formData)
             .then(res => {
                 setUserData({ ...userData, avatar: res.data.cloudinary_url })
                 setLoadingImage(false)

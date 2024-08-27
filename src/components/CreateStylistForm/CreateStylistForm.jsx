@@ -60,7 +60,7 @@ const CreateStylistForm = ({ setAccessModal }) => {
         formData.append('imageData', e.target.files[0])
 
         uploadServices
-            .uploadImage(formData)
+            .uploadOneImage(formData)
             .then(res => {
                 setUserData({ ...userData, avatar: res.data.cloudinary_url })
                 setLoadingImage(false)
@@ -85,7 +85,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             stylesCopy = stylesCopy.filter(style => style != value)
         }
 
-
         setUserData({ ...userData, styles: stylesCopy })
     }
 
@@ -102,7 +101,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             servicesCopy = servicesCopy.filter(service => service != value)
         }
 
-
         setUserData({ ...userData, services: servicesCopy })
     }
 
@@ -117,8 +115,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .catch(err => console.log(err))
 
     }
-
-
 
     return (
         <div className="CreateStylistForm">
