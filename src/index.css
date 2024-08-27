@@ -13,6 +13,6 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background: rgb(162, 161, 168);
-  background: radial-gradient(circle, rgba(162, 161, 168, 0.633578431372549) 0%, rgba(72, 86, 102, 0.6251750700280112) 100%);
+  background: rgb(202, 211, 231);
+  background: radial-gradient(circle, rgba(202, 211, 231, 0.7652310924369747) 41%, rgba(107, 108, 112, 0.9192927170868347) 100%);
 }

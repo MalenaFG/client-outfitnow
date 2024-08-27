@@ -43,21 +43,6 @@
     margin-bottom: 10px !important
 }
 
-.learnMore {
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.learnMoreContainer {
-    display: flex;
-    justify-content: end;
-}
-
-.learnMore:hover {
-    text-decoration: underline;
-}
-
 .favoriteStyles {
     font-size: 0.9em;
     background-color: #f9f9f9;

@@ -34,20 +34,20 @@ const SideBar = () => {
 
 
                     <Offcanvas.Header closeButton>
-                        <Nav.Link href={'/'}>
-                            <Offcanvas.Title className='ofcanvas_title'>OutfitNow</Offcanvas.Title>
-                        </Nav.Link>
+
+                        <h1 className='offcanvas_title'> OutfitNow</h1>
+
                     </Offcanvas.Header>
 
                     <Offcanvas.Body>
-                        <Link to={'/'}>Home</Link>
+                        <Link to={'/'} onClick={handleCloseOffset} >Home</Link>
                         <br />
-                        <Link to={'/services'}>Services</Link>
+                        <Link to={'/services'} onClick={handleCloseOffset}>Services</Link>
                         <br />
-                        <Link to={'/stylists'}>Stylists</Link>
+                        <Link to={'/stylists'} onClick={handleCloseOffset}>Stylists</Link>
                         <br />
                         {
-                            loggedUser && <Link to={`/profile/${loggedUser._id}`}>My profile</Link>
+                            loggedUser && <Link to={`/profile/${loggedUser._id}`} onClick={handleCloseOffset}>My profile</Link>
                         }
 
                     </Offcanvas.Body>
