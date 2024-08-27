@@ -1,3 +1,12 @@
+.selectedCard {
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.667);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .StylistCard {
     margin-bottom: 20px;
     justify-content: center;
@@ -5,19 +14,14 @@
 }
 
 .cardContent {
-    border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 300px;
     width: 100%;
 }
 
-.cardContent:hover {
+.transformCard:hover {
     transform: scale(1.05);
 }
 
@@ -93,44 +97,3 @@ ul li {
 .StylistCard .btn b {
     color: #fff;
 }
-
-
-
-/* .cardContent {
-    align-items: center;
-}
-
-.avatarImage {
-    display: flex;
-    justify-content: center;
-    height: 100px;
-    width: auto;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-}
-
-.stylistName {
-    font-size: medium;
-    text-align: center;
-}
-
-.servicesList {
-    height: 90px;
-    overflow-y: scroll;
-    scrollbar-color: rgb(246, 225, 225) rgb(255, 255, 255);
-    margin-bottom: 0px;
-}
-
-.favoriteStyles {
-    height: 60px;
-    overflow: hidden;
-    scrollbar-color: rgb(246, 225, 225) rgb(255, 255, 255);
-}
-
-.learnMore {
-    display: flex;
-    justify-content: end;
-    font-size: small;
-    font-style: italic;
-    color: rgb(16, 0, 160);
-} */

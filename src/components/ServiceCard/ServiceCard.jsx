@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap"
 import './ServiceCard.css'
 
-
 const ServiceCard = ({ title, coverImage }) => {
 
     return (

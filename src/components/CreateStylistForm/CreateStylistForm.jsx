@@ -106,7 +106,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             stylesCopy = stylesCopy.filter(style => style != value)
         }
 
-
         setUserData({ ...userData, styles: stylesCopy })
     }
 
@@ -123,7 +122,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             servicesCopy = servicesCopy.filter(service => service != value)
         }
 
-
         setUserData({ ...userData, services: servicesCopy })
     }
 
@@ -138,8 +136,6 @@ const CreateStylistForm = ({ setAccessModal }) => {
             .catch(err => console.log(err))
 
     }
-
-
 
     return (
         <div className="CreateStylistForm">
