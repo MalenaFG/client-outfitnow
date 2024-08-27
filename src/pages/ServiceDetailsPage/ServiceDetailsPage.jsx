@@ -22,7 +22,7 @@ const ServiceDetailsPage = () => {
 
     const navigate = useNavigate()
 
-    const showAccessModal = content => {
+    const showAccessModal = () => {
         setAccessModal({ show: true })
     }
 
@@ -48,9 +48,8 @@ const ServiceDetailsPage = () => {
         servicesServices
             .deleteService(serviceId)
             .then(() => navigate('/services'))
+            .catch(err => console.log(err))
     }
-
-    console.log(service)
 
     return (
         <>

@@ -51,11 +51,14 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
 
         servicesServices
             .getOneService(serviceId)
-            .then(res => {
-                setServiceData(res.data)
-                setBasicPack(res.data.packs.basic)
-                setPremiumPack(res.data.packs.premium)
-                setGlamPack(res.data.packs.glam)
+            .then(({ data }) => {
+
+                const { packs } = data
+
+                setServiceData(data)
+                setBasicPack(packs.basic)
+                setPremiumPack(packs.premium)
+                setGlamPack(packs.glam)
 
                 setIsLoading(false)
             })
@@ -63,7 +66,6 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
     }
 
     const handleInputChange = e => {
-
         const { value, name } = e.target;
         setServiceData({ ...serviceData, [name]: value })
     }
@@ -124,11 +126,6 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
         setServiceData({ ...serviceData, images: imagesCopy })
     }
 
-    const handleCoverImage = () => {
-
-        setServiceData({ ...serviceData, coverImage: '' })
-    }
-
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -144,7 +141,6 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
         servicesServices
             .editService(serviceId, finalServiceData)
             .then(() => {
-                console.log('Servicio editado')
                 updateServiceData(finalServiceData)
                 setAccessModal(false)
             })

@@ -47,8 +47,6 @@ const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
             measurements: measurementsData,
         }
 
-        console.log("Request body:", requestBody)
-
         bookingsServices
             .createBookings(requestBody)
             .then(() => {

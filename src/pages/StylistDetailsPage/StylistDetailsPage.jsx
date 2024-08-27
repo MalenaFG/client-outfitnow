@@ -28,6 +28,7 @@ const StylistDetailsPage = () => {
     }, [])
 
     const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
+
     return (
         <Container className="StylistDetailsPage">
             {
@@ -36,44 +37,57 @@ const StylistDetailsPage = () => {
                     :
                     <section >
                         <Row>
-                            <Col md={{ span: 3 }} className="stylistInfo">
-                                <h1>{userName}</h1>
-                                <Image src={avatar} />
+                            <Col md={{ span: 4 }} className="stylistInfo">
+                                <div className="sectionTitle">
+                                    <h1>{userName}</h1>
+                                </div>
+                                <hr />
+                                <Image className='avatar mb-3' src={avatar} />
                                 <p>{aboutMe}</p>
                             </Col>
 
                             <Col md={{ span: 4 }}>
-                                <section className="servicesSection">
-                                    <h2 className="mb-0">My services:</h2>
+                                <section className="stylistInfo servicesInfo">
+                                    <div className="sectionTitle">
+                                        <h2>My services</h2>
+                                    </div>
                                     <hr />
-                                    {services.map(e => {
-                                        return (
-                                            <article key={e._id}>
-                                                <h4>{e.title}</h4>
-                                                <ul>
-                                                    <li>Basic: {e.packs.basic.price}€</li>
-                                                    <li>Premium: {e.packs.premium.price}€</li>
-                                                    <li>Glam: {e.packs.glam.price}€</li>
-                                                </ul>
-                                            </article>
-                                        )
-                                    })
-                                    }
+                                    <Row>
+                                        {services.map(e => {
+                                            return (
+                                                <Col md={{ span: 6 }} key={e._id}>
+                                                    <h5><u>{e.title}</u></h5>
+                                                    <ul>
+                                                        <li>Basic: {e.packs.basic.price}€</li>
+                                                        <li>Premium: {e.packs.premium.price}€</li>
+                                                        <li>Glam: {e.packs.glam.price}€</li>
+                                                    </ul>
+                                                </Col>
+                                            )
+                                        })
+                                        }
+                                    </Row>
                                 </section>
                                 <br />
-                                <section className="stylesSection">
-                                    <h3>My favorite styles:</h3>
-                                    {styles.map(e => {
-                                        const { style } = e
-                                        return (
-                                            ` ${style}`
-                                        )
-                                    }).toString()
-                                    }
+                                <section className="stylistInfo">
+                                    <div className="sectionTitle">
+                                        <h4>My favorite styles</h4>
+                                    </div>
+                                    <hr />
+                                    <div className="sectionTitle">
+                                        {styles.map(e => {
+                                            const { style } = e
+                                            return (
+                                                ` ${style}`
+                                            )
+                                        }).toString()
+                                        }</div>
                                 </section>
                             </Col>
                             <Col>
-                                <StylistImagesCarousel {...userData} />
+                                <div className="stylistInfo">
+                                    <StylistImagesCarousel {...userData} />
+                                </div>
                             </Col>
                         </Row>
                     </section>

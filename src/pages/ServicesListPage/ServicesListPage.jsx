@@ -7,7 +7,6 @@ const ServicesListPage = () => {
 
     const [showSlider, setShowSlider] = useState(true)
 
-
     return (
         <div className="ServicesListPage">
 

@@ -7,6 +7,7 @@ import './BookingsAccordion.css'
 import { AuthContext } from "../../contexts/auth.context"
 import UserMap from "../UserMap/UserMap"
 
+// TODO: GER
 const BookingsAccordion = () => {
 
     const { userId } = useParams()

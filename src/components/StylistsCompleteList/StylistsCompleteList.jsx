@@ -10,10 +10,8 @@ const StylistsCompleteList = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const loadStylistsList = () => {
-        const role = 'stylist'
-
         userServices
-            .getUsersByRol(role)
+            .getUsersByRol('stylist')
             .then(({ data }) => {
                 setStylistsList(data)
                 setIsLoading(false)

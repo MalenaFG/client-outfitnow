@@ -11,7 +11,7 @@ const UserMap = ({ location }) => {
     })
 
     const [map, setMap] = useState(null)
-
+    // TODO: QUE ES ESTO???
     const onLoad = (map) => console.log('Aquí haz lo que necesites tras la carga del mapa')
     const onUnmount = () => setMap(null)
 
