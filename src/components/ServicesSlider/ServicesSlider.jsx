@@ -41,7 +41,7 @@ const ServicesSlider = ({ setShowSlider }) => {
                 {
                     services.map(elm => (
                         <Link to={`/services/${elm._id}`} key={elm}>
-                            <div key={elm._id}>
+                            <div key={elm._id} className='mb-5'>
                                 <ServiceCard {...elm} />
 
                             </div>

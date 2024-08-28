@@ -8,3 +8,19 @@
     padding: 0;
     margin: 0;
 }
+
+.ServicesListPage .slogan {
+    color: white;
+    text-shadow: 0 8px 16px rgb(80, 80, 80);
+    text-align: center;
+}
+
+.ServicesListPage .description {
+    text-align: center;
+    color: white;
+}
+
+/* .ServicesListPage .outfitNowInfo {
+    background-color: black;
+    opacity: 20%;
+} */
