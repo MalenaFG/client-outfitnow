@@ -73,13 +73,13 @@ const SideBar = () => {
 
                     </div>
 
-                    <Modal className='accessModal' show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
-                        <Modal.Header closeButton className='flex-column'>
-                            <Modal.Title>
+                    <Modal className='accessModal' size={(accessModal.content === 'signup' && 'lg')} show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
+                        <Modal.Header className='modalBodyContainer flex-column'>
+                            <Modal.Title >
                                 {accessModal.content === 'login' && 'Login now'}
                                 {accessModal.content === 'signup' && 'Signup now'}
                             </Modal.Title>
-                            <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                            <Modal.Body className='flex-column mb-3'>
                                 {accessModal.content === 'login' && <LoginForm showAccessModal={showAccessModal} closeModal={() => setAccessModal({ show: false })} />}
                                 {accessModal.content === 'signup' && <TabsSignupForms setAccessModal={setAccessModal} />}
 

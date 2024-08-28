@@ -1,17 +1,12 @@
-.icons {
+.icon {
     width: auto;
     height: 30px;
 }
 
-.accessModal {
-    background-color: rgba(0, 0, 0, 0.086);
-    /* Fondo oscuro con transparencia */
+.iconsContainer {
+    text-align: end;
 }
 
-.modalBodyContainer {
-    background-color: rgba(0, 0, 0, 0.086);
-    /* Fondo oscuro con transparencia */
-}
 
 .chooseStylist {
     color: white;

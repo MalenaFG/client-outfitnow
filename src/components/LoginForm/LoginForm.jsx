@@ -26,7 +26,7 @@ const LoginForm = ({ showAccessModal, closeModal }) => {
 
     return (
         <div className="LoginForm">
-            <Form onSubmit={handleSubmit}>
+            <Form className='form' onSubmit={handleSubmit}>
 
 
                 <Form.Group controlId='email' >

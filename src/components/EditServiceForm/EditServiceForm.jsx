@@ -165,9 +165,9 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                             <Form.Group className="mb-3">
                                 <Form.Label>Cover image</Form.Label>
                                 <Form.Control className='mb-3' type="file" name='coverImage' onChange={handleCoverUpload} />
-                                <div className="imageCoverContainer">
-                                    <img className="coverImage" src={serviceData.coverImage} />
-                                </div>
+
+                                <img className="coverImage" src={serviceData.coverImage} />
+
                             </Form.Group>
 
                         </Col>

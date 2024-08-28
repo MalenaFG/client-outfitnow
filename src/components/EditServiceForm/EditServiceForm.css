@@ -1,41 +1,35 @@
-.packsImputs {
+.EditServiceForm .packsImputs {
     border: 1px solid #dee2e6;
     border-radius: 5px;
     padding: 10px;
 }
 
-.coverImage {
+.EditServiceForm .coverImage {
     height: 100px;
     width: 100px;
     object-fit: cover;
 }
 
-.carouselImage {
+.EditServiceForm .carouselImage {
     height: 100px;
     width: 100px;
     object-fit: cover;
     margin-right: 10px;
 }
 
-.carouselPreview {
+.EditServiceForm .carouselPreview {
     display: flex;
     flex-direction: row;
     justify-content: left;
 
 }
 
-.form {
-    background-color: rgba(65, 65, 65, 0);
-    /* Fondo oscuro con transparencia */
-
-}
-
-.deleteIcon {
+.EditServiceForm .deleteIcon {
     width: 15px;
     height: 15px;
 }
 
-.imagesContainer {
+.EditServiceForm .imagesContainer {
     display: flex;
     flex-direction: column;
     align-items: center;

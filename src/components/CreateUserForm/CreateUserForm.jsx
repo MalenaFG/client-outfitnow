@@ -55,7 +55,7 @@ const CreateUserForm = ({ setAccessModal }) => {
 
     return (
         <div className="CreateUserForm">
-            <Form onSubmit={handleFormSubmit}>
+            <Form className="form" onSubmit={handleFormSubmit}>
 
                 <Form.Group className="mb-3">
                     <Form.Label>User Name</Form.Label>
@@ -65,6 +65,8 @@ const CreateUserForm = ({ setAccessModal }) => {
                 <Form.Group className="mb-3" controlId="image">
                     <Form.Label>Avatar</Form.Label>
                     <Form.Control type="file" name='avatar' onChange={handleFileUpload} />
+                    {userData.avatar.length > 0 &&
+                        <img src={userData.avatar} alt="user avatar" />}
                 </Form.Group>
 
                 <Form.Group className="mb-3">

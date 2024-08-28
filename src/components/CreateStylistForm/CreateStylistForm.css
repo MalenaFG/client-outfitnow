@@ -1,0 +1,42 @@
+.CreateStylistForm .avatarImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.CreateStylistForm .galleryImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.CreateStylistForm .galleryPreview {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+}
+
+.CreateStylistForm .deleteIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.CreateStylistForm .imagesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CreateStylistForm .submitButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.CreateStylistForm .submitButton {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+
+}

@@ -2,3 +2,7 @@
     height: 100vh;
     object-fit: cover;
 }
+
+.ServiceImgCarousel h1 {
+    font-size: 3.5em;
+}

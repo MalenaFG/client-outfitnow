@@ -13,7 +13,7 @@ const StylistCardWithoutButton = ({ userName, avatar, styles, _id: stylistId, se
     const isSelected = selectedStylist === stylistId
 
     return (
-        <Col md={{ span: 3 }} className="StylistCard">
+        <Col md={{ span: 3 }} className="StylistCardWithoutButton">
             <Link to={`/stylists/${stylistId}`}>
                 <Card className='transformCard'>
                     <div className={`${isSelected ? 'selectedCard' : 'cardContent'}`}>

@@ -18,7 +18,7 @@ const ServiceImgCarousel = ({ images, title }) => {
                     images.map((elm) => {
                         return (
 
-                            <Carousel.Item>
+                            <Carousel.Item key={elm}>
                                 <Carousel.Caption>
                                     <h1>{title}</h1>
                                 </Carousel.Caption>
