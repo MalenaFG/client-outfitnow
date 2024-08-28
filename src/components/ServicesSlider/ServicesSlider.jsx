@@ -43,6 +43,7 @@ const ServicesSlider = ({ setShowSlider }) => {
                         <Link to={`/services/${elm._id}`}>
                             <div key={elm._id}>
                                 <ServiceCard {...elm} />
+
                             </div>
                         </Link>
                     ))

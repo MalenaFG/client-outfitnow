@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button, Card } from "react-bootstrap"
+import { Button, Card, CardText, Col, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import userServices from "../../services/user.services"
 import './UserProfileCard.css'
@@ -10,12 +10,16 @@ const UserProfileCard = () => {
     const { userId } = useParams()
 
     const [userData, setUserData] = useState()
+    const [isLoading, setIsLoading] = useState(true)
 
     const loadUserById = () => {
 
         userServices
             .getOneUser(userId)
-            .then(({ data }) => setUserData(data))
+            .then(({ data }) => {
+                setUserData(data)
+                setIsLoading(false)
+            })
             .catch(err => console.log(err))
     }
 
@@ -28,60 +32,77 @@ const UserProfileCard = () => {
             {
                 userData &&
 
-                < Card style={{ marginTop: '80px' }}>
-                    <div className="d-flex">
-                        <Card.Img variant="top" src={userData.avatar} />
-                        <Card.Body>
-                            <div>
-                                <h6>Contact:</h6>
-                                <ul>
-                                    <li>{userData.userName} </li>
-                                    <li>{userData.email} </li>
-                                    <li>{userData.phone} </li>
+                <>
+                    <Card>
+                        <div className="cardUserContainer">
+                            <Row>
+                                <Col className="d-flex">
+                                    <Card.Img src={userData.avatar} />
+                                    <CardText className="ms-3">
+                                        <div>
+                                            <h4>{userData.userName}</h4>
+                                            <p>{userData.email} </p>
+                                            <p>{userData.phone}</p>
+                                        </div>
+                                    </CardText>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Card.Body>
+                                        <Row>
 
-                                </ul>
-                            </div>
+                                            <Col className="d-flex">
+                                                {userData.services.length !== 0 &&
+                                                    (<div>
+                                                        <h5>Services:</h5>
+                                                        <ul>
+                                                            {userData.services.map(elm => {
+                                                                return (
+                                                                    <li key={elm._id}>{elm.title}</li>
+                                                                )
+                                                            })
+                                                            }
+                                                        </ul>
+                                                    </div>)
+                                                }
 
-                            {userData.services.length !== 0 &&
-                                (<div>
-                                    <h6>Services:</h6>
-                                    <ul>
-                                        {userData.services.map(elm => {
-                                            return (
-                                                <li key={elm._id}>{elm.title}</li>
-                                            )
-                                        })
+                                                {userData.styles.length !== 0 &&
+                                                    <div className="ms-5">
+                                                        <h5>Styles:</h5>
+                                                        <ul>
+                                                            {userData.styles.map(elm => {
+                                                                return (
+                                                                    <li key={elm._id}>{elm.style}</li>
+                                                                )
+                                                            })
+                                                            }
+                                                        </ul>
+                                                    </div>}
+                                            </Col>
+                                        </Row>
+
+                                        {userData.aboutMe &&
+                                            <div>
+                                                <h5>About me:</h5>
+                                                <p>
+                                                    {userData.aboutMe}
+                                                </p>
+                                            </div>
                                         }
-                                    </ul>
-                                </div>)
-                            }
+                                    </Card.Body>
 
-                            {userData.styles.length !== 0 &&
-                                <div>
-                                    <h6>Styles:</h6>
-                                    <ul>
-                                        {userData.styles.map(elm => {
-                                            return (
-                                                <li key={elm._id}>{elm.style}</li>
-                                            )
-                                        })
-                                        }
-                                    </ul>
-                                </div>}
+                                </Col>
+                            </Row>
+                        </div>
+                    </Card>
 
-                            {userData.aboutMe &&
-                                <div>
-                                    <h6>About me:</h6>
-                                    <p>
-                                        {userData.aboutMe}
-                                    </p>
-                                </div>
-                            }
-                        </Card.Body>
-
+                    <div className="userMapContainer">
+                        <UserMap location={userData.location.coordinates} />
                     </div>
-                    <UserMap location={userData.location.coordinates} />
-                </Card>
+                </>
+
+
             }
 
 

@@ -13,11 +13,12 @@ const MyProfilePage = () => {
     // TODO: modificar el estilo y estructura de la userCard y del create form services
     // TODO: hay que dejar los formularios mas o menos iguales en cuanto a estilo
     // TODO: filtrar por estilos en la stylistListpage
+
     return (
         <div className="MyProfilePage">
             <Container>
                 <Row>
-                    <Col md={{ span: 4 }}  >
+                    <Col md={loggedUser.role === "ADMIN" ? { span: 4 } : { span: 6 }}  >
                         <UserProfileCard />
                     </Col>
                     <Col style={{ marginTop: '80px' }}>

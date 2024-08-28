@@ -11,8 +11,7 @@ const UserMap = ({ location }) => {
     })
 
     const [map, setMap] = useState(null)
-    // TODO: QUE ES ESTO???
-    const onLoad = (map) => console.log('Aquí haz lo que necesites tras la carga del mapa')
+    const onLoad = (map) => { }
     const onUnmount = () => setMap(null)
 
 
@@ -21,6 +20,7 @@ const UserMap = ({ location }) => {
     }
 
     return (
+
         <GoogleMap
             mapContainerStyle={{ height: '200px' }}
             zoom={15}

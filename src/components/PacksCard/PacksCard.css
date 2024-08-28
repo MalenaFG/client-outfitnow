@@ -4,6 +4,6 @@
     font-size: larger;
 }
 
-button:hover {
+.packDetailsList button:hover {
     transform: scale(1.05);
 }

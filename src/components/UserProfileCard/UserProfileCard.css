@@ -1,4 +1,22 @@
 .UserProfileCard img {
-    width: 30%;
-    height: auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.UserProfileCard {
+    margin-top: 80px;
+}
+
+.userMapContainer {
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 80px;
+}
+
+.cardUserContainer {
+    display: block;
+    margin: 10px;
 }

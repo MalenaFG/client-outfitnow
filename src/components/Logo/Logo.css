@@ -1,8 +1,12 @@
 .outfitnow_logo {
-    object-fit: contain;
+    width: 100px;
+}
+
+.Logo {
+    display: flex;
     position: fixed;
-    height: 100px;
-    top: 2%;
-    left: 45%;
-    z-index: 9999;
+    width: 100px;
+    right: 10px;
+    top: 10px;
+    z-index: 9999
 }

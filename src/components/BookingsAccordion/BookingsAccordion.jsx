@@ -143,7 +143,7 @@ const BookingsAccordion = () => {
                                         <Col>
                                             {
                                                 loggedUser.role === "STYLIST" && (<>
-                                                    <h6>Cliente</h6>
+                                                    <h6>Cliente: </h6>
                                                     <p>{elm.client.email}</p>
                                                     <p>{elm.client.userName}</p>
                                                     <p>{elm.client.phone}</p>
@@ -169,10 +169,18 @@ const BookingsAccordion = () => {
                                                     <p>{elm.comment}</p>
                                                 </>)
                                             }
-                                            <div>
-                                                <h6>Stylist</h6>
-                                                <p>{elm.stylist.userName}</p>
-                                            </div>
+
+
+                                            {
+                                                loggedUser.role !== "STYLIST" && (
+
+                                                    <div>
+                                                        <h6>Stylist</h6>
+                                                        <p>{elm.stylist.userName}</p>
+                                                    </div>
+
+                                                )
+                                            }
                                         </Col>
 
                                     </Row>

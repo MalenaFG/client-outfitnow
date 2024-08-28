@@ -9,7 +9,6 @@ const StylistImagesCarousel = ({ gallery }) => {
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex)
     }
-    // TODO MALENA: COMPORIBAR SI ESTO FUNCIONA
     return (
         <div className="carouselContainer">
             <Carousel className='StylistImagesCarousel' activeIndex={index} onSelect={handleSelect} interval={5000}>
