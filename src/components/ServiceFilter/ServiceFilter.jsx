@@ -43,7 +43,9 @@ const ServiceFilter = ({ setShowSlider }) => {
                 />
             </Form>
 
-            <ServicesFilteredList servicesFiltered={servicesFiltered} />
+            {
+                searchInput != '' && <ServicesFilteredList servicesFiltered={servicesFiltered} />
+            }
 
         </div>
     )

@@ -349,7 +349,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
 
                     </Row>
 
-                    <Button variant="dark" type="submit">Upload new service</Button>
+                    <Button variant="dark" type="submit">Save</Button>
 
                 </Form>}
         </div>
