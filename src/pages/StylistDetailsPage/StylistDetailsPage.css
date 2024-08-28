@@ -22,3 +22,7 @@
     object-fit: cover;
     overflow: hidden;
 }
+
+.carouselGallery {
+    height: 650px;
+}

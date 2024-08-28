@@ -113,7 +113,7 @@ const BookingsAccordion = () => {
                                 <Accordion.Header>{idx + 1}º Service - {elm.service.title}</Accordion.Header>
                                 <Accordion.Body className="accordionBody">
                                     <Row>
-                                        <Col>
+                                        <Col md={{ span: 4 }} >
                                             <h6>Measurements:</h6>
                                             <ul>
                                                 <li>Height: {elm.measurements.height} cm</li>
@@ -122,34 +122,53 @@ const BookingsAccordion = () => {
                                                 <li>Shoe Size: {elm.measurements.shoeSize}</li>
                                             </ul>
                                         </Col>
-                                        <Col>
+                                        <Col md={{ span: 2 }}>
                                             <h6>Pack:</h6>
                                             <p>{elm.pack.charAt(0).toUpperCase() + elm.pack.slice(1)}</p>
 
                                             <h6>Deadline:</h6>
                                             <p>{new Date(elm.deadline).toLocaleDateString()}</p>
                                         </Col>
-                                        <Col className="text-end">
-                                            <img
-                                                src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
-                                                onClick={() => handleShowModal(elm._id)}
-                                                style={{ cursor: 'pointer' }}
-                                                alt="editIcon"
-                                            />
+                                        <Col md={{ span: 2 }}>
+                                            {
+                                                loggedUser.role === "STYLIST" && (<>
+                                                    <h6>Cliente: </h6>
+                                                    <ul>
+                                                        <li>{elm.client.email}</li>
+                                                        <li>{elm.client.userName}</li>
+                                                        <li>{elm.client.phone}</li>
+                                                    </ul>
+                                                </>)
+                                            }
+                                        </Col>
+                                        <Col>
+                                            {
+                                                loggedUser.role !== "STYLIST" && (
+
+                                                    <div>
+                                                        <h6>Stylist</h6>
+                                                        <p>{elm.stylist.userName}</p>
+                                                    </div>
+
+                                                )
+                                            }
+                                        </Col>
+                                        <Col className="d-flex text-end">
+                                            {loggedUser.role === "USER" &&
+                                                < img
+                                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
+                                                    onClick={() => handleShowModal(elm._id)}
+                                                    style={{ cursor: 'pointer' }}
+                                                    alt="editIcon"
+                                                />}
+
+                                            <img className="ms-3" onClick={() => deleteBooking(elm._id)} src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
+
                                         </Col>
                                     </Row>
 
                                     <Row>
-                                        <Col>
-                                            {
-                                                loggedUser.role === "STYLIST" && (<>
-                                                    <h6>Cliente: </h6>
-                                                    <p>{elm.client.email}</p>
-                                                    <p>{elm.client.userName}</p>
-                                                    <p>{elm.client.phone}</p>
-                                                </>)
-                                            }
-                                        </Col>
+
                                         <Col>
                                             {
                                                 loggedUser.role === "STYLIST" && (
@@ -171,26 +190,10 @@ const BookingsAccordion = () => {
                                             }
 
 
-                                            {
-                                                loggedUser.role !== "STYLIST" && (
-
-                                                    <div>
-                                                        <h6>Stylist</h6>
-                                                        <p>{elm.stylist.userName}</p>
-                                                    </div>
-
-                                                )
-                                            }
                                         </Col>
 
                                     </Row>
-                                    <Row>
-                                        <Col className="text-end">
 
-                                            <img onClick={() => deleteBooking(elm._id)} src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
-
-                                        </Col>
-                                    </Row>
                                 </Accordion.Body>
                             </Accordion.Item>
 

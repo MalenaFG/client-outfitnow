@@ -85,7 +85,7 @@ const StylistDetailsPage = () => {
                                 </section>
                             </Col>
                             <Col>
-                                <div className="stylistInfo">
+                                <div className="stylistInfo carouselGallery">
                                     <StylistImagesCarousel {...userData} />
                                 </div>
                             </Col>

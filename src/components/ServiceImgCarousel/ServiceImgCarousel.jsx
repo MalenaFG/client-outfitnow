@@ -12,7 +12,7 @@ const ServiceImgCarousel = ({ images, title }) => {
 
     return (
         <div className="carouselContainer">
-            <Carousel className='ServiceImgCarousel' activeIndex={index} onSelect={handleSelect} interval={5000}>
+            <Carousel className='ServiceImgCarousel' activeIndex={index} onSelect={handleSelect} interval={2000}>
 
                 {
                     images.map((elm) => {

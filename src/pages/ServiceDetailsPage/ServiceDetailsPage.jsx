@@ -45,10 +45,12 @@ const ServiceDetailsPage = () => {
     }
 
     const deleteService = () => {
-        servicesServices
-            .deleteService(serviceId)
-            .then(() => navigate('/services'))
-            .catch(err => console.log(err))
+        if (window.confirm('Are you sure you want to delete this service? This action cannot be undone.')) {
+            servicesServices
+                .deleteService(serviceId)
+                .then(() => navigate('/services'))
+                .catch(err => console.log(err))
+        }
     }
 
     return (
