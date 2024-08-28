@@ -1,4 +1,10 @@
-.selectedCard {
+.StylistCardWithoutButton {
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.StylistCardWithoutButton .selectedCard {
     border-radius: 10px;
     box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.667);
     display: flex;
@@ -8,13 +14,7 @@
     padding-top: 10px;
 }
 
-.StylistCard {
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.cardContent {
+.StylistCardWithoutButton .cardContent {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -23,17 +23,17 @@
     padding-top: 10px;
 }
 
-.transformCard:hover {
+.StylistCardWithoutButton .transformCard:hover {
     transform: scale(1.05);
 }
 
-.stylistName {
+.StylistCardWithoutButton .stylistName {
     font-size: 1em;
     color: #333;
     margin-bottom: 10px;
 }
 
-.avatarImage img {
+.StylistCardWithoutButton .avatarImage img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -43,42 +43,41 @@
     margin-bottom: 10px !important
 }
 
-.favoriteStyles {
+.StylistCardWithoutButton .favoriteStyles {
     font-size: 0.9em;
-    background-color: #f9f9f9;
     height: 50px;
     overflow: hidden;
     margin-bottom: 0px;
 
 }
 
-.list-group-flush .list-group-item {
+.StylistCardWithoutButton .list-group-flush .list-group-item {
     border: 0;
 }
 
-.favoriteStyles {
+.StylistCardWithoutButton .favoriteStyles {
     color: #555;
 }
 
-ul {
+.StylistCardWithoutButton ul {
     padding-left: 20px;
 }
 
-ul li {
+.StylistCardWithoutButton ul li {
     list-style-type: disc;
 }
 
-.StylistCard .btn {
+.StylistCardWithoutButton .StylistCard .btn {
     margin-top: 10px;
     width: 100%;
     background-color: #343a40;
     border: none;
 }
 
-.StylistCard .btn:hover {
+.StylistCardWithoutButton .StylistCard .btn:hover {
     background-color: #23272b;
 }
 
-.StylistCard .btn b {
+.StylistCardWithoutButton .StylistCard .btn b {
     color: #fff;
 }

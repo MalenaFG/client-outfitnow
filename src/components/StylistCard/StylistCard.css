@@ -1,4 +1,4 @@
-.selectedCard {
+.StylistCard .selectedCard {
     border-radius: 10px;
     box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.667);
     display: flex;
@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.cardContent {
+.StylistCard .cardContent {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -23,17 +23,17 @@
     padding-top: 10px;
 }
 
-.transformCard:hover {
+.StylistCard .transformCard:hover {
     transform: scale(1.05);
 }
 
-.stylistName {
+.StylistCard .stylistName {
     font-size: 1em;
     color: #333;
     margin-bottom: 10px;
 }
 
-.avatarImage img {
+.StylistCard .avatarImage img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -43,22 +43,22 @@
     margin-bottom: 10px !important
 }
 
-.learnMore {
+.StylistCard .learnMore {
     text-decoration: none;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.learnMoreContainer {
+.StylistCard .learnMoreContainer {
     display: flex;
     justify-content: end;
 }
 
-.learnMore:hover {
+.StylistCard .learnMore:hover {
     text-decoration: underline;
 }
 
-.favoriteStyles {
+.StylistCard .favoriteStyles {
     font-size: 0.9em;
     height: 50px;
     overflow: hidden;
@@ -66,19 +66,19 @@
 
 }
 
-.list-group-flush .list-group-item {
+.StylistCard .list-group-flush .list-group-item {
     border: 0;
 }
 
-.favoriteStyles {
+.StylistCard .favoriteStyles {
     color: #555;
 }
 
-ul {
+.StylistCard ul {
     padding-left: 20px;
 }
 
-ul li {
+.StylistCard ul li {
     list-style-type: disc;
 }
 

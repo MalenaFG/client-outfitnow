@@ -1,10 +1,11 @@
-import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import stylesServices from './../../services/styles.services'
 import authServices from "../../services/auth.services"
 import servicesServices from "../../services/services.services"
 import { useEffect, useState } from "react"
 import NewItemForm from "../GooglePlacesAutocomplete/GooglePlacesAutocomplete"
 import uploadServices from "../../services/upload.services"
+import './CreateStylistForm.css'
 
 const CreateStylistForm = ({ setAccessModal }) => {
 
@@ -93,6 +94,13 @@ const CreateStylistForm = ({ setAccessModal }) => {
             })
     }
 
+    const handleGalleryImages = index => {
+        const imagesCopy = [...userData.gallery]
+        imagesCopy.splice(index, 1)
+
+        setUserData({ ...userData, gallery: imagesCopy })
+    }
+
     const handleStyleCheckboxChange = (e) => {
         const { value, checked } = e.target
         let stylesCopy = [...userData.styles]
@@ -139,47 +147,88 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
     return (
         <div className="CreateStylistForm">
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control required type="string" value={userData.userName} name="userName" onChange={handleInputChange} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Avatar</Form.Label>
-                    <Form.Control required type="file" name="avatar" onChange={handleFileUpload} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={userData.email} name="email" onChange={handleInputChange} required />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" required value={userData.password} name="password" onChange={handleInputChange} />
-                    <Form.Text className="text-muted">Password must be at least 6 characters.</Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Phone</Form.Label>
-                    <Form.Control type="string" value={userData.phone} name="phone" onChange={handleInputChange} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Adress</Form.Label>
-                    <NewItemForm required setUserData={setUserData} />
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Previous work</Form.Label>
-                    <Form.Control type="file" required name='gallery' onChange={handleImagesUpload} multiple />
-                </Form.Group>
-
+            <Form className="form" onSubmit={handleFormSubmit}>
                 <Row>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Select the styles you work with</Form.Label>
-                        <Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Avatar</Form.Label>
+                            <Form.Control className="mb-3" required type="file" name="avatar" onChange={handleFileUpload} />
+                            {userData.avatar.length > 0 &&
+                                <img className='avatarImage' src={userData.avatar} alt="user avatar" />}
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Previous work</Form.Label>
+                            <Form.Control className="mb-3" type="file" required name='gallery' onChange={handleImagesUpload} multiple />
+                            <div className="galleryPreview">
+                                {
+                                    userData.gallery.map((e, index) => {
+                                        return (
+                                            <div className="imagesContainer" key={e}>
+                                                <img className="galleryImage mb-2" onClick={() => handleGalleryImages(index)} src={e} />
+                                                <img
+                                                    className="deleteIcon"
+                                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png"
+                                                    alt="deleteIcon" />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>User Name</Form.Label>
+                            <Form.Control required type="string" value={userData.userName} name="userName" onChange={handleInputChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" value={userData.email} name="email" onChange={handleInputChange} required />
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" required value={userData.password} name="password" onChange={handleInputChange} />
+                            <Form.Text className="text-muted">Password must be at least 6 characters.</Form.Text>
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Phone</Form.Label>
+                            <Form.Control type="string" value={userData.phone} name="phone" onChange={handleInputChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Adress</Form.Label>
+                            <NewItemForm required setUserData={setUserData} />
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-5" controlId="comments">
+                            <Form.Label>About me</Form.Label>
+                            <Form.Control
+                                style={{ height: '100px' }}
+                                as="textarea"
+                                rows={3}
+                                required
+                                onChange={handleInputChange}
+                                value={userData.aboutMe}
+                                name="aboutMe"
+                                type="text"
+                            />
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Select the styles you work with</Form.Label>
+                            <br />
+
                             {isLoading ?
                                 <option>Loading options</option>
 
@@ -201,17 +250,12 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
                                 })
                             }
-
-
-                        </Col>
-                    </Form.Group>
-
-                </Row>
-
-                <Row>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Choose your services</Form.Label>
-                        <Col>
+                        </Form.Group>
+                    </Col>
+                    <Col md={{ span: 6 }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Choose your services</Form.Label>
+                            <br />
                             {isLoading ?
                                 <option>Loading options</option>
 
@@ -234,28 +278,18 @@ const CreateStylistForm = ({ setAccessModal }) => {
                                 })
                             }
 
-                        </Col>
-                    </Form.Group>
+
+                        </Form.Group>
+                    </Col>
+                    <div className="submitButtonContainer">
+                        <Button className='submitButton' size="sm" variant="dark" type="submit" disabled={loadingImage} >
+                            {loadingImage ? 'Loading Image...' : 'Sign Up'}
+                        </Button>
+                    </div>
 
                 </Row>
 
-                <Form.Group className="mb-5" controlId="comments">
-                    <Form.Label>About me</Form.Label>
-                    <Form.Control
-                        style={{ height: '100px' }}
-                        as="textarea"
-                        rows={3}
-                        required
-                        onChange={handleInputChange}
-                        value={userData.aboutMe}
-                        name="aboutMe"
-                        type="text"
-                    />
-                </Form.Group>
 
-                <Button variant="dark" type="submit" disabled={loadingImage} >
-                    {loadingImage ? 'Loading Image...' : 'Sign Up'}
-                </Button>
 
             </Form>
         </div >

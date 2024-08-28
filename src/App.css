@@ -13,3 +13,11 @@ a:hover {
 ::marker {
     font-size: 0;
 }
+
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.086);
+}
+
+.form {
+    background-color: rgba(65, 65, 65, 0);
+}

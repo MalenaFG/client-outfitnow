@@ -63,22 +63,22 @@ const ServiceDetailsPage = () => {
                     </section>
                     <Container>
                         {(loggedUser && loggedUser.role === 'ADMIN') &&
-                            <div>
+                            <div className="iconsContainer">
                                 <img
-                                    className="icons me-3"
+                                    className="icon me-3"
                                     onClick={showAccessModal}
-                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
+                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724839563/edit_blanco_glb23x.svg"
                                     style={{ cursor: 'pointer' }}
                                     alt="edit icon" />
                                 <img
-                                    className="icons"
+                                    className="icon"
                                     onClick={deleteService}
-                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png"
+                                    src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724839563/delete_blanco_bacvtw.svg"
                                     style={{ cursor: 'pointer' }}
                                     alt="delete icon" />
                             </div>
                         }
-                        <Modal className='accessModal' size="xl" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
+                        <Modal size="xl" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
 
                             <Modal.Body className='modalBodyContainer flex-column' >
                                 <EditServiceForm setAccessModal={setAccessModal} updateServiceData={updateServiceData} />
