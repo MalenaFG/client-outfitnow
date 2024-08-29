@@ -1,8 +1,6 @@
 .ServicesListPage {
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
     align-items: center;
     position: relative;
     padding: 0;
@@ -12,10 +10,12 @@
 .ServicesListPage .slogan {
     color: white;
     text-align: center;
-    text-shadow: 0 8px 16px rgb(80, 80, 80);
+    text-shadow: 0 8px 16px rgb(113, 113, 113);
 }
 
 .ServicesListPage .description {
     text-align: center;
     color: white;
+    font-size: larger;
+    text-align: start;
 }

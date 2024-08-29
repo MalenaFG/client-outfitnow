@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import ServiceFilter from "../../components/ServiceFilter/ServiceFilter"
 import ServicesSlider from "../../components/ServicesSlider/ServicesSlider"
 import './ServicesListPage.css'
-import { Container, Row } from "react-bootstrap"
-import StylistPreviousWorks from "../../components/StylistPreviousWorks/StylistPreviousWorks"
+import { Container, Image, Row } from "react-bootstrap"
 import userServices from "../../services/user.services"
 import Loader from "../../components/Loader/Loader"
 
@@ -13,7 +12,7 @@ const ServicesListPage = () => {
     const [stylistsData, setStylistsData] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => loadstylistData(), [])
+    useEffect(() => loadstylistData, [])
 
     const loadstylistData = () => {
         userServices
@@ -44,13 +43,6 @@ const ServicesListPage = () => {
 
                         <p className="description mb-5">Discover effortless elegance with OutfitNow. Our platform offers a curated selection of style packs tailored to a range of sophisticated events, from elegant dinners to high-profile red carpet appearances. Explore detailed pack options, connect with top-tier stylists, and effortlessly book your ideal service. OutfitNow ensures that you look impeccable and poised for every occasion.
                         </p>
-                    </section>
-
-                    <section>
-                        {/* <h2 className="slogan mb-4">Unveil the city's finest stylists with OutfitNow.</h2> */}
-                        <Row>
-                            {stylistsData.map(stylist => <StylistPreviousWorks {...stylist} />)}
-                        </Row>
                     </section>
                 </Container>
             }

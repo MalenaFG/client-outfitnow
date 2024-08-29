@@ -24,7 +24,7 @@ const EditBookingForm = ({ closeModal, loadBookingsByUser, handleBookingChange, 
 
     return (
         <div className="EditBookingForm">
-            <Form onSubmit={handleFormSubmit} >
+            <Form className="form" onSubmit={handleFormSubmit}  >
                 <Row>
 
                     <Col md={{ span: 6, offset: 0 }}>

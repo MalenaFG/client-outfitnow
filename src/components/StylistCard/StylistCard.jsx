@@ -10,7 +10,7 @@ const StylistCard = ({ userName, avatar, styles, _id: stylistId, selectedStylist
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
-            <Card onClick={() => handleSelectStylist(stylistId)} className='transformCard'>
+            <Card onClick={() => handleSelectStylist(stylistId)} className='transformCard '>
 
                 <div className={`${isSelected ? 'selectedCard' : 'cardContent'}`}>
 
@@ -18,7 +18,7 @@ const StylistCard = ({ userName, avatar, styles, _id: stylistId, selectedStylist
                         <b className='stylistName'>{userName.toUpperCase()}</b>
                     </Card.Title>
 
-                    <Card.Body>
+                    <Card.Body >
                         <div className='avatarImage'>
                             <img src={avatar} />
                         </div>

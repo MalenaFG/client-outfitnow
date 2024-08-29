@@ -25,7 +25,7 @@ const PacksCard = ({ packs, selectedStylist }) => {
             {loggedUser && <h1 className="choosePack mb-5">Choose your pack:</h1>}
             <CardGroup >
 
-                <Card>
+                <Card >
                     <Card.Body>
                         <Card.Title className="mb-4" ><b>{basicPackTitle.toUpperCase()}</b></Card.Title>
                         {

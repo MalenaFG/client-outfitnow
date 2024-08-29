@@ -96,8 +96,7 @@ const BookingsAccordion = () => {
     return (
 
         <div className="BookingsAccordion">
-            <Accordion>
-
+            <Accordion className="accordion">
                 {
                     bookingData.map((elm, idx) => {
 
@@ -193,9 +192,9 @@ const BookingsAccordion = () => {
             </Accordion>
 
             <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingEditModal'>
-                <Modal.Header closeButton className='flex-column'>
+                <Modal.Header className='modalBodyContainer flex-column'>
                     <Modal.Title>Edit Booking Form </Modal.Title>
-                    <Modal.Body className='modalBodyContainer flex-column mb-3'>
+                    <Modal.Body className='flex-column mb-3'>
                         <EditBookingForm
                             closeModal={handleCloseModal}
                             loadBookingsByUser={loadBookingsByUser}

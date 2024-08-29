@@ -14,10 +14,14 @@ a:hover {
     font-size: 0;
 }
 
-.modal-content {
+.form {
+    background-color: rgba(65, 65, 65, 0);
+}
+
+.modalBodyContainer {
     background-color: rgba(0, 0, 0, 0.086);
 }
 
-.form {
-    background-color: rgba(65, 65, 65, 0);
+.greyCard {
+    background-color: rgba(0, 0, 0, 0.086);
 }

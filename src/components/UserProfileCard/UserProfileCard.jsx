@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button, Card, CardText, Col, Row } from "react-bootstrap"
+import { Card, Col, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import userServices from "../../services/user.services"
 import './UserProfileCard.css'
@@ -35,14 +35,12 @@ const UserProfileCard = () => {
                         <div className="cardUserContainer">
                             <Row>
                                 <Col className="d-flex">
-                                    <Card.Img src={userData.avatar} />
-                                    <CardText className="ms-3">
-                                        <div>
-                                            <h4>{userData.userName}</h4>
-                                            <p>{userData.email} </p>
-                                            <p>{userData.phone}</p>
-                                        </div>
-                                    </CardText>
+                                    <Card.Img src={userData.avatar} className="me-3" />
+                                    <div>
+                                        <h4>{userData.userName}</h4>
+                                        <p>{userData.email} </p>
+                                        <p>{userData.phone}</p>
+                                    </div>
                                 </Col>
                             </Row>
                             <Row>

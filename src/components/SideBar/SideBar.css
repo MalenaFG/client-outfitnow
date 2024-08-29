@@ -52,6 +52,7 @@
     background-color: rgba(0, 0, 0, 0.086);
 }
 
-.modalBodyContainer {
-    background-color: rgba(0, 0, 0, 0.086);
+.logout {
+    position: absolute;
+    left: 43%;
 }

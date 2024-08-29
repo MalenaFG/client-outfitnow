@@ -70,7 +70,7 @@ const SideBar = () => {
                                     <div className='userAdnLogout'>
 
                                         <h5>{`${loggedUser.userName}`}</h5>
-                                        <h6 onClick={logoutUser}>Logout</h6>
+                                        <h6 className='logout' onClick={logoutUser}>Logout</h6>
 
                                     </div>
 
