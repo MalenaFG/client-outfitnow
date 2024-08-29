@@ -1,15 +1,15 @@
-.StylistPreviousWork {
+.StylistPreviousWorks {
     position: relative;
     height: 450px;
 }
 
-/* .StylistPreviousWork .userName {
+/* .StylistPreviousWorks .userName {
     color: white;
     position: absolute;
     top: 90%
 } */
 
-.StylistPreviousWork .avatar {
+.StylistPreviousWorks .avatar {
     height: 35%;
     width: 25%;
     object-fit: cover;
@@ -20,7 +20,7 @@
 
 }
 
-.StylistPreviousWork .previousWork {
+.StylistPreviousWorks .previousWork {
     height: 100%;
     width: 55%;
     object-fit: cover;

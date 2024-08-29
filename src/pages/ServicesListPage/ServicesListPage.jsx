@@ -3,7 +3,7 @@ import ServiceFilter from "../../components/ServiceFilter/ServiceFilter"
 import ServicesSlider from "../../components/ServicesSlider/ServicesSlider"
 import './ServicesListPage.css'
 import { Container, Row } from "react-bootstrap"
-import StylistPreviousWork from "../../components/StylistPreviousWork/StylistPreviousWork"
+import StylistPreviousWorks from "../../components/StylistPreviousWorks/StylistPreviousWorks"
 import userServices from "../../services/user.services"
 import Loader from "../../components/Loader/Loader"
 
@@ -49,7 +49,7 @@ const ServicesListPage = () => {
                     <section>
                         {/* <h2 className="slogan mb-4">Unveil the city's finest stylists with OutfitNow.</h2> */}
                         <Row>
-                            {stylistsData.map(stylist => <StylistPreviousWork {...stylist} />)}
+                            {stylistsData.map(stylist => <StylistPreviousWorks {...stylist} />)}
                         </Row>
                     </section>
                 </Container>
