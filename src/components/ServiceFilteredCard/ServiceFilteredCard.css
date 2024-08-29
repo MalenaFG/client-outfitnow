@@ -1,0 +1,26 @@
+.ServiceFilteredCard {
+    max-width: 200px;
+}
+
+.ServiceFilteredCard .cardService {
+    width: 200px;
+    margin: 10px;
+    height: 350px;
+}
+
+.ServiceFilteredCard:hover {
+
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgb(224, 228, 228);
+
+}
+
+.cardServiceImg {
+    height: 280px;
+    object-fit: cover;
+    overflow: hidden
+}
+
+.cardServiceTitle {
+    text-align: center
+}

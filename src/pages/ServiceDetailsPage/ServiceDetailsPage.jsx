@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
 import StylistsList from "../../components/StylistListByService/StylistsListByService"
-import { Button, Col, Container, Modal, Row, Spinner } from "react-bootstrap"
+import { Container, Modal, Spinner } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import './ServiceDetailsPage.css'
 import EditServiceForm from "../../components/EditServiceForm/EditServiceForm"

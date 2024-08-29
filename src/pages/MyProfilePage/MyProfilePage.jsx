@@ -10,10 +10,6 @@ const MyProfilePage = () => {
 
     const { loggedUser } = useContext(AuthContext)
 
-    // TODO: modificar el estilo y estructura de la userCard y del create form services
-    // TODO: hay que dejar los formularios mas o menos iguales en cuanto a estilo
-    // TODO: filtrar por estilos en la stylistListpage
-
     return (
         <div className="MyProfilePage">
             <Container>

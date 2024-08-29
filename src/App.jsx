@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import AppRoutes from './routes/appRoutes'
+import AppRoutes from './routes/AppRoutes'
 import SideBar from './components/SideBar/SideBar'
 import Logo from './components/Logo/Logo'
 

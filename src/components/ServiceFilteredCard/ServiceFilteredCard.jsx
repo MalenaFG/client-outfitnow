@@ -1,20 +1,20 @@
 import { Card, Col, Row } from "react-bootstrap"
-
+import './ServiceFilteredCard.css'
 
 const ServiceFilteredCard = ({ title, coverImage }) => {
 
     return (
-        <div className="ServiceCard">
-            <Card bg="dark" data-bs-theme='dark' style={{ width: '200px', margin: '10px', height: '350px' }}>
+        <div className="ServiceFilteredCard">
+            <Card bg="dark" data-bs-theme='dark' className="cardService" >
                 <Row >
                     <Col>
-                        <Card.Img style={{ height: '280px', objectFit: 'cover', overflow: 'hidden' }} variant="top" src={coverImage} />
+                        <Card.Img className="cardServiceImg" variant="top" src={coverImage} />
                     </Col>
                 </Row>
                 <Row >
                     <Col>
                         <Card.Body>
-                            <Card.Title style={{ textAlign: 'center' }}>{title}</Card.Title>
+                            <Card.Title className="cardServiceTitle">{title}</Card.Title>
                         </Card.Body>
                     </Col>
                 </Row>

@@ -7,7 +7,6 @@ import './BookingsAccordion.css'
 import { AuthContext } from "../../contexts/auth.context"
 import UserMap from "../UserMap/UserMap"
 
-// TODO: GER
 const BookingsAccordion = () => {
 
     const { userId } = useParams()
@@ -31,9 +30,7 @@ const BookingsAccordion = () => {
 
         bookingsServices
             .getBookingsByUser(userId)
-            .then(({ data }) => {
-                setBookingData(data)
-            })
+            .then(({ data }) => setBookingData(data))
             .catch(err => console.log(err))
     }
 
@@ -41,11 +38,8 @@ const BookingsAccordion = () => {
 
         bookingsServices
             .getBookingsByStylist(userId)
-            .then(({ data }) => {
-                setBookingData(data)
-            })
+            .then(({ data }) => setBookingData(data))
             .catch(err => console.log(err))
-
     }
 
     const deleteBooking = (bookingId) => {
@@ -69,7 +63,6 @@ const BookingsAccordion = () => {
             }
             return elm
         })
-
         setBookingData(bookingDataCopy)
     }
 
@@ -149,18 +142,19 @@ const BookingsAccordion = () => {
                                                         <h6>Stylist</h6>
                                                         <p>{elm.stylist.userName}</p>
                                                     </div>
-
                                                 )
                                             }
                                         </Col>
                                         <Col className="d-flex text-end">
-                                            {loggedUser.role === "USER" &&
+                                            {
+                                                loggedUser.role === "USER" &&
                                                 < img
                                                     src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/edit_w7jswo.png"
                                                     onClick={() => handleShowModal(elm._id)}
                                                     style={{ cursor: 'pointer' }}
                                                     alt="editIcon"
-                                                />}
+                                                />
+                                            }
 
                                             <img className="ms-3" onClick={() => deleteBooking(elm._id)} src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724515088/eliminar_kt0l8l.png" alt="deleteIcon" />
 

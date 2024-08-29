@@ -1,0 +1,10 @@
+.DashboardPage {
+    margin-top: 80px;
+}
+
+.DashboardPageTitle {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: 0 8px 16px rgb(58, 55, 55);
+    margin-bottom: 20px;
+}
