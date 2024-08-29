@@ -30,6 +30,7 @@ const AboutUsPage = () => {
                         </Col>
                         <Col md={{ span: 6 }} className="d-flex flex-column align-items-center">
                             <h5>Marta Merchán</h5>
+
                             <div className="social-icons d-flex">
                                 <a href="https://github.com/martamerchan16" target="_blank" rel="noopener noreferrer">
                                     <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724951738/pngwing.com_1_mevskk.png" alt="" />
