@@ -1,19 +1,14 @@
 import './StylistCardWithoutButton.css'
 import { Card, Col, Row } from "react-bootstrap"
-import { AuthContext } from '../../contexts/auth.context'
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-const StylistCardWithoutButton = ({ userName, avatar, styles, _id: stylistId, selectedStylist, setSelectedStylist }) => {
-
-    const handleSelectStylist = (stylistId) => {
-        setSelectedStylist(stylistId)
-    }
+const StylistCardWithoutButton = ({ userName, avatar, styles, _id: stylistId, selectedStylist }) => {
 
     const isSelected = selectedStylist === stylistId
 
     return (
         <Col md={{ span: 3 }} className="StylistCardWithoutButton">
+
             <Link to={`/stylists/${stylistId}`}>
                 <Card className='transformCard'>
                     <div className={`${isSelected ? 'selectedCard' : 'cardContent'}`}>
@@ -28,19 +23,15 @@ const StylistCardWithoutButton = ({ userName, avatar, styles, _id: stylistId, se
                             </div>
 
                             <div className="list-group-flush">
-
                                 <b> Favorite styles:</b>
+
                                 <div className='favoriteStyles '>
                                     {
-                                        styles.map(e => {
-                                            const { style } = e
-                                            return ` ${style}`
-                                        }).toString()
+                                        styles.map(e => ` ${e.style}`).toString()
                                     }
                                 </div>
 
                             </div>
-
                         </Card.Body >
                     </div >
                 </Card >

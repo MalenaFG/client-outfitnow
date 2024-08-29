@@ -18,6 +18,7 @@ const AppRoutes = () => {
                 <Route path={'/services/:serviceId'} element={<ServiceDetailsPage />} />
                 <Route path={'/stylists'} element={<StylistsListPage />} />
                 <Route path={'/stylists/:stylistId'} element={<StylistDetailsPage />} />
+                {/* TODO:REVISAR LO QUE QUEDA */}
                 <Route path={'/aboutus'} element={<AboutUsPage />} />
                 <Route path={'/users'} element={<UsersListPage />} />
                 <Route path={'*'} element={<h1>404</h1>} />

@@ -10,7 +10,6 @@ const UserProfileCard = () => {
     const { userId } = useParams()
 
     const [userData, setUserData] = useState()
-    const [isLoading, setIsLoading] = useState(true)
 
     const loadUserById = () => {
 
@@ -18,7 +17,6 @@ const UserProfileCard = () => {
             .getOneUser(userId)
             .then(({ data }) => {
                 setUserData(data)
-                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
@@ -53,18 +51,16 @@ const UserProfileCard = () => {
                                         <Row>
 
                                             <Col className="d-flex">
-                                                {userData.services.length !== 0 &&
-                                                    (<div>
+                                                {
+                                                    userData.services.length !== 0 &&
+                                                    <div>
                                                         <h5>Services:</h5>
                                                         <ul>
-                                                            {userData.services.map(elm => {
-                                                                return (
-                                                                    <li key={elm._id}>{elm.title}</li>
-                                                                )
-                                                            })
+                                                            {
+                                                                userData.services.map(elm => <li key={elm._id}>{elm.title}</li>)
                                                             }
                                                         </ul>
-                                                    </div>)
+                                                    </div>
                                                 }
 
                                                 {userData.styles.length !== 0 &&
@@ -82,7 +78,8 @@ const UserProfileCard = () => {
                                             </Col>
                                         </Row>
 
-                                        {userData.aboutMe &&
+                                        {
+                                            userData.aboutMe &&
                                             <div>
                                                 <h5>About me:</h5>
                                                 <p>

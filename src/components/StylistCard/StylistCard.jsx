@@ -1,20 +1,17 @@
 import './StylistCard.css'
-import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap"
-import { AuthContext } from '../../contexts/auth.context'
-import { useContext } from 'react'
+import { Card, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
-const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selectedStylist, setSelectedStylist }) => {
+const StylistCard = ({ userName, avatar, styles, _id: stylistId, selectedStylist, setSelectedStylist }) => {
 
-    const handleSelectStylist = (stylistId) => {
-        setSelectedStylist(stylistId)
-    }
+    const handleSelectStylist = stylistId => setSelectedStylist(stylistId)
 
     const isSelected = selectedStylist === stylistId
 
     return (
         <Col md={{ span: 3 }} className="StylistCard">
             <Card onClick={() => handleSelectStylist(stylistId)} className='transformCard'>
+
                 <div className={`${isSelected ? 'selectedCard' : 'cardContent'}`}>
 
                     <Card.Title className=' mb-0 '>
@@ -31,17 +28,18 @@ const StylistCard = ({ userName, avatar, styles, services, _id: stylistId, selec
                         </div>
 
                         <div className="list-group-flush">
-
                             <b> Favorite styles:</b>
                             <div className='favoriteStyles '>
                                 {
                                     styles.map(e => {
+
                                         const { style } = e
+
                                         return ` ${style}`
+
                                     }).toString()
                                 }
                             </div>
-
                         </div>
                     </Card.Body >
                 </div >

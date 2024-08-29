@@ -7,7 +7,6 @@ import './BookingsAccordion.css'
 import { AuthContext } from "../../contexts/auth.context"
 import UserMap from "../UserMap/UserMap"
 
-// TODO: GER
 const BookingsAccordion = () => {
 
     const { userId } = useParams()
@@ -112,6 +111,7 @@ const BookingsAccordion = () => {
                             <Accordion.Item eventKey={idx + 1} key={elm._id}>
                                 <Accordion.Header>{idx + 1}º Service - {elm.service.title}</Accordion.Header>
                                 <Accordion.Body className="accordionBody">
+
                                     <Row>
                                         <Col md={{ span: 4 }} >
                                             <h6>Measurements:</h6>
@@ -171,11 +171,7 @@ const BookingsAccordion = () => {
 
                                         <Col>
                                             {
-                                                loggedUser.role === "STYLIST" && (
-
-                                                    <UserMap location={elm.client.location.coordinates} />
-
-                                                )
+                                                loggedUser.role === "STYLIST" && <UserMap location={elm.client.location.coordinates} />
                                             }
                                         </Col>
                                     </Row>
@@ -183,15 +179,13 @@ const BookingsAccordion = () => {
                                     <Row>
                                         <Col>
                                             {
-                                                elm.comment !== "" && (<>
+                                                elm.comment !== "" &&
+                                                <>
                                                     <h6>Comment:</h6>
                                                     <p>{elm.comment}</p>
-                                                </>)
+                                                </>
                                             }
-
-
                                         </Col>
-
                                     </Row>
 
                                 </Accordion.Body>
@@ -202,7 +196,6 @@ const BookingsAccordion = () => {
 
                 }
             </Accordion>
-
 
             <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingEditModal'>
                 <Modal.Header closeButton className='flex-column'>

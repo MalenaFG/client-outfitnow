@@ -13,7 +13,10 @@ const StylistDetailsPage = () => {
 
     const { stylistId } = useParams()
 
+    useEffect(() => loadUserData(), [])
+
     const loadUserData = () => {
+
         userServices
             .getOneStylist(stylistId)
             .then(({ data }) => {
@@ -23,11 +26,7 @@ const StylistDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    useEffect(() => {
-        loadUserData()
-    }, [])
-
-    const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
+    // const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
 
     return (
         <Container className="StylistDetailsPage">
@@ -39,11 +38,11 @@ const StylistDetailsPage = () => {
                         <Row>
                             <Col md={{ span: 4 }} className="stylistInfo">
                                 <div className="sectionTitle">
-                                    <h1>{userName}</h1>
+                                    <h1>{userData.userName}</h1>
                                 </div>
                                 <hr />
-                                <Image className='avatar mb-3' src={avatar} />
-                                <p>{aboutMe}</p>
+                                <Image className='avatar mb-3' src={userData.avatar} />
+                                <p>{userData.aboutMe}</p>
                             </Col>
 
                             <Col md={{ span: 4 }}>
@@ -53,19 +52,19 @@ const StylistDetailsPage = () => {
                                     </div>
                                     <hr />
                                     <Row>
-                                        {services.map(e => {
+                                        {userData.services.map(e => {
                                             return (
                                                 <Col md={{ span: 6 }} key={e._id}>
+
                                                     <h5><u>{e.title}</u></h5>
+
                                                     <ul>
                                                         <li>Basic: {e.packs.basic.price}€</li>
                                                         <li>Premium: {e.packs.premium.price}€</li>
                                                         <li>Glam: {e.packs.glam.price}€</li>
                                                     </ul>
-                                                </Col>
-                                            )
-                                        })
-                                        }
+                                                </Col>)
+                                        })}
                                     </Row>
                                 </section>
                                 <br />
@@ -75,15 +74,16 @@ const StylistDetailsPage = () => {
                                     </div>
                                     <hr />
                                     <div className="sectionTitle">
-                                        {styles.map(e => {
+                                        {userData.styles.map(e => {
+
                                             const { style } = e
-                                            return (
-                                                ` ${style}`
-                                            )
+
+                                            return ` ${style}`
                                         }).toString()
                                         }</div>
                                 </section>
                             </Col>
+
                             <Col>
                                 <div className="stylistInfo carouselGallery">
                                     <StylistImagesCarousel {...userData} />

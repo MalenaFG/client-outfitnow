@@ -17,8 +17,12 @@ class UserServices {
         })
     }
 
-    getUsersByRol(role) {
-        return this.axiosApp.get(`/users/role/${role}`)
+    getUsersByRol(role, max) {
+        return this.axiosApp.get(`/users/role/${role}`, {
+            params: {
+                maxResults: max
+            }
+        })
     }
 
     getOneUser(userId) {

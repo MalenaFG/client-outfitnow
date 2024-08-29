@@ -61,7 +61,7 @@ const CreateBookingForm = ({ packsData, closeModal, selectedStylist }) => {
     return (
         <div className="CreateBookingForm">
 
-            <Form onSubmit={handleFormSubmit} >
+            <Form className='form' onSubmit={handleFormSubmit} >
                 <Row>
 
                     <Col md={{ span: 6, offset: 0 }}>

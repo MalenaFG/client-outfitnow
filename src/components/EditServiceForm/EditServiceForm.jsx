@@ -38,8 +38,8 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
     });
 
     const [isLoading, setIsLoading] = useState(true)
-    const [loadingImage, setLoadingImage] = useState(false)
 
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const { serviceId } = useParams()
 
@@ -59,18 +59,19 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                 setBasicPack(packs.basic)
                 setPremiumPack(packs.premium)
                 setGlamPack(packs.glam)
-
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
     }
 
     const handleInputChange = e => {
+
         const { value, name } = e.target;
         setServiceData({ ...serviceData, [name]: value })
     }
 
-    const handlePackChange = (e, pack, setPack) => {
+    const handlePackChange = (e, setPack) => {
+
         const { name, value, type, checked } = e.target;
         const finalValue = type === "checkbox" ? checked : value;
 
@@ -81,6 +82,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
     }
 
     const handleCoverUpload = e => {
+
         setLoadingImage(true)
 
         const formData = new FormData()
@@ -120,13 +122,16 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
     }
 
     const handleCarouselImages = index => {
+
         const imagesCopy = [...serviceData.images]
+
         imagesCopy.splice(index, 1)
 
         setServiceData({ ...serviceData, images: imagesCopy })
     }
 
     const handleSubmit = e => {
+
         e.preventDefault();
 
         const finalServiceData = {
@@ -136,7 +141,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                 premium: premiumPack,
                 glam: glamPack
             }
-        };
+        }
 
         servicesServices
             .editService(serviceId, finalServiceData)
@@ -144,7 +149,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                 updateServiceData(finalServiceData)
                 setAccessModal(false)
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
     }
 
     return (
@@ -155,7 +160,6 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                 <Form className="form" onSubmit={handleSubmit}>
                     <h2>Edit Service</h2>
                     <Row>
-
                         <Form.Group className="mb-3">
                             <Form.Label>Service title</Form.Label>
                             <Form.Control type="string" value={serviceData.title} name='title' onChange={handleInputChange} />
@@ -169,8 +173,8 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                 <img className="coverImage" src={serviceData.coverImage} />
 
                             </Form.Group>
-
                         </Col>
+
                         <Col>
                             <Form.Group className="mb-3">
                                 <Form.Label>Images for Carousel</Form.Label>
@@ -195,35 +199,32 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                     </Row>
 
                     <Row className="packsImputs">
-
                         <Col>
                             <h5>Basic Pack</h5>
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Price</Form.Label>
-                                        <Form.Control type="number" value={basicPack.price} name='price' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                        <Form.Control type="number" value={basicPack.price} name='price' onChange={e => handlePackChange(e, setBasicPack)} />
                                     </Form.Group>
-
                                 </Col>
 
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Outfits included</Form.Label>
-                                        <Form.Control type="number" value={basicPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                        <Form.Control type="number" value={basicPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, setBasicPack)} />
                                     </Form.Group>
                                 </Col>
-
                             </Row>
 
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Days until deadline</Form.Label>
-                                        <Form.Control type="number" value={basicPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                        <Form.Control type="number" value={basicPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, setBasicPack)} />
                                     </Form.Group>
-
                                 </Col>
+
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Home service</Form.Label>
@@ -231,11 +232,11 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                             type="checkbox"
                                             name='homeService'
                                             checked={basicPack.homeService}
-                                            onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                            onChange={e => handlePackChange(e, setBasicPack)} />
                                     </Form.Group>
-
                                 </Col>
                             </Row>
+
                             <Form.Group className="mb-3">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
@@ -244,7 +245,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                     value={basicPack.description}
                                     name='description'
                                     as='textarea'
-                                    onChange={e => handlePackChange(e, basicPack, setBasicPack)} />
+                                    onChange={e => handlePackChange(e, setBasicPack)} />
                             </Form.Group>
                         </Col>
 
@@ -254,14 +255,14 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Price</Form.Label>
-                                        <Form.Control type="number" value={premiumPack.price} name='price' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                        <Form.Control type="number" value={premiumPack.price} name='price' onChange={e => handlePackChange(e, setPremiumPack)} />
                                     </Form.Group>
                                 </Col>
 
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Outfits included</Form.Label>
-                                        <Form.Control type="number" value={premiumPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                        <Form.Control type="number" value={premiumPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, setPremiumPack)} />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -270,7 +271,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Days until deadline</Form.Label>
-                                        <Form.Control type="number" value={premiumPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                        <Form.Control type="number" value={premiumPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, setPremiumPack)} />
                                     </Form.Group>
                                 </Col>
 
@@ -281,7 +282,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                             type="checkbox"
                                             name='homeService'
                                             checked={premiumPack.homeService}
-                                            onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                            onChange={e => handlePackChange(e, setPremiumPack)} />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -294,23 +295,24 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                     value={premiumPack.description}
                                     name='description'
                                     as='textarea'
-                                    onChange={e => handlePackChange(e, premiumPack, setPremiumPack)} />
+                                    onChange={e => handlePackChange(e, setPremiumPack)} />
                             </Form.Group>
                         </Col>
+
                         <Col>
                             <h5>Glam Pack</h5>
                             <Row>
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Price</Form.Label>
-                                        <Form.Control type="number" value={glamPack.price} name='price' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                        <Form.Control type="number" value={glamPack.price} name='price' onChange={e => handlePackChange(e, setGlamPack)} />
                                     </Form.Group>
                                 </Col>
 
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Outfits included</Form.Label>
-                                        <Form.Control type="number" value={glamPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                        <Form.Control type="number" value={glamPack.outfitsIncluded} name='outfitsIncluded' onChange={e => handlePackChange(e, setGlamPack)} />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -319,7 +321,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                 <Col>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Days until deadline</Form.Label>
-                                        <Form.Control type="number" value={glamPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                        <Form.Control type="number" value={glamPack.minimumNotice} name='minimumNotice' onChange={e => handlePackChange(e, setGlamPack)} />
                                     </Form.Group>
                                 </Col>
 
@@ -330,7 +332,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                             type="checkbox"
                                             name='homeService'
                                             checked={glamPack.homeService}
-                                            onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                            onChange={e => handlePackChange(e, setGlamPack)} />
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -343,14 +345,14 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
                                     value={glamPack.description}
                                     name='description'
                                     as='textarea'
-                                    onChange={e => handlePackChange(e, glamPack, setGlamPack)} />
+                                    onChange={e => handlePackChange(e, setGlamPack)} />
                             </Form.Group>
                         </Col>
-
                     </Row>
 
-                    <Button variant="dark" type="submit">Save</Button>
-
+                    <Button disabled={loadingImage ? true : false} variant="dark" type="submit">
+                        {loadingImage ? 'Loading Images' : 'Save'}
+                    </Button>
                 </Form>}
         </div>
     )

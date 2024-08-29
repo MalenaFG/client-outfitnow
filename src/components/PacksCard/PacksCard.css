@@ -7,3 +7,7 @@
 .packDetailsList button:hover {
     transform: scale(1.05);
 }
+
+.packDetailsList .bookingModal {
+    background-color: rgba(0, 0, 0, 0.086) !important
+}

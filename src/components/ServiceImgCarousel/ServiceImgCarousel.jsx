@@ -17,14 +17,13 @@ const ServiceImgCarousel = ({ images, title }) => {
                 {
                     images.map((elm) => {
                         return (
-
                             <Carousel.Item key={elm}>
                                 <Carousel.Caption>
-                                    <h1>{title}</h1>
+                                    <h1 className='serviceTitle'>{title}</h1>
                                 </Carousel.Caption>
+
                                 <img src={elm} alt="" />
                             </Carousel.Item>
-
                         )
                     })
                 }

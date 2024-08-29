@@ -39,10 +39,7 @@ const EditBookingForm = ({ closeModal, loadBookingsByUser, handleBookingChange, 
 
                                 <option>Select your size</option>
                                 {
-                                    OPTIONS_SELECT_SIZES.map(size => (
-                                        <option key={size} value={size}>{size}</option>
-
-                                    ))
+                                    OPTIONS_SELECT_SIZES.map(size => <option key={size} value={size}>{size}</option>)
                                 }
                             </Form.Select>
                         </Form.Group>
@@ -56,10 +53,7 @@ const EditBookingForm = ({ closeModal, loadBookingsByUser, handleBookingChange, 
                                 onChange={e => handleMeasurementsChange(e, bookingData._id)} >
                                 <option>Select your size</option>
                                 {
-                                    OPTIONS_SELECT_SIZES.map(size => (
-                                        <option key={size} value={size}>{size}</option>
-
-                                    ))
+                                    OPTIONS_SELECT_SIZES.map(size => <option key={size} value={size}>{size}</option>)
                                 }
                             </Form.Select>
                         </Form.Group>

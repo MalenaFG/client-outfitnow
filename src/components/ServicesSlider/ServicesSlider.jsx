@@ -27,9 +27,7 @@ const ServicesSlider = ({ setShowSlider }) => {
     }
 
     return (
-
         <div className="ServicesSlider">
-
             <Carousel
                 infinite={true}
                 keyBoardControl={true}
@@ -37,19 +35,18 @@ const ServicesSlider = ({ setShowSlider }) => {
                 autoPlaySpeed={2000}
                 responsive={RESPONSIVE_SIZES}
                 containerClass="carousel-container"
+                removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {
                     services.map(elm => (
-                        <Link to={`/services/${elm._id}`} key={elm}>
-                            <div key={elm._id} className='mb-5'>
+                        <div className='mb-5'>
+                            <Link to={`/services/${elm._id}`} key={elm}>
                                 <ServiceCard {...elm} />
-
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     ))
                 }
             </Carousel>
-
         </div>
     )
 }

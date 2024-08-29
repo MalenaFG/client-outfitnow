@@ -15,7 +15,6 @@ const ServiceFilter = ({ setShowSlider }) => {
         setSearchInput(value)
 
         value === ''
-
             ? (setShowSlider(true),
                 setServicesFiltered([]))
 
@@ -27,12 +26,10 @@ const ServiceFilter = ({ setShowSlider }) => {
                 })
 
                 .catch(err => console.log(err))
-
     }
 
     return (
         <div className="ServiceFilterWrapper">
-
             <Form className="ServiceFilterForm d-flex">
                 <Form.Control
                     type="search"
@@ -46,9 +43,9 @@ const ServiceFilter = ({ setShowSlider }) => {
             {
                 searchInput != '' && <ServicesFilteredList servicesFiltered={servicesFiltered} />
             }
-
         </div>
     )
 }
+
 export default ServiceFilter
 

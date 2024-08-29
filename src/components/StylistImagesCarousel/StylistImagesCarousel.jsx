@@ -12,19 +12,15 @@ const StylistImagesCarousel = ({ gallery }) => {
     return (
         <div className="carouselContainer">
             <Carousel className='StylistImagesCarousel' activeIndex={index} onSelect={handleSelect} interval={2000}>
-
                 {
                     gallery.map((elm) => {
                         return (
-
                             <Carousel.Item>
-                                <img className='imagesCarousel' src={elm} alt="" />
+                                <img className='imagesCarousel' src={elm} alt="Previous work image" />
                             </Carousel.Item>
-
                         )
                     })
                 }
-
             </Carousel>
         </div>
     )

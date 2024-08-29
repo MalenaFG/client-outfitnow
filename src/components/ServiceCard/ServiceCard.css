@@ -3,6 +3,7 @@
     overflow: hidden;
     transition: transform 0.2s;
     border: none;
+    width: 350px;
 }
 
 .ServiceCard:hover {

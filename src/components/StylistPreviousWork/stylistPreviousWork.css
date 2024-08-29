@@ -1,0 +1,32 @@
+.StylistPreviousWork {
+    position: relative;
+    height: 450px;
+}
+
+/* .StylistPreviousWork .userName {
+    color: white;
+    position: absolute;
+    top: 90%
+} */
+
+.StylistPreviousWork .avatar {
+    height: 35%;
+    width: 25%;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    top: 65%;
+    left: 75%;
+
+}
+
+.StylistPreviousWork .previousWork {
+    height: 100%;
+    width: 55%;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    left: 10%;
+    box-shadow: 0 8px 16px rgb(218, 218, 218);
+    ;
+}

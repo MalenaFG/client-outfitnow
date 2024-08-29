@@ -6,6 +6,8 @@ import servicesServices from "../../services/services.services"
 import uploadServices from "../../services/upload.services"
 import { useNavigate } from "react-router-dom"
 
+// TODO: ELIMINAR GLAMPACK
+
 const CreateServiceForm = () => {
 
     const [serviceData, setServiceData] = useState({
@@ -236,10 +238,10 @@ const CreateServiceForm = () => {
             </Row>
 
             <Button variant="dark" type="submit" disabled={loadingImage}>
-                {loadingImage ?
-                    'Loading image...'
-                    :
-                    'Upload new service'}</Button>
+                {
+                    loadingImage ? 'Loading image...' : 'Upload new service'
+                }
+            </Button>
 
         </Form>
 

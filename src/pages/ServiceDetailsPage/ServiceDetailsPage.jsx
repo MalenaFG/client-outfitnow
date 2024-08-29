@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import PacksCard from "../../components/PacksCard/PacksCard"
 import StylistsList from "../../components/StylistListByService/StylistsListByService"
-import { Button, Col, Container, Modal, Row, Spinner } from "react-bootstrap"
+import { Container, Modal, Spinner } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import './ServiceDetailsPage.css'
 import EditServiceForm from "../../components/EditServiceForm/EditServiceForm"
@@ -13,7 +13,7 @@ const ServiceDetailsPage = () => {
 
     const { serviceId } = useParams()
 
-    const { loggedUser, logoutUser } = useContext(AuthContext)
+    const { loggedUser } = useContext(AuthContext)
 
     const [service, setService] = useState()
     const [isLoading, setIsLoading] = useState(true)
@@ -22,15 +22,14 @@ const ServiceDetailsPage = () => {
 
     const navigate = useNavigate()
 
-    const showAccessModal = () => {
-        setAccessModal({ show: true })
-    }
+    useEffect(() => loadServiceDetails(), [])
 
-    useEffect(() => {
-        loadServiceDetails()
-    }, [])
+    const showAccessModal = () => setAccessModal({ show: true })
+
+    const updateServiceData = updatedService => setService(updatedService)
 
     const loadServiceDetails = () => {
+
         servicesServices
             .getOneService(serviceId)
             .then(({ data }) => {
@@ -40,12 +39,9 @@ const ServiceDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const updateServiceData = (updatedService) => {
-        setService(updatedService)
-    }
-
     const deleteService = () => {
-        if (window.confirm('Are you sure you want to delete this service? This action cannot be undone.')) {
+
+        if (confirm('Are you sure you want to delete this service? This action cannot be undone.')) {
             servicesServices
                 .deleteService(serviceId)
                 .then(() => navigate('/services'))
@@ -55,7 +51,6 @@ const ServiceDetailsPage = () => {
 
     return (
         <>
-
             {isLoading
                 ? <Spinner />
                 : <div className="ServiceDetailsPage">
@@ -63,6 +58,7 @@ const ServiceDetailsPage = () => {
                     <section className="mb-5">
                         <ServiceImgCarousel {...service} />
                     </section>
+
                     <Container>
                         {(loggedUser && loggedUser.role === 'ADMIN') &&
                             <div className="iconsContainer">
@@ -72,6 +68,7 @@ const ServiceDetailsPage = () => {
                                     src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724839563/edit_blanco_glb23x.svg"
                                     style={{ cursor: 'pointer' }}
                                     alt="edit icon" />
+
                                 <img
                                     className="icon"
                                     onClick={deleteService}
@@ -80,27 +77,22 @@ const ServiceDetailsPage = () => {
                                     alt="delete icon" />
                             </div>
                         }
-                        <Modal size="xl" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
 
+                        <Modal size="xl" show={accessModal.show} onHide={() => setAccessModal({ show: false })}>
                             <Modal.Body className='modalBodyContainer flex-column' >
                                 <EditServiceForm setAccessModal={setAccessModal} updateServiceData={updateServiceData} />
                             </Modal.Body>
-
                         </Modal>
 
                         <section className="mb-5">
-                            <StylistsList
-                                selectedStylist={selectedStylist}
-                                setSelectedStylist={setSelectedStylist} />
+                            <StylistsList selectedStylist={selectedStylist} setSelectedStylist={setSelectedStylist} />
                         </section>
 
                         <section className="mb-5">
                             <PacksCard {...service} selectedStylist={selectedStylist} />
                         </section>
                     </Container>
-
                 </div>
-
             }
         </>
     )

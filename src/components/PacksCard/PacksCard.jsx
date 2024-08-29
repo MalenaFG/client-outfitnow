@@ -6,15 +6,14 @@ import { AuthContext } from '../../contexts/auth.context'
 
 const PacksCard = ({ packs, selectedStylist }) => {
 
-    const [basicPackTitle, premiumPackTitle, glamPackTitle] = Object.keys(packs)
-
-
-    const { basic, premium, glam } = packs
-
-    const { loggedUser, logoutUser } = useContext(AuthContext)
-
     const [showModal, setShowModal] = useState(false)
     const [packsData, setPacksData] = useState(null)
+
+    const { loggedUser } = useContext(AuthContext)
+
+    const [basicPackTitle, premiumPackTitle, glamPackTitle] = Object.keys(packs)
+
+    const { basic, premium, glam } = packs
 
     const handleShowModal = (pack) => {
         setPacksData(pack)
@@ -25,28 +24,24 @@ const PacksCard = ({ packs, selectedStylist }) => {
         <div className="PackCard">
             {loggedUser && <h1 className="choosePack mb-5">Choose your pack:</h1>}
             <CardGroup >
+
                 <Card>
                     <Card.Body>
                         <Card.Title className="mb-4" ><b>{basicPackTitle.toUpperCase()}</b></Card.Title>
                         {
-                            loggedUser && <Button variant="dark" onClick={() => { handleShowModal(basicPackTitle) }}>
-                                Make your reservation
+                            loggedUser &&
+                            <Button disabled={selectedStylist ? false : true} variant="dark" onClick={() => { handleShowModal(basicPackTitle) }}>
+                                {selectedStylist ? 'Make your reservation' : 'Choose a stylist'}
                             </Button>
                         }
-                        {/* TODO: si no has elegido un estilista no debería poder hacer la reserva */}
                         <hr />
                         <ul className="packDetailsList" >
                             <li>{basic.price}€</li>
-                            <li>Outfits included: {basic.outfitsIncluded} </li>
-                            {basic.homeService ?
-                                <li>Provides stylist home service</li>
-                                :
-                                <li>Delivery service</li>}
+                            <li>Outfits included: {basic.outfitsIncluded}</li>
+                            {basic.homeService ? <li>Provides at-home stylist service</li> : <li>Shipping service included</li>}
                         </ul>
                         <hr />
-                        <Card.Text>
-                            {basic.description}
-                        </Card.Text>
+                        <Card.Text> {basic.description} </Card.Text>
                     </Card.Body>
                 </Card>
 
@@ -54,22 +49,19 @@ const PacksCard = ({ packs, selectedStylist }) => {
                     <Card.Body>
                         <Card.Title className="mb-4"><b>{premiumPackTitle.toUpperCase()}</b></Card.Title>
                         {
-                            loggedUser && <Button variant="dark" onClick={() => { handleShowModal(premiumPackTitle) }} >
-                                Make your reservation
-                            </Button>}
+                            loggedUser &&
+                            <Button disabled={selectedStylist ? false : true} variant="dark" onClick={() => { handleShowModal(premiumPackTitle) }} >
+                                {selectedStylist ? 'Make your reservation' : 'Choose a stylist'}
+                            </Button>
+                        }
                         <hr />
                         <ul className="packDetailsList">
                             <li>{premium.price}€</li>
                             <li>Outfits included: {premium.outfitsIncluded} </li>
-                            {premium.homeService ?
-                                <li>Provides stylist home service</li>
-                                :
-                                <li>Delivery service</li>}
+                            {premium.homeService ? <li>Provides at-home stylist service</li> : <li>Shipping service included</li>}
                         </ul>
                         <hr />
-                        <Card.Text>
-                            {premium.description}
-                        </Card.Text>
+                        <Card.Text> {premium.description} </Card.Text>
                     </Card.Body>
                 </Card>
 
@@ -77,37 +69,35 @@ const PacksCard = ({ packs, selectedStylist }) => {
                     <Card.Body>
                         <Card.Title className="mb-4"><b>{glamPackTitle.toUpperCase()}</b></Card.Title>
                         {
-                            loggedUser && <Button variant="dark" onClick={() => { handleShowModal(glamPackTitle) }}>
-                                Make your reservation
-                            </Button>}
-
+                            loggedUser &&
+                            <Button disabled={selectedStylist ? false : true} variant="dark" onClick={() => { handleShowModal(glamPackTitle) }}>
+                                {selectedStylist ? 'Make your reservation' : 'Choose a stylist'}
+                            </Button>
+                        }
                         <hr />
                         <ul className="packDetailsList" >
                             <li>{glam.price}€</li>
                             <li>Outfits included: {glam.outfitsIncluded} </li>
-                            {glam.homeService ?
-                                <li>Provides stylist home service</li>
-                                :
-                                <li>Delivery service</li>}
+                            {glam.homeService ? <li>Provides at-home stylist service</li> : <li>Shipping service included</li>}
                         </ul>
                         <hr />
-                        <Card.Text>
-                            {glam.description}
-                        </Card.Text>
+                        <Card.Text> {glam.description} </Card.Text>
                     </Card.Body>
                 </Card>
 
-                <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className='bookingModal'>
-                    <Modal.Header closeButton className='flex-column'>
-                        <Modal.Title> Booking Form </Modal.Title>
-                        <Modal.Body className='modalBodyContainer flex-column mb-3'>
-                            <CreateBookingForm closeModal={setShowModal} packsData={packsData} selectedStylist={selectedStylist} />
-                        </Modal.Body>
-                    </Modal.Header>
-                </Modal>
-
             </CardGroup>
 
+            <Modal size="lg" show={showModal} onHide={() => setShowModal(false)} className="accesModal">
+                <Modal.Header className='flex-column modalBodyContainer'>
+
+                    <Modal.Title> Booking Form </Modal.Title>
+
+                    <Modal.Body className=' flex-column mb-3'>
+                        <CreateBookingForm closeModal={setShowModal} packsData={packsData} selectedStylist={selectedStylist} />
+                    </Modal.Body>
+
+                </Modal.Header>
+            </Modal>
         </div >
     )
 }
