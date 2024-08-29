@@ -1,5 +1,5 @@
 import { Col, Image } from "react-bootstrap"
-import './StylistPreviousWork.css'
+import './stylistPreviousWork.css'
 
 const StylistPreviousWork = ({ avatar, userName, gallery }) => {
 
