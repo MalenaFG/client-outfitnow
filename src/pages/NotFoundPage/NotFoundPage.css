@@ -1,0 +1,13 @@
+.NotFoundPage {
+    color: #343a40;
+}
+
+.Error {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.Text {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}

@@ -8,6 +8,7 @@ import StylistDetailsPage from '../pages/StylistDetailsPage/StylistDetailsPage'
 import ServiceDetailsPage from '../pages/ServiceDetailsPage/ServiceDetailsPage'
 import PrivateRoutes from './PrivateRoutes'
 import DashboardPage from '../pages/DashboardPage/DashboardPage'
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage'
 
 const AppRoutes = () => {
     return (
@@ -18,11 +19,8 @@ const AppRoutes = () => {
                 <Route path={'/services/:serviceId'} element={<ServiceDetailsPage />} />
                 <Route path={'/stylists'} element={<StylistsListPage />} />
                 <Route path={'/stylists/:stylistId'} element={<StylistDetailsPage />} />
-                {/* TODO:REVISAR LO QUE QUEDA */}
                 <Route path={'/aboutus'} element={<AboutUsPage />} />
-                <Route path={'*'} element={<h1>404</h1>} />
-                {/* TODO: HACER PGE 404 */}
-
+                <Route path={'*'} element={<NotFoundPage />} />
                 <Route element={<PrivateRoutes />}>
                     <Route path={'/profile/:userId'} element={<MyProfilePage />} />
                     <Route path={'/dashboard'} element={<DashboardPage />} />

@@ -1,12 +1,9 @@
 import { useState } from "react"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import './CreateServiceForm.css'
-
 import servicesServices from "../../services/services.services"
 import uploadServices from "../../services/upload.services"
 import { useNavigate } from "react-router-dom"
-
-// TODO: ELIMINAR GLAMPACK
 
 const CreateServiceForm = () => {
 
@@ -115,9 +112,6 @@ const CreateServiceForm = () => {
             .then(() => navigate('/services'))
             .catch(err => console.log(err));
     }
-
-
-
 
     return (
 

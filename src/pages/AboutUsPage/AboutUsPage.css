@@ -1,22 +1,30 @@
 .AboutUsPage {
     margin-top: 100px;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.533);
+    border-radius: 12px;
+    margin-bottom: 100px;
 }
 
-.AboutUsPage .description {
-    margin-bottom: 20px;
+.AboutUsPage .descriptionCol {
+    margin: 20px;
     font-size: 18px;
-    color: #333;
+    color: #424040;
+    padding: 20px;
+    text-align: left;
+}
+
+.AboutUsPage .imageAndLinksCol {
+    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .AboutUsPage img {
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 400px;
     border-radius: 10px;
-    /* Bordes ligeramente redondeados */
     margin-bottom: 20px;
     object-fit: cover;
-    /* Asegura que la imagen cubra el área de 200x200px */
 }
 
 .AboutUsPage h5 {
@@ -26,10 +34,9 @@
 
 .social-icons a {
     margin: 0 10px;
-    color: #333;
-    font-size: 24px;
 }
 
-.social-icons a:hover {
-    color: #007bff;
+.social-icons img {
+    width: 40px;
+    height: 40px;
 }
