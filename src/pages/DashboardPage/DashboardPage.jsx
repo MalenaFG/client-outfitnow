@@ -19,7 +19,7 @@ const DashboardPage = () => {
             .getCountBookingsByService()
             .then(({ data }) => {
                 setChartData(data)
-                setIsLoading(true)
+                setIsLoading(false)
             })
             .catch(err => console.log(err))
     }

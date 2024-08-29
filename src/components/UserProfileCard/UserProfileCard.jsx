@@ -31,7 +31,7 @@ const UserProfileCard = () => {
                 userData &&
 
                 <>
-                    <Card>
+                    <Card className="userCard">
                         <div className="cardUserContainer">
                             <Row>
                                 <Col className="d-flex">

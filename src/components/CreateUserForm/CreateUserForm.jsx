@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import NewItemForm from '../GooglePlacesAutocomplete/GooglePlacesAutocomplete'
 import authServices from '../../services/auth.services'
 import uploadServices from '../../services/upload.services'
+import './CreateUserForm.css'
 
 const CreateUserForm = ({ setAccessModal }) => {
 
@@ -66,7 +67,7 @@ const CreateUserForm = ({ setAccessModal }) => {
                     <Form.Label>Avatar</Form.Label>
                     <Form.Control type="file" name='avatar' onChange={handleFileUpload} />
                     {userData.avatar.length > 0 &&
-                        <img src={userData.avatar} alt="user avatar" />}
+                        <img src={userData.avatar} alt="user avatar" className='avatarImage' />}
                 </Form.Group>
 
                 <Form.Group className="mb-3">

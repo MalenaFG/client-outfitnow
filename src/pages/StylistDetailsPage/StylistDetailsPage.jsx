@@ -26,8 +26,6 @@ const StylistDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    // const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
-
     return (
         <Container className="StylistDetailsPage">
             {
@@ -38,25 +36,24 @@ const StylistDetailsPage = () => {
                         <Row>
                             <Col md={{ span: 4 }} className="stylistInfo">
                                 <div className="sectionTitle">
-                                    <h1>{userData.userName}</h1>
+                                    <h1 className="mb-4">{userData.userName}</h1>
                                 </div>
-                                <hr />
-                                <Image className='avatar mb-3' src={userData.avatar} />
+
+                                <Image className='avatar mb-4' src={userData.avatar} />
                                 <p>{userData.aboutMe}</p>
                             </Col>
 
                             <Col md={{ span: 4 }}>
                                 <section className="stylistInfo servicesInfo">
                                     <div className="sectionTitle">
-                                        <h2>My services</h2>
+                                        <h2 className="mb-4">My services</h2>
                                     </div>
-                                    <hr />
                                     <Row>
                                         {userData.services.map(e => {
                                             return (
                                                 <Col md={{ span: 6 }} key={e._id}>
 
-                                                    <h5><u>{e.title}</u></h5>
+                                                    <h5>{e.title}</h5>
 
                                                     <ul>
                                                         <li>Basic: {e.packs.basic.price}€</li>
@@ -70,9 +67,8 @@ const StylistDetailsPage = () => {
                                 <br />
                                 <section className="stylistInfo">
                                     <div className="sectionTitle">
-                                        <h4>My favorite styles</h4>
+                                        <h4 className="mb-3">My favorite styles</h4>
                                     </div>
-                                    <hr />
                                     <div className="sectionTitle">
                                         {userData.styles.map(e => {
 

@@ -1,22 +1,28 @@
+.UserProfileCard {
+    margin-top: 80px;
+
+}
+
+.UserProfileCard .userCard {
+    background-color: rgba(255, 255, 255, 0.533) !important;
+    border: none !important;
+}
+
 .UserProfileCard img {
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
 
-.UserProfileCard {
-    margin-top: 80px;
-}
-
-.userMapContainer {
-    border-radius: 10px;
+.UserProfileCard .userMapContainer {
+    border-radius: 7px;
     margin-top: 20px;
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.533);
     margin-bottom: 80px;
 }
 
-.cardUserContainer {
+.UserProfileCard .cardUserContainer {
     display: block;
     margin: 10px;
 }

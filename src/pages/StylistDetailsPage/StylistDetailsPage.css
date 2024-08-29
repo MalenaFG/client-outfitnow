@@ -3,19 +3,19 @@
 
 }
 
-.sectionTitle {
+.StylistDetailsPage .sectionTitle {
     display: flex;
     justify-content: center;
 }
 
-.stylistInfo {
+.StylistDetailsPage .stylistInfo {
     border-radius: 10px;
     padding: 15px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.533);
     border: none;
 }
 
-.avatar {
+.StylistDetailsPage .avatar {
     border-radius: 10px;
     width: 100%;
     height: 240px;
@@ -23,6 +23,6 @@
     overflow: hidden;
 }
 
-.carouselGallery {
+.StylistDetailsPage .carouselGallery {
     height: 650px;
 }
