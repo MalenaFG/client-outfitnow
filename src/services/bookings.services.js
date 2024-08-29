@@ -45,6 +45,10 @@ class BookingsServices {
     getBookingsByStylist(userId) {
         return this.axiosApp.get(`/bookings/stylist/${userId}`)
     }
+
+    getCountBookingsByService() {
+        return this.axiosApp.get(`/bookings/services/bookingsData`)
+    }
 }
 
 export default new BookingsServices()

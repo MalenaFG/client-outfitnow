@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Form } from "react-bootstrap"
+import { Container, Form } from "react-bootstrap"
 import ServicesFilteredList from "../ServicesFilteredList/ServicesFilteredList"
 import servicesServices from "../../services/services.services"
 import './ServiceFilter.css'
@@ -41,7 +41,7 @@ const ServiceFilter = ({ setShowSlider }) => {
             </Form>
 
             {
-                searchInput != '' && <ServicesFilteredList servicesFiltered={servicesFiltered} />
+                searchInput != '' && <Container> <ServicesFilteredList servicesFiltered={servicesFiltered} /></Container>
             }
         </div>
     )

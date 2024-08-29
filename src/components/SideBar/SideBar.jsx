@@ -47,7 +47,13 @@ const SideBar = () => {
                         <Link to={'/stylists'} onClick={handleCloseOffset}>Stylists</Link>
                         <br />
                         {
-                            loggedUser && <Link to={`/profile/${loggedUser._id}`} onClick={handleCloseOffset}>My profile</Link>
+                            loggedUser &&
+                            <Link to={`/profile/${loggedUser._id}`} onClick={handleCloseOffset}>My profile</Link>
+                        }
+                        <br />
+                        {
+                            loggedUser && loggedUser.role === 'ADMIN' &&
+                            <Link to={'/dashboard'} onClick={handleCloseOffset}>My Dashboard</Link>
                         }
 
                     </Offcanvas.Body>
