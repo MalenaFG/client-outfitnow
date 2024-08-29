@@ -5,6 +5,7 @@ import { Col, Container, Image, Row, Spinner } from "react-bootstrap"
 import './StylistDetailsPage.css'
 import ServiceImgCarousel from "../../components/ServiceImgCarousel/ServiceImgCarousel"
 import StylistImagesCarousel from "../../components/StylistImagesCarousel/StylistImagesCarousel"
+import Loader from "../../components/Loader/Loader"
 
 
 const StylistDetailsPage = () => {
@@ -26,13 +27,11 @@ const StylistDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    // const { userName, avatar, styles, services, gallery, aboutMe, location } = userData || {}
-
     return (
         <Container className="StylistDetailsPage">
             {
                 isLoading ?
-                    <Spinner />
+                    <Loader />
                     :
                     <section >
                         <Row>

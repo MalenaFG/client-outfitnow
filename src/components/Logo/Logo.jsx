@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Image } from 'react-bootstrap'
 import './Logo.css'
 import { Link } from 'react-router-dom'
 

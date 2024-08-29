@@ -234,21 +234,28 @@ const CreateStylistForm = ({ setAccessModal }) => {
 
                                 :
 
-                                styles.map(e => {
-                                    return (
-                                        <Form.Check inline
-                                            label={e.style}
-                                            checked={userData.styles.includes(e._id)}
-                                            value={e._id}
-                                            name="styles"
-                                            type="checkbox"
-                                            id={e._id}
-                                            key={e._id}
-                                            onChange={handleStyleCheckboxChange}
+                                <Row>
+                                    {
+                                        styles.map(e => {
+                                            return (
+                                                <Col md={{ span: 6 }}>
+                                                    <Form.Check inline
+                                                        label={e.style}
+                                                        checked={userData.styles.includes(e._id)}
+                                                        value={e._id}
+                                                        name="styles"
+                                                        type="checkbox"
+                                                        id={e._id}
+                                                        key={e._id}
+                                                        onChange={handleStyleCheckboxChange}
 
-                                        />)
+                                                    />
+                                                </Col>
+                                            )
 
-                                })
+                                        })
+                                    }
+                                </Row>
                             }
                         </Form.Group>
                     </Col>
@@ -260,24 +267,28 @@ const CreateStylistForm = ({ setAccessModal }) => {
                                 <option>Loading options</option>
 
                                 :
+                                <Row>
 
-                                services.map(e => {
-                                    return (
-                                        <Form.Check inline
-                                            label={e.title}
-                                            checked={userData.services.includes(e._id)}
-                                            value={e._id}
-                                            name="services"
-                                            type="checkbox"
-                                            id={e._id}
-                                            key={e._id}
-                                            onChange={handleServiceCheckboxChange}
+                                    {
+                                        services.map(e => {
+                                            return (
+                                                <Col md={{ span: 6 }}>
+                                                    <Form.Check inline
+                                                        label={e.title}
+                                                        checked={userData.services.includes(e._id)}
+                                                        value={e._id}
+                                                        name="services"
+                                                        type="checkbox"
+                                                        id={e._id}
+                                                        key={e._id}
+                                                        onChange={handleServiceCheckboxChange}
+                                                    />
+                                                </Col>
+                                            )
 
-                                        />)
-
-                                })
+                                        })}
+                                </Row>
                             }
-
 
                         </Form.Group>
                     </Col>

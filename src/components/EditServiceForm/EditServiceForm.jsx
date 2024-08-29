@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Form, Row, Spinner } from "react-bootstrap"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import './EditServiceForm.css'
 import { useParams } from "react-router-dom";
 import servicesServices from "../../services/services.services"
 import uploadServices from "../../services/upload.services";
+import Loader from "../Loader/Loader";
 
 const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
 
@@ -155,7 +156,7 @@ const EditServiceForm = ({ setAccessModal, updateServiceData }) => {
     return (
         <div className="EditServiceForm">
             {isLoading ?
-                <Spinner />
+                <Loader />
                 :
                 <Form className="form" onSubmit={handleSubmit}>
                     <h2>Edit Service</h2>

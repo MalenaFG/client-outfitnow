@@ -21,6 +21,7 @@ const AppRoutes = () => {
                 {/* TODO:REVISAR LO QUE QUEDA */}
                 <Route path={'/aboutus'} element={<AboutUsPage />} />
                 <Route path={'*'} element={<h1>404</h1>} />
+                {/* TODO: HACER PGE 404 */}
 
                 <Route element={<PrivateRoutes />}>
                     <Route path={'/profile/:userId'} element={<MyProfilePage />} />

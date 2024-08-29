@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import ServiceFilter from "../../components/ServiceFilter/ServiceFilter"
 import ServicesSlider from "../../components/ServicesSlider/ServicesSlider"
 import './ServicesListPage.css'
-import { Container, Row, Spinner } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import StylistPreviousWork from "../../components/StylistPreviousWork/StylistPreviousWork"
 import userServices from "../../services/user.services"
+import Loader from "../../components/Loader/Loader"
 
 const ServicesListPage = () => {
 
@@ -36,7 +37,7 @@ const ServicesListPage = () => {
 
             <ServiceFilter setShowSlider={setShowSlider} />
 
-            {isLoading ? <Spinner /> :
+            {isLoading ? <Loader /> :
                 <Container >
                     <section className="outfitNowInfo">
                         <h1 className="slogan mb-4"><i>Your perfect look, anytime, anywhere.</i></h1>
