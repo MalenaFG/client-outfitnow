@@ -1,8 +1,7 @@
 import { useContext, useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import './SideBar.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { Modal, Nav, Tab, Tabs } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import LoginForm from '../LoginForm/LoginForm';
 import TabsSignupForms from '../TabsSignupForms/TabsSignupForms';
 import { AuthContext } from '../../contexts/auth.context';
@@ -45,6 +44,8 @@ const SideBar = () => {
                         <Link to={'/services'} onClick={handleCloseOffset}>Services</Link>
                         <br />
                         <Link to={'/stylists'} onClick={handleCloseOffset}>Stylists</Link>
+                        <br />
+                        <Link to={'/aboutus'} onClick={handleCloseOffset}>About us</Link>
                         <br />
                         {
                             loggedUser &&

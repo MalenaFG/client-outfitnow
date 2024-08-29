@@ -1,0 +1,35 @@
+.AboutUsPage {
+    margin-top: 100px;
+    align-items: center;
+}
+
+.AboutUsPage .description {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.AboutUsPage img {
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    /* Bordes ligeramente redondeados */
+    margin-bottom: 20px;
+    object-fit: cover;
+    /* Asegura que la imagen cubra el área de 200x200px */
+}
+
+.AboutUsPage h5 {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #333;
+    font-size: 24px;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}

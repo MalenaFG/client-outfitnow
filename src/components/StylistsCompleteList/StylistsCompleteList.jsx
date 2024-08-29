@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import userServices from "../../services/user.services"
-import { Row, Spinner } from "react-bootstrap"
+import { Row } from "react-bootstrap"
 import './StylistsCompleteList.css'
 import StylistCardWithoutButton from "../StylistCardWithoutButton/StylistCardWithoutButton"
+import Loader from "../Loader/Loader"
 
 const StylistsCompleteList = () => {
 
@@ -24,7 +25,7 @@ const StylistsCompleteList = () => {
 
     return (
         <Row className="StylistsCompleteList">
-            {isLoading ? <Spinner /> : stylistsList.map(e => <StylistCardWithoutButton{...e} key={e._id} />)}
+            {isLoading ? <Loader /> : stylistsList.map(e => <StylistCardWithoutButton{...e} key={e._id} />)}
         </Row>
     )
 }

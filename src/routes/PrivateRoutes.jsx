@@ -1,14 +1,14 @@
-import { Spinner } from "react-bootstrap"
 import { AuthContext } from "../contexts/auth.context"
 import { useContext } from "react"
 import { Navigate, Outlet } from "react-router-dom"
+import Loader from "../components/Loader/Loader"
 
 const PrivateRoutes = () => {
 
     const { loggedUser, isLoading } = useContext(AuthContext)
 
     if (isLoading) {
-        return <Spinner />
+        return <Loader />
     }
 
 

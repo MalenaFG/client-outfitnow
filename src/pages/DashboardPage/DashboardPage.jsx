@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import bookingsServices from "../../services/bookings.services"
-import { Container, Spinner, Row, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import './DashboardPage.css'
 import BookingsbyServiceChart from "../../components/BookingsbyServiceChart/BookingsbyServiceChart"
+import Loader from "../../components/Loader/Loader"
 
 const DashboardPage = () => {
 
@@ -27,7 +28,7 @@ const DashboardPage = () => {
     return (
         <div className="DashboardPage">
             {isLoading
-                ? <Spinner />
+                ? <Loader />
                 :
                 <Container className="DashboardPageContainer">
                     <Row className="justify-content-center">
