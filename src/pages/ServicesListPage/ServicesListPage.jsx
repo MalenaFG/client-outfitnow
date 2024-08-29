@@ -13,7 +13,7 @@ const ServicesListPage = () => {
     const [stylistsData, setStylistsData] = useState()
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(() => loadstylistData, [])
+    useEffect(() => loadstylistData(), [])
 
     const loadstylistData = () => {
         userServices
