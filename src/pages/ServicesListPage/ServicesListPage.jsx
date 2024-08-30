@@ -36,16 +36,16 @@ const ServicesListPage = () => {
 
             <ServiceFilter setShowSlider={setShowSlider} />
 
-            {isLoading ? <Loader /> :
-                <Container >
-                    <section className="outfitNowInfo">
-                        <h1 className="slogan mb-4"><i>Your perfect look, anytime, anywhere.</i></h1>
 
-                        <p className="description mb-5">Discover effortless elegance with OutfitNow. Our platform offers a curated selection of style packs tailored to a range of sophisticated events, from elegant dinners to high-profile red carpet appearances. Explore detailed pack options, connect with top-tier stylists, and effortlessly book your ideal service. OutfitNow ensures that you look impeccable and poised for every occasion.
-                        </p>
-                    </section>
-                </Container>
-            }
+            <Container >
+                <section className="outfitNowInfo">
+                    <h1 className="slogan mb-4"><i>Your perfect look, anytime, anywhere.</i></h1>
+
+                    <p className="description mb-5">Discover effortless elegance with OutfitNow. Our platform offers a curated selection of style packs tailored to a range of sophisticated events, from elegant dinners to high-profile red carpet appearances. Explore detailed pack options, connect with top-tier stylists, and effortlessly book your ideal service. OutfitNow ensures that you look impeccable and poised for every occasion.
+                    </p>
+                </section>
+            </Container>
+
         </div>
     )
 }
