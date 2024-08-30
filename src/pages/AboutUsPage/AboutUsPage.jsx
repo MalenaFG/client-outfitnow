@@ -24,7 +24,7 @@ const AboutUsPage = () => {
                                     <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724951738/pngwing.com_1_mevskk.png" alt="" />
                                 </a>
                                 <a href="https://www.linkedin.com/in/malena-fern%C3%A1ndez-giusti-b612652a8/" target="_blank" rel="noopener noreferrer">
-                                    <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724951384/pngwing.com_6_n6vlwh.png" alt="" />
+                                    <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1724950724/pngwing.com_3_m0j0un.png" alt="" />
                                 </a>
                             </div>
                         </Col>
