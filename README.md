@@ -25,7 +25,7 @@ This repository includes the code for the frontend, and you can find the backend
 
 ## Demo
 
-Try [Outfit Now](https://bounce-pundits.netlify.app/) yourself!
+Try [Outfit Now](https://outfitnow.netlify.app/) yourself!
 
 ## Client routes
 
