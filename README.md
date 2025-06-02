@@ -1,5 +1,9 @@
 # Outfit Now
 
+## Demo
+
+Try [Outfit Now](https://outfitnow.netlify.app/) yourself!
+
 ## Description
 
 Outfit Now is a web platform that connects clients with professional stylists, offering personalized style packs for all types of events. The app allows users to explore styling services, book appointments, and manage their reservations easily and efficiently. We developed both the backend and frontend, along with a custom API to ensure the smooth functionality of the platform.
@@ -23,9 +27,6 @@ This repository includes the code for the frontend, and you can find the backend
 
 <img src="https://res.cloudinary.com/dshhkzxwr/image/upload/v1725466026/servicesPage_esbonh.png" alt="Details Page Screenshot" width="70%"/>
 
-## Demo
-
-Try [Outfit Now](https://outfitnow.netlify.app/) yourself!
 
 ## Client routes
 
